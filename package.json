@@ -1,0 +1,27 @@
+{
+  "name": "inventario_de_bens",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ysmailifreitas/inventario-de-bens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ysmailifreitas/inventario-de-bens/issues"
+  },
+  "homepage": "https://github.com/ysmailifreitas/inventario-de-bens#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
