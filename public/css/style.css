@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+:root{
+  --blue-cor-padrao: #476DF4;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+.aside-menu{
+  width: 270px;
+  height: 100%;
+  position: fixed;
+  background-color: var(--blue-cor-padrao);
+  text-align: center;
+}
+
+.aside-menu .logo{
+  padding: 40px;
+  cursor: pointer;
+}
+
+.aside-menu .logo img{
+
+}
+
+.aside-menu .line{
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+  padding: 1px;
+  border: none;
+}
+
+.aside-menu .nav{
+
+}
+
+.aside-menu .nav ul{
+  flex-direction: column;
+  padding: 10px;
+  list-style: none;
+}
+
+.aside-menu .nav ul li{
+  padding: 20px 0;
+  cursor: pointer;
+  transition: all .3s ease-out;
+
+}
+
+.aside-menu .nav ul li:hover{
+  background-color: #0d50b5;
+  margin: 0px 10px;
+}
+
+.aside-menu .nav ul li a{
+  color: white;
+  display: block;
+}

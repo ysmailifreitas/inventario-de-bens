@@ -28,13 +28,15 @@ db.connect((error)=>{
 })
 
 app.get("/", (req, res) =>{
-  // res.send("<h1>home page</h1>");
   res.render("index")
 })
 
 app.get("/login", (req, res) =>{
-  // res.send("<h1>home page</h1>");
   res.render("login")
+})
+
+app.get("/home", (req, res) =>{
+  res.render("home")
 })
 
 app.listen(5000, () =>{
