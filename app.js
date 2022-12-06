@@ -39,6 +39,10 @@ app.get("/home", (req, res) =>{
   res.render("home")
 })
 
+app.get("/cadastrarBem", (req, res) =>{
+  res.render("cadastro")
+})
+
 app.listen(5000, () =>{
   console.log("listening on port 5000");
 })
