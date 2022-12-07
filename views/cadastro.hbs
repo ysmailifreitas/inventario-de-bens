@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/cadastro.css">
     {{!--
     <link rel="stylesheet" href=""> --}}
-    <script src=""></script>
+    <script src="../public/js/cadastro.js"></script>
 </head>
 
 <body>
@@ -33,47 +33,70 @@
     </div>
 
     <div class="container">
-        <h1>Cadastrar Bem</h1>
+        <h1></h1>
         <div class="card">
-            <form>
+            <form id="form">
                 <div>
                     <br>
-                    <label for="tipo">Tipo</label>
-                    <input name="tipo" type="text" id="tipo" placeholder="Ex. caneta, cadeira" required>
+                    <div class="block">
+                        <small></small>
+                        <label for="tipo">Tipo</label>
+                        <input name="tipo" type="text" id="tipo" placeholder="Ex. caneta, cadeira">
+                    </div>
 
-                    <label for="modelo">Marca e modelo</label>
-                    <input name="modelo" type="text" id="modelo" required>
+                    <div class="block">
+                        <small>Preencha o campo Marca e Modelo</small>
+                        <label for="modelo">Marca e Modelo</label>
+                        <input name="modelo" type="text" id="modelo" placeholder="Marca e modelo do bem">
+                    </div>
 
-                    <label for="codigo">Código</label>
-                    <input name="codigo" type="number" id="codigo" placeholder="Ex. 00000001" required>
+                    <div class="block">
+                        <small></small>
+                        <label for="codigo">Código</label>
+                        <input name="codigo" type="number" id="codigo" placeholder="Ex. 00000001">
+                    </div>
                 </div>
 
                 <div>
                     <br>
-                    <label for="fornecedor">Fornecedor</label>
-                    <input name="fornecedor" type="text" id="fornecedor" required>
+                    <div class="block">
+                        <small></small>
+                        <label for="fornecedor">Fornecedor</label>
+                        <input name="fornecedor" type="text" placeholder="Razão Social do fornecedor" id="fornecedor">
+                    </div>
 
-                    <label for="CNPJ">CNPJ</label>
-                    <input name="CNPJ" type="number" id="CNPJ" required>
+                    <div class="block">
+                        <small></small>
+                        <label for="CNPJ">CNPJ</label>
+                        <input name="CNPJ" type="number" placeholder="**.***.***/0001-**" id="CNPJ">
+                    </div>
                 </div>
 
                 <div>
                     <br>
-                    <label for="data">Data de Aquisição</label>
-                    <input name="data" type="date" id="data" placeholder="Definir Data" required>
+                    <div class="block">
+                        <small></small>
+                        <label for="data">Data de Aquisição</label>
+                        <input name="data" type="date" id="data" placeholder="Definir Data">
+                    </div>
                 </div>
 
                 <div>
                     <br>
-                    <label>Descrição</label>
-                   <textarea id="descricao" cols="30" rows="10"></textarea>
+                    <div class="desc">
+                        <label>Descrição</label>
+                        <textarea id="descricao" cols="30" rows="10"></textarea>
+                    </div>
                 </div>
 
-                <button>Salvar</button>
+                <button onclick="checarCampos">Salvar</button>
+
             </form>
         </div>
     </div>
 
 </body>
+
+
 
 </html>

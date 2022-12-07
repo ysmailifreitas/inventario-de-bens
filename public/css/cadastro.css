@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 
+body {
+    background-color:rgb(221, 221, 221)
+}
+
 .container {
     margin-left: 270px;
     text-align: center;
@@ -7,35 +11,95 @@
 
 h1 {
     margin: auto;
-    padding: 15px; 
-    color: #0067A5;
+    padding: 10px;
+    color: #0066a5;
 }
 
 .card {
+    background-color: #fff;
+    text-align: center;
     width: 90%;
-    border: 1px rgb(192, 192, 192) outset;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2);
     border-radius: 20px;
     margin: auto;
     padding: 40px;
 }
 
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
 input {
     margin: 10px 10px 10px 0px;
+    border: none;
+    border-bottom: 1px gray solid;
+    display: block;
+}
+
+textarea {
+    width: 100%;
+}
+
+.desc {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+}
+
+#data {
+    width: 100%;
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+small {
+    font-size: 10px;
+    color: #ff0000;
+    visibility: hidden;
+}
+
+.block {
+    width: 30%;
+    text-align: left;
+    display: inline-block;
+}
+
+input:focus, textarea:focus {
+    transition: 0.5s;
+    background-color: rgb(224, 224, 224);
+}
+
+.block.error input{
+    border-bottom: 1px rgb(255, 0, 0) solid;
+}
+
+.block.error small{
+    visibility: visible;
 }
 
 button {
-        background: #0067A5;
-        color: #fff;
-        font-size: 15px;
-        font-weight: normal;
-        text-transform: uppercase;
-        width: 10%;
-        -webkit-box-shadow: inset 0 -4px 0 0 rgb(102 102 102 / 30%);
-        box-shadow: inset 0 -4px 0 0 rgb(102 102 102 / 30%);
-        border-radius: 5px;
-        border: none;
-        padding: 13px 0;
-        margin-top: 20px;
-        margin-bottom: 4px;
-        cursor: pointer;
+    background: #0066a5;
+    color: #fff;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: uppercase;
+    width: 10%;
+    -webkit-box-shadow: inset 0 -4px 0 0 rgb(102 102 102 / 30%);
+    box-shadow: inset 0 -4px 0 0 rgb(102 102 102 / 30%);
+    border-radius: 5px;
+    border: none;
+    padding: 13px 0;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: 1s;
+    background: #004068;
 }
