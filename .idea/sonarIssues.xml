@@ -58,12 +58,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/models/Bens.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/models/User.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/models/db.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/package-lock.json">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/package.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/css/cadastro.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/css/listagem.css">
           <value>
             <set />
           </value>
@@ -104,6 +129,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/views/index.hbs">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/views/listagem.hbs">
           <value>
             <set />
           </value>

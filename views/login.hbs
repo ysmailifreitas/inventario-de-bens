@@ -38,6 +38,9 @@
     <input type="password" id="password" name="password" class="input" placeholder="Digite a senha">
   </div>
   <button type="submit" class="botao">Entrar</button>
+  {{#if success}}
+  {{success}}
+  {{/if}}
 </form>
 </body>
 

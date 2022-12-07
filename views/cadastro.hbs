@@ -6,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventário - Cadastrar Bem</title>
+    <base href="/">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cadastro.css">
-    {{!--
-    <link rel="stylesheet" href=""> --}}
-    <script src="../public/js/cadastro.js"></script>
+    <script src="js/cadastro.js"></script>
 </head>
 
 <body>
@@ -38,7 +37,7 @@
                 <a href="/home" class="voltar">↩ Voltar</a>
             </div>
 
-            <form id="form">
+            <form id="form" action="/auth/cadastrarBem" method="POST">
                 <div>
                     <br>
                     <div class="block">
@@ -71,7 +70,7 @@
                     <div class="block">
                         <small></small>
                         <label for="CNPJ">CNPJ</label>
-                        <input name="CNPJ" type="number" placeholder="**.***.***/0001-**" id="CNPJ">
+                        <input name="cnpj" type="number" placeholder="**.***.***/0001-**" id="CNPJ">
                     </div>
                 </div>
 
@@ -80,7 +79,7 @@
                     <div class="block">
                         <small></small>
                         <label for="data">Data de Aquisição</label>
-                        <input name="data" type="date" id="data" placeholder="Definir Data">
+                        <input name="data_alteracao" type="date" id="data" placeholder="Definir Data">
                     </div>
                 </div>
 
@@ -88,7 +87,7 @@
                     <br>
                     <div class="desc">
                         <label>Descrição</label>
-                        <textarea id="descricao" cols="30" rows="10"></textarea>
+                        <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
                     </div>
                 </div>
 
