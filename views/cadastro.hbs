@@ -7,31 +7,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventário - Cadastrar Bem</title>
     <link rel="stylesheet" href="css/style.css">
-{{!--     <link rel="stylesheet" href=""> --}}
+    <link rel="stylesheet" href="css/cadastro.css">
+    {{!--
+    <link rel="stylesheet" href=""> --}}
     <script src=""></script>
 </head>
 
 <body>
     <div class="aside-menu">
-      <div class="logo">
-        <a target="_blank" href="home.html">
-          <img height="150px" width="150px" src="../img/logo-inventario.png">
-        </a>
-      </div>
-      <hr class="line">
-      <div class="nav">
-        <ul>
-          <li><a target="_blank" href="../login/index.html">PAINEL</a></li>
-          <li><a>RELATÓRIOS</a></li>
-          <li><a>CADASTRAR BEM</a></li>
-          <li><a>CADASTRAR BEM</a></li>
-          <li><a>ADMINISTRAÇÃO</a></li>
-        </ul>
-      </div>
+        <div class="logo">
+            <a target="_blank" href="home.html">
+                <img height="150px" width="150px" src="../img/logo-inventario.png">
+            </a>
+        </div>
+        <hr class="line">
+        <div class="nav">
+            <ul>
+                <li><a target="_blank" href="../login/index.html">PAINEL</a></li>
+                <li><a>RELATÓRIOS</a></li>
+                <li><a>CADASTRAR BEM</a></li>
+                <li><a>CADASTRAR BEM</a></li>
+                <li><a>ADMINISTRAÇÃO</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div class="home-content">
+    <div class="container">
+        <h1>Cadastrar Bem</h1>
+        <div class="card">
+            <form>
+                <div>
+                    <br>
+                    <label for="tipo">Tipo</label>
+                    <input name="tipo" type="text" id="tipo" placeholder="Ex. caneta, cadeira" required>
 
+                    <label for="modelo">Marca e modelo</label>
+                    <input name="modelo" type="text" id="modelo" required>
+
+                    <label for="codigo">Código</label>
+                    <input name="codigo" type="number" id="codigo" placeholder="Ex. 00000001" required>
+                </div>
+
+                <div>
+                    <br>
+                    <label for="fornecedor">Fornecedor</label>
+                    <input name="fornecedor" type="text" id="fornecedor" required>
+
+                    <label for="CNPJ">CNPJ</label>
+                    <input name="CNPJ" type="number" id="CNPJ" required>
+                </div>
+
+                <div>
+                    <br>
+                    <label for="data">Data de Aquisição</label>
+                    <input name="data" type="date" id="data" placeholder="Definir Data" required>
+                </div>
+
+                <div>
+                    <br>
+                    <label>Descrição</label>
+                   <textarea id="descricao" cols="30" rows="10"></textarea>
+                </div>
+
+                <button>Salvar</button>
+            </form>
+        </div>
     </div>
 
 </body>
