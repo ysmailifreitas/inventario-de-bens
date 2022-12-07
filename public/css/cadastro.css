@@ -16,9 +16,8 @@ body {
     width: 90%;
     box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
     border-radius: 10px 10px 0px 0px;
-    margin: 0;
+    margin: auto;
     padding: 40px;
-    height: 100vh;
 }
 
 h1 {
@@ -38,7 +37,6 @@ input {
     border: none;
     border-bottom: 1px gray solid;
     display: block;
-  padding: 10px;
 }
 
 textarea {
