@@ -11,16 +11,16 @@ const db = mysql.createConnection({
 exports.login = (req, res) => {
   console.log(req.body);
 
-  const {username, password} = req.body;
+  const user = req.body.username;
+  const pass = req.body.password;
 
-  db.query('SELECT username FROM users WHERE username = ?', [username], (error, results)=>{
+  db.query('SELECT username, password FROM users WHERE username = ? AND password =?', [user, pass], (error, results)=>{
     if(error){
       console.log(error);
     } else{
-      console.log(results)
-      res.render('home')
+      res.redirect('home')
     }
   });
 
-  console.log(username,password);
+  console.log(user,pass);
 }

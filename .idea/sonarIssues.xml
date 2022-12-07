@@ -18,6 +18,11 @@
             <set />
           </value>
         </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$APPLICATION_CONFIG_DIR$/consoles/db/8495cd06-20f7-4cef-8743-ec0841b7fc5d/console.sql">
           <value>
             <set />
@@ -38,6 +43,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app.js">
           <value>
             <set />
@@ -48,12 +58,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/package-lock.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/package.json">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/public/css/style.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/js/cadastro.js">
           <value>
             <set />
           </value>
@@ -93,6 +113,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/views/package-lock.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/src/components/bem-consumo/edicao/ressuprimento/controller.js">
           <value>
             <set />
@@ -104,6 +129,21 @@
           </value>
         </entry>
         <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/src/components/bem-consumo/edicao/ressuprimento/view.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/test/components/bem-consumo/edicao/ressuprimento/controller-spec.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/test/components/bem-consumo/edicao/ressuprimento/router-spec.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/test/components/bem-consumo/edicao/ressuprimento/service-spec.js">
           <value>
             <set />
           </value>
