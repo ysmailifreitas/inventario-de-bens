@@ -23,19 +23,19 @@
 </head>
 <body>
 <div class="logo"><img src="img/lock.png"></div>
-<form action="inventario-app/src/entrada/entrada.html" class="loginForm content">
+<form action="/auth/login" method="POST" class="loginForm content">
   <h1>Entrar como Administrador</h1>
   <div class="input-group">
       <span>
           <i class="material-icons">account_circle</i>
       </span>
-    <input type="text" id="username" class="input" placeholder="Digite o usuário do sistema">
+    <input type="text" id="username" name="username" class="input" placeholder="Digite o usuário do sistema">
   </div>
   <div class="input-group">
       <span>
           <i class="material-icons">vpn_key</i>
       </span>
-    <input type="password" id="password" class="input" placeholder="Digite a senha">
+    <input type="password" id="password" name="password" class="input" placeholder="Digite a senha">
   </div>
   <button type="submit" class="botao">Entrar</button>
 </form>
