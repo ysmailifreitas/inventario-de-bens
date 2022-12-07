@@ -19,8 +19,8 @@ h1 {
     background-color: #fff;
     text-align: center;
     width: 90%;
-    box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.2);
-    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+    border-radius: 0px;
     margin: auto;
     padding: 40px;
 }
@@ -102,4 +102,9 @@ button {
 button:hover {
     transition: 1s;
     background: #004068;
+}
+
+.voltar {
+    text-align: left;
+    color: #0066a5;
 }
