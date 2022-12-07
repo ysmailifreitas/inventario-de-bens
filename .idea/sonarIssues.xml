@@ -18,6 +18,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/consoles/db/8495cd06-20f7-4cef-8743-ec0841b7fc5d/console.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../inventario de bens/inventario-api/main.js">
           <value>
             <set />
@@ -38,6 +43,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/controllers/auth.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/package.json">
           <value>
             <set />
@@ -49,6 +59,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/public/login.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/routes/auth.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/routes/pages.js">
           <value>
             <set />
           </value>
@@ -84,6 +104,11 @@
           </value>
         </entry>
         <entry key="$USER_HOME$/workspace/azdev/almox/almox-app/src/components/bem-consumo/edicao/ressuprimento/view.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="8495cd06-20f7-4cef-8743-ec0841b7fc5d/schema/inventario/table/users.sql">
           <value>
             <set />
           </value>
