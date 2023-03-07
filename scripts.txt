@@ -1,0 +1,8 @@
+CREATE TABLE bens (
+  be_id int not null auto_increment,
+  be_descricao varchar(50) not null,
+  be_quantidade int not null,
+  be_fornecedor varchar(50) not null,
+  be_data_aquisicao varchar(50) not null,
+  primary key(be_id)
+);
