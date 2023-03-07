@@ -1,9 +1,8 @@
 const form = document.getElementById('form')
 const tipo = document.getElementById('tipo')
 const modelo = document.getElementById('modelo')
-const codigo = document.getElementById('codigo')
 const fornecedor = document.getElementById('fornecedor')
-const CNPJ = document.getElementById('CNPJ')
+// const cnpj = document.getElementById('cnpj')
 const data = document.getElementById('data')
 
 
@@ -16,9 +15,8 @@ form.addEventListener('submit', (e) => {
 function checarCampos() {
     const tipoValue = tipo.value
     const modeloValue = modelo.value
-    const codigoValue = codigo.value
     const fornecedorValue = fornecedor.value
-    const CNPJValue = CNPJ.value
+    // const cnpjValue = cnpj.value
     const dataValue = data.value
 
     if (tipoValue === '') {
@@ -35,13 +33,6 @@ function checarCampos() {
         campoPreenchido(modelo)
     }
 
-    if (codigoValue === '') {
-        erroDeCampo(codigo, 'Preencha esse campo')
-    }
-    else {
-        campoPreenchido(codigo)
-    }
-
     if (fornecedorValue === '') {
         erroDeCampo(fornecedor, 'Preencha esse campo')
     }
@@ -49,14 +40,14 @@ function checarCampos() {
         campoPreenchido(fornecedor)
     }
 
-    if (CNPJValue === '') {
-        erroDeCampo(CNPJ, 'Preencha esse campo')
-    } else if(CNPJValue.length != 14) {
-        erroDeCampo(CNPJ, 'O campo CNPJ deve conter 14 digítos')
-    }
-    else {
-        campoPreenchido(CNPJ)
-    }
+    // if (cnpjValue === '') {
+    //     erroDeCampo(cnpj, 'Preencha esse campo')
+    // } else if(cnpjValue.length != 14) {
+    //     erroDeCampo(cnpj, 'O campo cnpj deve conter 14 digítos')
+    // }
+    // else {
+    //     campoPreenchido(cnpj)
+    // }
 
     if (dataValue === '') {
         erroDeCampo(data, 'Preencha esse campo')

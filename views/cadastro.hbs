@@ -15,7 +15,7 @@
 <body>
     <div class="aside-menu">
         <div class="logo">
-            <a target="_blank" href="home.html">
+            <a href="home">
                 <img height="150px" width="150px" src="../img/logo-inventario.png">
             </a>
         </div>
@@ -25,7 +25,7 @@
                 <li><a href="home">PAINEL</a></li>
                 <li><a href="cadastrarBem">CADASTRAR BEM</a></li>
                 <li><a href="listarBem">LISTAGEM DE BENS</a></li>
-                <li><a href="login">PERFIL</a></li>
+                <li><a href="login">SAIR</a></li>
             </ul>
         </div>
     </div>
@@ -40,22 +40,10 @@
             <form id="form" action="/auth/cadastrarBem" method="POST">
                 <div>
                     <br>
-                    <div class="block">
+                    <div style="" class="block">
                         <small></small>
-                        <label for="tipo">Tipo</label>
-                        <input name="tipo" type="text" id="tipo" placeholder="Ex. caneta, cadeira">
-                    </div>
-
-                    <div class="block">
-                        <small>Preencha o campo Marca e Modelo</small>
-                        <label for="modelo">Marca e Modelo</label>
-                        <input name="modelo" type="text" id="modelo" placeholder="Marca e modelo do bem">
-                    </div>
-
-                    <div class="block">
-                        <small></small>
-                        <label for="codigo">Código</label>
-                        <input name="codigo" type="number" id="codigo" placeholder="Ex. 00000001">
+                        <label for="descricao">Nome</label>
+                        <input name="descricao" type="text" id="descricao" placeholder="Ex. caneta, cadeira">
                     </div>
                 </div>
 
@@ -66,11 +54,14 @@
                         <label for="fornecedor">Fornecedor</label>
                         <input name="fornecedor" type="text" placeholder="Razão Social do fornecedor" id="fornecedor">
                     </div>
+                </div>
 
+                <div>
+                    <br>
                     <div class="block">
                         <small></small>
-                        <label for="CNPJ">CNPJ</label>
-                        <input name="cnpj" type="number" placeholder="**.***.***/0001-**" id="CNPJ">
+                        <label for="quantidade">Quantidade</label>
+                        <input name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade">
                     </div>
                 </div>
 
@@ -79,15 +70,7 @@
                     <div class="block">
                         <small></small>
                         <label for="data">Data de Aquisição</label>
-                        <input name="data_alteracao" type="date" id="data" placeholder="Definir Data">
-                    </div>
-                </div>
-
-                <div>
-                    <br>
-                    <div class="desc">
-                        <label>Descrição</label>
-                        <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+                        <input name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data">
                     </div>
                 </div>
 

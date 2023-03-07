@@ -37,6 +37,8 @@ input {
     border: none;
     border-bottom: 1px gray solid;
     display: block;
+    padding: 20px;
+    font-size: 15px;
 }
 
 textarea {
@@ -108,5 +110,5 @@ button:hover {
 .voltar {
     text-align: left;
     color: rgb(71, 109, 244);
-    font-size: 20px;
+    font-size: 1.1rem;
 }

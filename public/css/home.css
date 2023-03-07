@@ -1,78 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 
 body {
-    background-color:rgb(221, 221, 221)
+	background-color:#dddddd
 }
 
 .container {
-    margin-left: 270px;
-    text-align: center;
+	margin-left: 270px;
+	text-align: center;
 }
 
 .card {
-    background-color: #fff;
-    border-top: 25px rgb(71, 109, 244) solid;
-    text-align: center;
-    width: 90%;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
-    border-radius: 10px 10px 0px 0px;
-    margin: auto;
-    padding: 40px;
+	background-color: #fff;
+	border-top: 25px #476df4 solid;
+	text-align: center;
+	width: 90%;
+	box-shadow: 2px 2px 2px 2px #00000033;
+	border-radius: 10px 10px 0px 0px;
+	margin: auto;
+	padding: 40px;
 }
 
 .subcard {
-    margin: 10px;
-    text-align: left;
-    display: flex;
+  margin: 10px;
+  text-align: left;
+  display: flex;
 }
 
 .subcard a {
-    margin: 10px auto;
-    font-size: 25px;
-    color: rgb(71, 109, 244);
+	margin: 10px auto;
+	font-size: 25px;
+	color: rgb(71, 109, 244);
 }
 
 .subcard:hover {
-    transition: 0.5s;
-    cursor: pointer;
-    background-color: rgb(206, 206, 206);
-    color: #004068;
+	transition: 0.5s;
+	cursor: pointer;
+	background-color: rgb(206, 206, 206);
+	color: #004068;
 }
 
 .subcard img {
-    margin: 0px;
-    padding: 0px;
-    width: 70px;
+	margin: 0px;
+	padding: 0px;
+	width: 70px;
 }
 
 .subcard {
-    background-color: #fff;
-    border: 2px rgb(71, 109, 244) solid;
-    text-align: center;
-    width: 90%;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
-    border: 1px 1px 1px none black outset;
-    border-radius: 10px;
-    margin: 10px auto;
-    padding: 40px;
+  background-color: #fff;
+  border: 2px rgb(71, 109, 244) solid;
+  text-align: center;
+  width: 90%;
+  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+  border: 1px 1px 1px none black outset;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 40px;
 }
 
 .block {
-    background-color: #fff;
-    border-top: 15px rgb(71, 109, 244) solid;
-    text-align: center;
-    width: 40%;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
-    border-radius: 10px 10px 0px 0px;
-    margin: 10px;
-    padding: 40px;
-    display: inline-block;
+		background-color: #fff;
+		border-top: 15px rgb(71, 109, 244) solid;
+		text-align: center;
+		width: 40%;
+		box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+		border-radius: 10px 10px 0px 0px;
+		margin: 10px;
+		padding: 40px;
+		display: inline-block;
 }
 
 .block h2 {
-    color: rgb(71, 109, 244);
+		color: rgb(71, 109, 244);
 }
 
 .block h4 {
-    color: rgb(175, 175, 175);
+		color: rgb(175, 175, 175);
 }

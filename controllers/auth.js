@@ -20,40 +20,36 @@ exports.login = (req, res) => {
     }
     if(results.length > 0){
       res.redirect('home')
+    }else{
+      res.render('login')
     }
-
   });
 
   // console.log(user,pass);
 }
 
 exports.cadastrarBem = (req, res) => {
-  const tipo = req.body.tipo;
-  const modelo = req.body.modelo;
-  const codigo = req.body.codigo;
-  const fornecedor = req.body.fornecedor;
-  const cnpj = req.body.cpnj;
-  const data_alteracao = req.body.data_alteracao;
   const descricao = req.body.descricao;
-  console.log(cnpj)
-  db.query('SELECT cnpj FROM bens WHERE cnpj = ?', [cnpj], (error, results)=>{
+  const quantidade = req.body.quantidade;
+  const fornecedor = req.body.fornecedor;
+  const data_aquisicao = req.body.data_aquisicao;
+
+  db.query('SELECT be_descricao FROM bens WHERE be_descricao = ?', [descricao], (error, results)=>{
     if(error){
       console.log(error);
     }
     if(results.length > 0){
 
     }else{
-      db.query('INSERT INTO bens (tipo,modelo,codigo,fornecedor,cnpj,data_alteracao,descricao) VALUES (?,?,?,?,?,?,?)',[tipo,modelo,codigo,fornecedor,cnpj,data_alteracao,descricao],(error,results)=>{
+      db.query('INSERT INTO bens (be_descricao,be_quantidade,be_fornecedor,be_data_aquisicao) VALUES (?,?,?,?)',[descricao,quantidade,fornecedor,data_aquisicao],(error,results)=>{
         if(error){
           console.log(error);
         }
         console.log(results);
+        res.render('listagem')
       })
     }
-
   });
-
-  // console.log(user,pass);
 }
 exports.home = (req, res) => {
   res.render('home')
