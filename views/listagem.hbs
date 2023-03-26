@@ -54,58 +54,35 @@
                           <th>QUANTIDADE</th>
                           <th>DATA AQUISIÇÃO</th>
                           <th>DATA MODIFICAÇÃO</th>
+                          <th>ACÕES</th>
                       </tr>
                       </thead>
                       <tbody>
+                        {{#each itens}}
                       <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
+                          <td>{{nome}}</td>
+                          <td>{{fornecedor}}</td>
+                          <td>{{quantidade}}</td>
+                          <td>{{#formatDate dataAquisicao}}{{/formatDate}}</td>
+                          <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
+                          <td>
+                            <table class="icones">
+                              <tr>
+                                <td>
+                                  <a href="/editarBem/{{id}}">
+                                    <img height="25px" width="25px" src="../img/edit.png"></img>
+                                  </a>
+                                </td>
+                                <td>
+                                  <a href="/deletarItem/{{id}}">
+                                    <img height="25px" width="25px" src="../img/delete.png"></img>
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
                       </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
-                      <tr>
-                          <td>Medicamento - Pílulas</td>
-                          <td>PoliMeds</td>
-                          <td>302</td>
-                          <td>20/10/2022</td>
-                          <td>20/10/2022</td>
-                      </tr>
+                        {{/each}}
                       <tbody>
                   </table>
               </div>

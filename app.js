@@ -2,6 +2,8 @@ const express = require("express");
 const mysql = require("mysql");
 const dotenv = require('dotenv')
 const path = require('path')
+const moment = require('moment');
+const { handlebars } = require("hbs");
 
 dotenv.config({path: './.env'})
 
@@ -20,6 +22,9 @@ app.use(express.static(publicDirectory));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+handlebars.registerHelper('formatDate', function (date) { return moment(date).format('DD/MM/YYYY'); });
+handlebars.registerHelper('formatDateHour', function (date) { return moment(date).format('DD/MM/YYYY HH:mm:ss'); });
+
 app.set('view engine', 'hbs');
 
 db.connect((error)=>{
@@ -32,6 +37,7 @@ db.connect((error)=>{
 
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
+app.use('/itens', require('./routes/itens'));
 
 app.listen(5000, () =>{
   console.log("listening on port 5000");

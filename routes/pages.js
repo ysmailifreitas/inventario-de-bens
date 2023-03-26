@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const Bens = require("../models/Bens")
+const Bens = require('../models/Bens')
 
 router.get("/", (req, res) =>{
   res.render("index");
@@ -19,27 +19,46 @@ router.get("/login", (req, res) =>{
 })
 
 router.get("/listarBem", (req, res) =>{
-  res.render("listagem");
+  Bens.findAll().then(function(bens){
+    res.render("listagem", {itens:bens});
+  })
 })
 
+router.get('/deletarItem/:id', function(req,res){
+  Bens.destroy({
+    where: {id: req.params.id}
+  }).then(function(){
+    res.redirect(req.get('referer'));
+  }).catch(function(erro){
+    res.send('item não deletado')
+  })
+})
 
-// router.post("/cadastrarBem", async (req, res) => {
-//   //console.log(req.body);
-//
-//   await Bens.create(req.body)
-//     .then(() => {
-//       return res.json({
-//         erro: false,
-//         mensagem: "Usuário cadastrado com sucesso!"
-//       });
-//     }).catch(() => {
-//       return res.status(400).json({
-//         erro: true,
-//         mensagem: "Erro: Usuário não cadastrado com sucesso!"
-//       });
-//     });
-//
-//   //res.send("Página cadastrar");
-// });
+router.get('/editarBem/:id', function(req,res){
+  Bens.findOne({
+    where: {id: req.params.id}
+  }).then(function(item){
+    res.render("editarBem", {item: item, id: req.params.id});
+  })
+})
+
+router.post('/atualizarBem/:id', (req, res) =>{
+  Bens.findOne({
+    where: {id: req.params.id}
+  }).then(function(item){
+    console.log(`captured item: ${item.nome}`)
+    if(item){
+      item.update({
+        nome: req.body.descricao,
+        fornecedor: req.body.fornecedor,
+        quantidade: req.body.quantidade,
+        dataAquisicao: req.body.data_aquisicao
+      }).then(function(){
+        console.log("supostamente updated")
+        res.redirect('/listarBem')
+      })
+    }
+  })
+})
 
 module.exports = router;

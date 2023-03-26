@@ -13,7 +13,7 @@ body {
     background-color: #fff;
     border-top: 25px rgb(71, 109, 244) solid;
     text-align: center;
-    width: 90%;
+    width: 80%;
     box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
     border-radius: 10px 10px 0px 0px;
     margin: auto;
@@ -39,6 +39,7 @@ input {
     display: block;
     padding: 20px;
     font-size: 15px;
+    width: 100%;
 }
 
 textarea {
@@ -67,9 +68,13 @@ small {
 }
 
 .block {
-    width: 30%;
-    text-align: left;
-    display: inline-block;
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+}
+
+.data{
+  width: 100%;
 }
 
 input:focus, textarea:focus {
