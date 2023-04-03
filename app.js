@@ -24,6 +24,9 @@ app.use(express.json());
 
 handlebars.registerHelper('formatDate', function (date) { return moment(date).format('DD/MM/YYYY'); });
 handlebars.registerHelper('formatDateHour', function (date) { return moment(date).format('DD/MM/YYYY HH:mm:ss'); });
+handlebars.registerHelper('isdefined', function (value) {
+  return value !== undefined;
+});
 
 app.set('view engine', 'hbs');
 
@@ -38,6 +41,7 @@ db.connect((error)=>{
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 app.use('/itens', require('./routes/itens'));
+app.use('/fornecedor', require('./routes/fornecedor'));
 
 app.listen(5000, () =>{
   console.log("listening on port 5000");

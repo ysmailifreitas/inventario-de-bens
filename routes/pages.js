@@ -1,63 +1,53 @@
 const express = require("express");
 const router = express.Router();
-const Bens = require('../models/Bens')
+const Bens = require('../models/Itens');
+const Fornecedor = require("../models/Fornecedor");
+
+router.get("/login", (req, res) =>{
+  res.render("login");
+})
 
 router.get("/", (req, res) =>{
-  res.render("index");
+  res.render("home");
 })
 
 router.get("/home", (req, res) =>{
   res.render("home");
 })
 
-router.get("/cadastrarBem", (req, res) =>{
-  res.render("cadastro");
-})
-
-router.get("/login", (req, res) =>{
-  res.render("login");
-})
-
-router.get("/listarBem", (req, res) =>{
-  Bens.findAll().then(function(bens){
-    res.render("listagem", {itens:bens});
+router.get("/itens", (req, res) =>{
+  Bens.findAll().then(function(itens){
+    res.render("itens", {itens:itens});
   })
 })
 
-router.get('/deletarItem/:id', function(req,res){
-  Bens.destroy({
-    where: {id: req.params.id}
-  }).then(function(){
-    res.redirect(req.get('referer'));
-  }).catch(function(erro){
-    res.send('item não deletado')
+router.get("/fornecedores", (req, res) =>{
+  Fornecedor.findAll().then(function(fornecedores){
+    res.render("fornecedores", {fornecedores:fornecedores});
   })
 })
 
-router.get('/editarBem/:id', function(req,res){
+router.get("/cadastrarItem", (req, res) =>{
+  res.render("cadastroItem");
+})
+
+router.get('/editarItem/:id', function(req,res){
   Bens.findOne({
     where: {id: req.params.id}
   }).then(function(item){
-    res.render("editarBem", {item: item, id: req.params.id});
+    res.render("editarItem", {item: item, id: req.params.id});
   })
 })
 
-router.post('/atualizarBem/:id', (req, res) =>{
-  Bens.findOne({
+router.get("/cadastrarFornecedor", (req, res) =>{
+  res.render("cadastroFornecedor");
+})
+
+router.get('/editarFornecedor/:id', function(req,res){
+  Fornecedor.findOne({
     where: {id: req.params.id}
-  }).then(function(item){
-    console.log(`captured item: ${item.nome}`)
-    if(item){
-      item.update({
-        nome: req.body.descricao,
-        fornecedor: req.body.fornecedor,
-        quantidade: req.body.quantidade,
-        dataAquisicao: req.body.data_aquisicao
-      }).then(function(){
-        console.log("supostamente updated")
-        res.redirect('/listarBem')
-      })
-    }
+  }).then(function(fornecedor){
+    res.render("editarFornecedor", {fornecedor: fornecedor, id: req.params.id});
   })
 })
 

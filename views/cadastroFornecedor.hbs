@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Cadastrar Bem</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <script src="js/cadastro.js"></script>
+</head>
+
+<body>
+    <div class="aside-menu">
+        <div class="logo">
+            <a target="_blank" href="home.html">
+                <img height="150px" width="150px" src="../img/logo-inventario.png">
+            </a>
+        </div>
+        <hr class="line">
+        <div class="nav">
+            <ul>
+                <li><a href="home">PAINEL</a></li>
+                <li><a href="itens">LISTAGEM DE BENS</a></li>
+                <li><a href="fornecedores">FORNECEDORES</a></li>
+
+                <!-- a opção editar perfil ainda não funciona, passará
+                a funcionar quando implementar a sessão do usuário logado -->
+                <li><a href="">EDITAR PERFIL</a></li>
+
+                <li><a href="login">SAIR</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1></h1>
+        <div class="card">
+            <div  class="voltar">
+                <a href="/fornecedores" class="voltar">↩ Voltar</a>
+            </div>
+
+            <form id="form" action="fornecedor/cadastrarFornecedor" method="POST">
+                <div>
+                    <br>
+                    <div style="" class="block">
+                        <small></small>
+                        <label for="nome">Nome</label>
+                        <input name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div class="block">
+                        <small></small>
+                        <label for="telefone">Telefone</label>
+                        <input name="telefone" type="tel" placeholder="Razão Social do fornecedor" id="telefone">
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div class="block">
+                        <small></small>
+                        <label for="email">Email</label>
+                        <input name="email" type="email" placeholder="Razão Social do fornecedor" id="email">
+                    </div>
+                </div>
+
+                <button type="submit">Salvar</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/cadastro.js"></script>
+
+</html>

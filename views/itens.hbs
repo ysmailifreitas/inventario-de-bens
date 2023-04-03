@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Cadastrar Item</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/listagem.css">
+    <script src="js/cadastro.js"></script>
+</head>
+
+<body>
+    <div class="aside-menu">
+        <div class="logo">
+            <a target="_blank" href="home.html">
+                <img height="150px" width="150px" src="../img/logo-inventario.png">
+            </a>
+        </div>
+        <hr class="line">
+        <div class="nav">
+            <ul>
+                <li><a href="home">PAINEL</a></li>
+                <li><a href="itens">LISTAGEM DE BENS</a></li>
+                <li><a href="fornecedores">FORNECEDORES</a></li>
+
+                <!-- a opção editar perfil ainda não funciona, passará
+                a funcionar quando implementar a sessão do usuário logado -->
+                <li><a href="">EDITAR PERFIL</a></li>
+
+                <li><a href="login">SAIR</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1></h1>
+        <div class="card">
+            <div  class="voltar">
+                <a href="/home" class="voltar">↩ Voltar</a>
+            </div>
+
+            <div class="listagem">
+              <h2 style="color:black">LISTAGEM DE BENS</h2>
+              <a href="/cadastrarItem">
+                <button class="button" type="submit">Criar Novo Item</button>
+              </a>
+              <div class="table-wrapper">
+                  <table class="fl-table">
+                      <thead>
+                      <tr>
+                          <th>NOME</th>
+                          <th>QUANTIDADE</th>
+                          <th>DATA AQUISIÇÃO</th>
+                          <th>DATA MODIFICAÇÃO</th>
+                          <th>ACÕES</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                        {{#each itens}}
+                      <tr>
+                          <td>{{it_nome}}</td>
+                          <td>{{it_quantidade}}</td>
+                          <td>{{#formatDate dataAquisicao}}{{/formatDate}}</td>
+                          <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
+                          <td>
+                            <table class="icones">
+                              <tr>
+                                <td>
+                                  <a href="/editarItem/{{id}}">
+                                    <img height="25px" width="25px" src="../img/edit.png"></img>
+                                  </a>
+                                </td>
+                                <td>
+                                  <a href="/itens/deletarItem/{{id}}">
+                                    <img height="25px" width="25px" src="../img/delete.png"></img>
+                                  </a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                      </tr>
+                        {{/each}}
+                      <tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/cadastro.js"></script>
+
+</html>
