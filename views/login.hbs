@@ -1,49 +1,22 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Inventário de Bens - Login</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <base href="/">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/login.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <meta name="theme-color" content="#fafafa">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-<div class="logo"><img src="img/lock.png"></div>
-<form action="/auth/login" method="POST" class="loginForm content">
-  <h1>Entrar como Administrador</h1>
-  <div class="input-group">
-      <span>
-          <i class="material-icons">account_circle</i>
-      </span>
-    <input type="text" id="username" name="username" class="input" placeholder="Digite o usuário do sistema">
-  </div>
-  <div class="input-group">
-      <span>
-          <i class="material-icons">vpn_key</i>
-      </span>
-    <input type="password" id="password" name="password" class="input" placeholder="Digite a senha">
-  </div>
-  <button type="submit" class="botao">Entrar</button>
-  {{#if success}}
-  {{success}}
-  {{/if}}
-</form>
-</body>
 
+<body>
+      <div id="card">
+       <img src="img/INVENTÁRIO-nobg.png" id="logo">
+       <form action="/auth/login" method="POST" class="loginForm">
+          <h1>LOGIN</h1>
+          <input type="text" id="username" name="username" class="input" placeholder="USUÁRIO DO SISTEMA">
+          <input type="password" id="password" name="password" class="input" placeholder="SENHA">
+        <button type="submit" class="botao">ENTRAR</button>
+      </form>
+      </div>
+</body>
 </html>
