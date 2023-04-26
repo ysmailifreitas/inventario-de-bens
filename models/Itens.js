@@ -10,6 +10,9 @@ const Itens = db.sequelize.define('itens',{
   },
   it_dataAquisicao:{
     type: db.Sequelize.DATEONLY
+  },
+  it_fornecedor:{
+    type: db.Sequelize.STRING
   }
 })
 

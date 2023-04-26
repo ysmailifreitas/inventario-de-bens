@@ -48,7 +48,7 @@
                     <div style="" class="block">
                         <small></small>
                         <label for="nome">Nome</label>
-                        <input name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
+                        <input name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira" required>
                     </div>
                 </div>
 
@@ -57,7 +57,20 @@
                     <div class="block">
                         <small></small>
                         <label for="quantidade">Quantidade</label>
-                        <input name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade">
+                        <input name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade" required>
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div class="block">
+                        <small></small>
+                        <label for="fornecedores">Fornecedor</label>
+                        <select datatype="String" name="fornecedores" id="fornecedores" required>
+                            <option value="">Selecione um fornecedor...</option>
+
+                            <option value="Fornecedor 1">Fornecedor 1</option>
+                        </select>
                     </div>
                 </div>
 
@@ -66,7 +79,7 @@
                     <div class="data">
                         <small></small>
                         <label for="data">Data de Aquisição</label>
-                        <input class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data">
+                        <input class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data" required>
                     </div>
                 </div>
 
