@@ -65,12 +65,34 @@
                     <br>
                     <div class="block">
                         <small></small>
-                        <label for="fornecedores">Fornecedor</label>
+                        {{!-- <ul>
+                          {{#each fornecedores}}
+                            <li>{{ this.for_nome }} - {{ this.for_telefone }} - {{ this.for_email }}</li>
+                          {{/each}}
+                        </ul> --}}
+
+                        {{!-- <select name="fornecedorId">
+                          {{#select fornecedores id="id" name="nome"}}
+                            <option value="{{id}}">{{for_nome}}</option>
+                          {{/select}}
+                        </select> --}}
+                        <select name="fornecedorId">
+                          {{#each fornecedores}}
+                            
+                            <option value="{{id}}">{{for_nome}} {{id}}</option>
+                          {{/each}}
+                        </select>
+
+
+                        {{!-- ID:{{fornecedores}}
+
+                        {{fornecedores.for_nome}} --}}
+                        {{!-- <label for="fornecedores">Fornecedor</label>
                         <select datatype="String" name="fornecedores" id="fornecedores" required>
                             <option value="">Selecione um fornecedor...</option>
 
                             <option value="Fornecedor 1">Fornecedor 1</option>
-                        </select>
+                        </select> --}}
                     </div>
                 </div>
 

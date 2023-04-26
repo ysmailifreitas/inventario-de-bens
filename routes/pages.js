@@ -17,7 +17,8 @@ router.get("/home", (req, res) =>{
 
 router.get("/itens", (req, res) =>{
   Bens.findAll().then(function(itens){
-    res.render("itens", {itens:itens});
+    console.log(itens);
+    res.render("itens", {itens});
   })
 })
 
@@ -28,7 +29,19 @@ router.get("/fornecedores", (req, res) =>{
 })
 
 router.get("/cadastrarItem", (req, res) =>{
-  res.render("cadastroItem");
+  Fornecedor.findAll().then(function(fornecedores){
+    const plainFornecedores = fornecedores.map((fornecedor) => fornecedor.get());
+    res.render("cadastroItem", { fornecedores: plainFornecedores });
+
+  });
+  // Fornecedor.findAll().then(function(fornecedores){
+  //   fornecedoresList = fornecedores
+  //   console.log(fornecedoresList);
+  //   res.render("cadastroItem", {fornecedores:fornecedoresList.get()});
+
+
+  // });
+  // console.log(fornecedoresList);
 })
 
 router.get('/editarItem/:id', function(req,res){

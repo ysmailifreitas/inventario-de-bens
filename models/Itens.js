@@ -11,14 +11,13 @@ const Itens = db.sequelize.define('itens',{
   it_dataAquisicao:{
     type: db.Sequelize.DATEONLY
   },
-  it_fornecedor:{
+  for_id:{
     type: db.Sequelize.STRING
   }
 })
 
-Itens.sync({force:true})
-// Itens.belongsTo(Fornecedor);
+// Itens.sync({force:true})
 // Fornecedor.hasMany(Itens);
-
+// Itens.belongsTo(Fornecedor);
 
 module.exports = Itens;
