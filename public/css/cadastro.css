@@ -68,6 +68,22 @@ input:focus, textarea:focus {
     visibility: visible;
 }
 
+select{
+    margin: 10px 10px 10px 0px;
+    border: none;
+    border-bottom: 1px gray solid;
+    display: block;
+    padding: 20px;
+    font-size: 15px;
+    width: 100%;
+    color: gray;
+}
+
+#selectfn{
+    color: gray;
+    visibility: hidden;
+}
+
 /* button {
     background: rgb(71, 109, 244);
     color: #fff;
