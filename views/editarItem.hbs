@@ -45,13 +45,13 @@
 
             <form id="form" action="itens/atualizarItem/{{id}}" method="post">
                 Editando o id: {{id}}<br>
-                Editando Item: {{item.nome}}
+                Editando Item: {{item.it_nome}}
                 <div>
                     <br>
                     <div style="" class="block">
                         <small></small>
                         <label for="descricao">Nome</label>
-                        <input value="{{item.nome}}" name="descricao" type="text" id="descricao" placeholder="Ex. caneta, cadeira">
+                        <input value="{{item.it_nome}}" name="descricao" type="text" id="descricao" placeholder="Ex. caneta, cadeira">
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                     <div class="block">
                         <small></small>
                         <label for="quantidade">Quantidade</label>
-                        <input value="{{item.quantidade}}" name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade">
+                        <input value="{{item.it_quantidade}}" name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade">
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
                     <div class="data">
                         <small></small>
                         <label for="data">Data de Aquisição</label>
-                        <input value="{{item.dataAquisicao}}" class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data">
+                        <input value="{{item.it_dataAquisicao}}" class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data">
                     </div>
                 </div>
                 <button type="submit">Salvar</button>

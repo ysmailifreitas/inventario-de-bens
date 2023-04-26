@@ -54,6 +54,7 @@
                           <th>NOME</th>
                           <th>QUANTIDADE</th>
                           <th>DATA AQUISIÇÃO</th>
+                          <th>FORNECEDOR</th>
                           <th>DATA MODIFICAÇÃO</th>
                           <th>ACÕES</th>
                       </tr>
@@ -65,6 +66,7 @@
                           <td>{{it_nome}}</td>
                           <td>{{it_quantidade}}</td>
                           <td>{{#formatDate dataAquisicao}}{{/formatDate}}</td>
+                          <td>{{it_fornecedor}}</td>
                           <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
                           <td>
                             <table class="icones">

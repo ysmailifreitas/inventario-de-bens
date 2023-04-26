@@ -2,6 +2,7 @@ const Itens = require("../models/Itens")
 
 exports.cadastrarItem = (req, res) => {
   Itens.create({
+    it_fornecedor: req.body.fornecedores,
     it_nome: req.body.nome,
     it_quantidade: req.body.quantidade,
     it_dataAquisicao: req.body.data_aquisicao
@@ -18,7 +19,8 @@ exports.atualizarItem = (req, res) => {
       item.update({
         it_nome: req.body.descricao,
         it_quantidade: req.body.quantidade,
-        it_dataAquisicao: req.body.data_aquisicao
+        it_dataAquisicao: req.body.data_aquisicao,
+        it_fornecedor: req.body.fornecedores
       }).then(function(){
         res.redirect('/itens')
       })
