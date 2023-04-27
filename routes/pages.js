@@ -2,18 +2,25 @@ const express = require("express");
 const router = express.Router();
 const Bens = require('../models/Itens');
 const Fornecedor = require("../models/Fornecedor");
+const Itens = require("../models/Itens");
 
 router.get("/login", (req, res) =>{
   res.render("login");
 })
 
-router.get("/", (req, res) =>{
-  res.render("home");
-})
+// router.get("/", (req, res) =>{
+//   Itens.count().then((countItens) => {
+//     res.render("home", {countItens:countItens});
+//   })
+// })
 
-router.get("/home", (req, res) =>{
-  res.render("home");
-})
+router.get("/home", async (req, res) => {
+  let [countItens, countFornecedores] = await Promise.all([
+    Itens.count(),
+    Fornecedor.count(),
+  ]);
+  res.render("home", { countItens: countItens, countFornecedores: countFornecedores });
+});
 
 router.get("/itens", (req, res) =>{
   Bens.findAll().then(function(itens){

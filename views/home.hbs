@@ -36,13 +36,18 @@
   <div class="container">
     <div class="block">
       <h2>Itens no Inventário</h2>
-      <h4>Quantidade não disponível</h4>
+      <h4>{{#if countItens}}{{countItens}}{{else}}Sem Itens Cadastrados{{/if}}</h4>
     </div>
 
     <div class="block">
+      <h2>Fornecedores Cadastrados</h2>
+      <h4>{{#if countFornecedores}}{{countFornecedores}}{{else}}Sem Fornecedores Cadastrados{{/if}}</h4>
+    </div>
+
+    {{!-- <div class="block">
       <h2>Itens Removidos</h2>
       <h4>Quantidade não disponível</h4>
-    </div>
+    </div> --}}
 
     <div class="card">
       <div class="subcard" onclick="indisponivel()">

@@ -19,7 +19,7 @@ const Itens = db.sequelize.define('itens',{
   }
 })
 
-Itens.sync({force:true})
+// Itens.sync({force:true})
 // Fornecedor.hasMany(Itens, {foreignKey: 'for_id'});
 // Itens.belongsTo(Fornecedor, {foreignKey: 'for_id'});
 
