@@ -12,7 +12,7 @@ const Fornecedor = db.sequelize.define('fornecedores',{
     type: db.Sequelize.STRING
   }
 })
-// Fornecedor.sync({force:true})
+Fornecedor.sync({force:true})
 
 // Fornecedor.hasOne(Itens)
 

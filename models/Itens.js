@@ -13,11 +13,14 @@ const Itens = db.sequelize.define('itens',{
   },
   for_id:{
     type: db.Sequelize.STRING
+  },
+  it_for_nome: {
+    type: db.Sequelize.STRING
   }
 })
 
-// Itens.sync({force:true})
-// Fornecedor.hasMany(Itens);
-// Itens.belongsTo(Fornecedor);
+Itens.sync({force:true})
+// Fornecedor.hasMany(Itens, {foreignKey: 'for_id'});
+// Itens.belongsTo(Fornecedor, {foreignKey: 'for_id'});
 
 module.exports = Itens;

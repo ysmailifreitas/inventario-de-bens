@@ -2,9 +2,13 @@ const Fornecedor = require("../models/Fornecedor")
 const Itens = require("../models/Itens")
 
 exports.cadastrarItem = (req, res) => {
-  let forid = req.body.
+  const selectElement = req.body['my-select'];
+  Fornecedor.findOne({where:{id:selectElement}}).then(function(fornecedor){
+    console.log(fornecedor.for_nome);
+  })
   Itens.create({
-    for_id: req.body.fornecedores,
+    for_id: selectElement,
+    it_for_nome: req.body.for_nome,
     it_nome: req.body.nome,
     it_quantidade: req.body.quantidade,
     it_dataAquisicao: req.body.data_aquisicao

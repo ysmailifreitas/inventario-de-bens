@@ -65,34 +65,15 @@
                     <br>
                     <div class="block">
                         <small></small>
-                        {{!-- <ul>
+                        <select name="my-select" required>
+                           <option value="" id="selectfn">Selecione o Fornecedor...</option>
                           {{#each fornecedores}}
-                            <li>{{ this.for_nome }} - {{ this.for_telefone }} - {{ this.for_email }}</li>
-                          {{/each}}
-                        </ul> --}}
-
-                        {{!-- <select name="fornecedorId">
-                          {{#select fornecedores id="id" name="nome"}}
                             <option value="{{id}}">{{for_nome}}</option>
-                          {{/select}}
-                        </select> --}}
-                        <select name="fornecedorId">
-                          {{#each fornecedores}}
-                            
-                            <option value="{{id}}">{{for_nome}} {{id}}</option>
+                            <input value="{{for_nome}}" name="for_nome" id="for_nome" style="display:none" >
                           {{/each}}
                         </select>
-
-
-                        {{!-- ID:{{fornecedores}}
-
-                        {{fornecedores.for_nome}} --}}
-                        {{!-- <label for="fornecedores">Fornecedor</label>
-                        <select datatype="String" name="fornecedores" id="fornecedores" required>
-                            <option value="">Selecione um fornecedor...</option>
-
-                            <option value="Fornecedor 1">Fornecedor 1</option>
-                        </select> --}}
+                        {{!-- Cadeira de Escritório Comfy Way --}}
+                        {{!-- Comfy - Cadeiras e Acessórios para Escritório --}}
                     </div>
                 </div>
 
