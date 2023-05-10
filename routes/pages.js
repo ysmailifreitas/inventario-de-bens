@@ -18,7 +18,7 @@ router.get('/relatorioItens', async (req, res) => {
 
   const itens = await Bens.findAll();
   itens.forEach((item, index) => {
-    doc.fontSize(12).text(`Item ${index+1}: ${item.nome} (${item.descricao})`);
+    doc.fontSize(12).text(`Item ${index+1}: ${item.it_nome} (${item.it_quantidade})`);
   });
 
   doc.end();
