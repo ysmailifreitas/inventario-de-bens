@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="template.css">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  
+        <div class="aside-menu">
+              <div class="logo">
+                  <a target="_blank" href="home.html">
+                      <img height="150px" width="150px" src="../img/logo-inventario.png">
+                  </a>
+              </div>
+              <hr class="line">
+              <div class="nav">
+                  <ul>
+                      <li><a href="home">PAINEL</a></li>
+                      <li><a href="itens">LISTAGEM DE BENS</a></li>
+                      <li><a href="fornecedores">FORNECEDORES</a></li>
+      
+                      <!-- a opção editar perfil ainda não funciona, passará
+                      a funcionar quando implementar a sessão do usuário logado -->
+                      <li><a href="">EDITAR PERFIL</a></li>
+      
+                      <li><a href="login">SAIR</a></li>
+                  </ul>
+              </div>
+          </div>
+
+    
+        <section class="containercards">
+       
+            <div id="relatorio">
+                <img alt="relatorio" src="./img/relatorio-de-negocios (1).png">
+                <h2>Relatorio</h2>
+            </div>
+            <div id="card-container">
+                <div id="card">
+                    <!--
+                    <div id="card_1">
+                        <img alt="total estoque 1" src="./img/itemcard1.png">
+                        <p>52</p>
+                        <h4>Total de itens 
+                            em estoque</h4>
+                    </div>
+                -->
+                </div>
+                <div id="card1">
+                    <div>
+                        <img alt="card item 2" src="./img/itemcard2.png">
+                        <p>36</p>
+                        <p id="card_sabonete">Sabonete</p>
+                        <h4>Maior item 
+                            em Estoque</h4>
+                    </div>
+                </div>
+                <div id="card">
+                    <div>
+                    <img alt="card item 2" src="./img/itemcard3.png">
+                    <p>20</p>
+                    <h4>Total de itens 
+                        unicos no 
+                        estoque</h4>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <section class="container-grafico">
+         
+                <h4>Relatorio dos bens patrimoniais</h4>
+                <div id="chart-container">
+                    <h4>Grafico 1</h4>
+                    <canvas id="grafico"></canvas>
+       
+            </div>
+            <h4>Grafico 2</h4>
+            <canvas id="grafico_2"></canvas>
+            
+        	<script src="script.js"></script>
+            <h4>Relatorio em lista e Download</h4>
+            <table>
+              
+                <thead>
+                  <tr>
+                    <th id="table_inicio">Nome</th>
+                    <th>Quantidade</th>
+                    <th>Fornecedor</th>
+                    <th id="table_final">Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>caneta</td>
+                    <td> 10</td>
+                    <td>Cuba Inc.</td>
+                    <td><button id="butao"><img src="./img/image 7.png"><p>Download</p></button>
+                  </tr> 
+                  <tr>
+                    <td>Lapis</td>
+                    <td>20</td>
+                    <td>Pires</td>
+                    <td><button id="butao"><img src="./img/image 7.png"><p>Download</p></button>
+                    
+                  </tr>
+                  <tr>
+                    <td>Carro</td>
+                    <td>5</td>
+                    <td>Ford</td>
+                    <td><button id="butao"><img src="./img/image 7.png"><p>Download</p></button>
+                   
+                  </tr>
+                </tbody>
+              </table>
+              
+        </section>
+
+
+</body>
+</html>
