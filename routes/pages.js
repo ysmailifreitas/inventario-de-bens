@@ -3,6 +3,27 @@ const router = express.Router();
 const Bens = require('../models/Itens');
 const Fornecedor = require("../models/Fornecedor");
 const Itens = require("../models/Itens");
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+
+router.get('/relatorioItens', async (req, res) => {
+  const doc = new PDFDocument();
+  const filename = 'relatorioItens.pdf';
+  res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"');
+  res.setHeader('Content-type', 'application/pdf');
+
+  const stream = doc.pipe(res);
+
+  doc.fontSize(18).text('Relatório de Itens Cadastrados', 100, 50);
+
+  const itens = await Bens.findAll();
+  itens.forEach((item, index) => {
+    doc.fontSize(12).text(`Item ${index+1}: ${item.nome} (${item.descricao})`);
+  });
+
+  doc.end();
+});
+
 
 router.get("/login", (req, res) =>{
   res.render("login");
