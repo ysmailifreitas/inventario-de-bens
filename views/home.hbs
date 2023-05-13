@@ -42,12 +42,15 @@
             </div>
             <div id="card-container">
                 <div id="card">
+                   <img style="margin:20px; margin-bottom:0;" alt="card item 2" src="./img/fornecedor.png">
+                        <p style="padding-bottom:20px;">{{#if countFornecedores}}{{countFornecedores}}{{else}}0{{/if}}</p>
+                        <h4 style="text-align:center;">Quantidade de fornecedores</h4>
                 </div>
                 <div id="card1">
                     <div>
                         <img alt="card item 2" src="./img/itemcard2.png">
-                        <p>36</p>
-                        <p id="card_sabonete">Cadeira de Escritório</p>
+                        <p>{{itemComMaiorQuantidade.it_quantidade}}</p>
+                        <p style="font-size: 1.5rem;" id="card_sabonete">{{itemComMaiorQuantidade.it_nome}}</p>
                         <h4>Maior item
                             em Estoque</h4>
                     </div>

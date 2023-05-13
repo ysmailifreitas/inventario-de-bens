@@ -35,7 +35,7 @@ router.get('/relatorioFornecedores', async (req, res) => {
   doc.fontSize(18).text('Relatório de Fornecedores Cadastrados', 100, 50);
 
   const fornecedores = await Fornecedor.findAll();
-  fornecedores.forEach((fornecedor, index) => {
+  fornecedores.forEach((fornecedor) => {
     doc.fontSize(12).text(`\nNome: ${fornecedor.for_nome}\n Telefone: ${fornecedor.for_telefone}\n Email: ${fornecedor.for_email}\n Modificação: ${fornecedor.updatedAt}\n`);
   });
 
@@ -53,13 +53,31 @@ router.get("/login", (req, res) =>{
 //   })
 // })
 
+// router.get("/home", async (req, res) => {
+//   let [countItens, countFornecedores] = await Promise.all([
+//     Itens.count(),
+//     Fornecedor.count(),
+//   ]);
+//   res.render("home", { countItens: countItens, countFornecedores: countFornecedores });
+// });
 router.get("/home", async (req, res) => {
-  let [countItens, countFornecedores] = await Promise.all([
+  const [countItens, countFornecedores, itemComMaiorQuantidade] = await Promise.all([
     Itens.count(),
     Fornecedor.count(),
+    Itens.findOne({
+      attributes: ['it_nome', 'it_quantidade'],
+      order: [['it_quantidade', 'DESC']],
+      limit: 1
+    })
   ]);
-  res.render("home", { countItens: countItens, countFornecedores: countFornecedores });
+  res.render("home", {
+    countItens: countItens,
+    countFornecedores: countFornecedores,
+    itemComMaiorQuantidade: itemComMaiorQuantidade
+  });
 });
+
+
 
 router.get("/itens", (req, res) =>{
   Bens.findAll().then(function(itens){
