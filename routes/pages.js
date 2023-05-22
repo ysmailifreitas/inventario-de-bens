@@ -47,6 +47,10 @@ router.get("/login", (req, res) =>{
   res.render("login");
 })
 
+router.get("/suporte", (req, res) =>{
+  res.render("suporte");
+})
+
 // router.get("/", (req, res) =>{
 //   Itens.count().then((countItens) => {
 //     res.render("home", {countItens:countItens});

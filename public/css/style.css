@@ -117,3 +117,15 @@ button:hover {
   -ms-transition: .3s;
   -o-transition: .3s;
 }
+
+#logoSuporte{
+position: absolute;
+width: 100px;
+left: 90%;
+opacity: 0.5;
+}
+
+#logoSuporte:hover {
+opacity: 1.0;
+cursor: pointer;
+}
