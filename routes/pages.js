@@ -8,20 +8,20 @@ const fs = require('fs');
 const nodemailer = require("nodemailer");
 
 const agente = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com', // host do servidor smtp do Outlook.com
-  port: 587, // porta do servidor SMTP
-  secure: false, // definir a conexao
+  host: 'smtp-mail.outlook.com',
+  port: 587,
+  secure: false,
   auth: {
-    user: 'suportetester1@hotmail.com', // endereco de email do bot
-    pass: 'suporteinventariobens123' // senha do bot
+    user: 'suportetester1@hotmail.com',
+    pass: 'suporteinventariobens123'
   }
 });
 
 const mailOptions = {
-  from: 'suportetester1@hotmail.com', // Endereco de e-mail do remetente no caso do bot
-  to: '', // Endereco de email enviado
-  subject: 'Assunto do e-mail', // assunto do email
-  text: 'Corpo do e-mail'     //texto do email para enviar
+  from: 'suportetester1@hotmail.com',
+  to: '',
+  subject: 'Assunto do e-mail',
+  text: 'Corpo do e-mail'
 };
 
 router.get('/relatorioItens', async (req, res) => {
