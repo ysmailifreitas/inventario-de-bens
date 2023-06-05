@@ -5,6 +5,24 @@ const Fornecedor = require("../models/Fornecedor");
 const Itens = require("../models/Itens");
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const nodemailer = require("nodemailer");
+
+const agente = nodemailer.createTransport({
+  host: 'smtp-mail.outlook.com', // host do servidor smtp do Outlook.com
+  port: 587, // porta do servidor SMTP
+  secure: false, // definir a conexao
+  auth: {
+    user: 'suportetester1@hotmail.com', // endereco de email do bot
+    pass: 'suporteinventariobens123' // senha do bot
+  }
+});
+
+const mailOptions = {
+  from: 'suportetester1@hotmail.com', // Endereco de e-mail do remetente no caso do bot
+  to: '', // Endereco de email enviado
+  subject: 'Assunto do e-mail', // assunto do email
+  text: 'Corpo do e-mail'     //texto do email para enviar
+};
 
 router.get('/relatorioItens', async (req, res) => {
   const doc = new PDFDocument();
@@ -51,19 +69,6 @@ router.get("/suporte", (req, res) =>{
   res.render("suporte");
 })
 
-// router.get("/", (req, res) =>{
-//   Itens.count().then((countItens) => {
-//     res.render("home", {countItens:countItens});
-//   })
-// })
-
-// router.get("/home", async (req, res) => {
-//   let [countItens, countFornecedores] = await Promise.all([
-//     Itens.count(),
-//     Fornecedor.count(),
-//   ]);
-//   res.render("home", { countItens: countItens, countFornecedores: countFornecedores });
-// });
 router.get("/home", async (req, res) => {
   const [countItens, countFornecedores, itemComMaiorQuantidade] = await Promise.all([
     Itens.count(),
@@ -122,5 +127,27 @@ router.get('/editarFornecedor/:id', function(req,res){
     res.render("editarFornecedor", {fornecedor: fornecedor, id: req.params.id});
   })
 })
+
+router.post('/enviarEmail', (req, res) => {
+  const { email, assunto, texto } = req.body;
+
+  const emailOptions = {
+    ...mailOptions,
+    to: email,
+    subject: assunto,
+    text: texto
+  };
+
+  agente.sendMail(emailOptions, (error, info) => {
+    if (error) {
+      console.log('Erro (500)', error);
+      res.status(500).send('Erro ao enviar o e-mail');
+    } else {
+      console.log('E-mail enviado com sucesso: (200)', info.response);
+      res.status(200).send('E-mail enviado com sucesso');
+    }
+  });
+});
+
 
 module.exports = router;

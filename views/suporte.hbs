@@ -17,19 +17,20 @@
 
 <div id="main">
     <div class="centralAjuda">Central de Ajuda</div>
-    <input type="email" class="dados" placeholder="Digite seu email" style="margin-right: 5px;">
-    <select class="dados">
-        <option value="">Selecione a opção...</option>
-        <option value="1">Teste</option>
-        <option value="2">Alterar Senha</option>
-        <option value="3">Como Utilizar o Sistema</option>
-        <option value="4">Outro...</option>
-    </select>
-    <textarea name="outro" id="digiteArea" cols="30" rows="10" class="dados"
-              style="color: black; width: 71%; display: block;">
-    </textarea>
-    <button class="confirmacao" style="background-color: rgb(237, 90, 90);">Cancelar</button>
-    <button class="confirmacao" style="background-color: rgb(95, 155, 244);">Enviar</button>
+    <form id="emailForm" action="/enviarEmail" method="post">
+      <input type="email" name="email" class="dados" placeholder="Digite seu email" style="margin-right: 5px;">
+      <select name="assunto" class="dados">
+          <option value="">Selecione a opção...</option>
+          <option value="1">Teste</option>
+          <option value="2">Alterar Senha</option>
+          <option value="3">Como Utilizar o Sistema</option>
+          <option value="4">Outro...</option>
+      </select>
+      <textarea name="texto" id="digiteArea" cols="30" rows="10" class="dados"
+                style="color: black; width: 71%; display: block;"></textarea>
+      <button type="button" class="confirmacao" style="background-color: rgb(237, 90, 90);" onclick="cancelar()">Cancelar</button>
+      <button type="submit" class="confirmacao" style="background-color: rgb(95, 155, 244);">Enviar</button>
+    </form>
 </div>
 
 <div id="contato" style="margin-left: 20%;">
@@ -53,6 +54,8 @@
     <h5 style="font-size: small;">Desde 2022</h5>
     <h5 style="font-size: small;">Boa Noite!</h5>
 </footer>
-</body>
 
-</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#emailForm').submit
