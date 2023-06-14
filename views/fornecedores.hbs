@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/listagem.css">
     <script src="js/cadastro.js"></script>
+    <script src="js/fornecedores.js"></script>
 </head>
 
 <body>
@@ -79,7 +80,7 @@
                                   </a>
                                 </td>
                                 <td>
-                                  <a href="/fornecedor/deletarFornecedor/{{id}}">
+                                    <a id="deletar" href="/fornecedor/deletarFornecedor/{{id}}" onclick="removerFornecedor()">
                                     <img height="25px" width="25px" src="../img/delete.png"></img>
                                   </a>
                                 </td>

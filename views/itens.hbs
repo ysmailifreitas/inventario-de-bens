@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/listagem.css">
     <script src="js/cadastro.js"></script>
+    <script src="js/itens.js"></script>
 </head>
 
 <body>
@@ -82,7 +83,7 @@
                                   </a>
                                 </td>
                                 <td>
-                                  <a href="/itens/deletarItem/{{id}}">
+                                  <a id="deletar"  href="/itens/deletarItem/{{id}}" onclick="removerItem()">
                                     <img height="25px" width="25px" src="../img/delete.png"></img>
                                   </a>
                                 </td>
