@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <div id="card">
+    <img src="img/INVENTÁRIO-nobg.png" id="logo">
+    {{#if errorMessage}}
+        {{> errorCard}}
+    {{/if}}
+    <form action="/cadastrarUsuario" method="POST" class="loginForm">
+        <h1>CADASTRO DE USUÁRIO</h1>
+        <input type="text" id="username" name="username" class="input" placeholder="NOME DE USUÁRIO" value="usuario123">
+        <input type="password" id="password" name="password" class="input" placeholder="SENHA" value="senha123">
+        <input type="text" id="company_email" name="company_email" class="input" placeholder="E-MAIL DA EMPRESA" value="empresa@exemplo.com">
+        <input type="text" id="company_name" name="company_name" class="input" placeholder="NOME DA EMPRESA" value="Empresa ABCD">
+        <input type="text" id="cnpj" name="cnpj" class="input" placeholder="CNPJ" value="12345678901234">
+        <input type="text" id="address" name="address" class="input" placeholder="ENDEREÇO" value="Rua Exemplo, 123">
+        <input type="text" id="fullname" name="fullname" class="input" placeholder="NOME COMPLETO" value="Fulano da Silva">
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="gestor" name="tipo_permissao" value="Gestor">
+            <label for="gestor">Gestor</label><br>
+            <input type="checkbox" id="administrador" name="tipo_permissao" value="Administrador">
+            <label for="administrador">Administrador</label><br>
+            <input type="checkbox" id="supervisor" name="tipo_permissao" value="Supervisor">
+            <label for="supervisor">Supervisor</label><br>
+            <input type="checkbox" id="comum" name="tipo_permissao" value="Comum">
+            <label for="comum">Comum</label><br>
+        </div>
+
+        <button type="submit" class="botao">CADASTRAR</button>
+    </form>
+</div>
+</body>
+</html>

@@ -11,11 +11,48 @@ const Itens = db.sequelize.define('itens',{
   it_dataAquisicao:{
     type: db.Sequelize.DATEONLY
   },
-  for_id:{
+  it_preco_unitario: {
+    type: db.Sequelize.FLOAT
+  },
+  it_valor_total: { // Adicionando o campo it_valor_total
+    type: db.Sequelize.FLOAT
+  },
+  it_depreciacao_anual: { // Adicionando o campo it_depreciacao_anual
+    type: db.Sequelize.FLOAT
+  },
+  for_id: {
     type: db.Sequelize.STRING
   },
   it_for_nome: {
     type: db.Sequelize.STRING
+  },
+  it_preco_unitario: {
+    type: db.Sequelize.FLOAT, // Tipo float para armazenar valores com decimais
+    allowNull: true // Permitir valores nulos, se necessário
+  },
+  it_categoria: {
+    type: db.Sequelize.STRING,
+    allowNull: true
+  },
+  it_descricao: {
+    type: db.Sequelize.STRING,
+    allowNull: true
+  },
+  it_localizacao: {
+    type: db.Sequelize.STRING,
+    allowNull: true
+  },
+  it_valor_compra: {
+    type: db.Sequelize.FLOAT,
+    allowNull: true
+  },
+  it_valor_venda: {
+    type: db.Sequelize.FLOAT,
+    allowNull: true
+  },
+  it_estado_conservacao: {
+    type: db.Sequelize.STRING,
+    allowNull: true
   }
 })
 

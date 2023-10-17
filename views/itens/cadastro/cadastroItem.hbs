@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventário - Cadastrar Item</title>
+  <base href="/">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cadastro.css">
+  <script src="js/cadastro.js"></script>
+</head>
+
+<body>
+  {{> nav}}
+
+  <div class="container">
+    <h1></h1>
+    <div class="card">
+      <div class="voltar">
+        <a href="/itens" class="voltar">↩ Voltar</a>
+      </div>
+
+      <form id="form" action="itens/cadastrarItem" method="POST">
+        <div>
+          <br>
+          <div style="" class="block">
+            <small></small>
+            <label for="nome">Nome</label>
+            <input value="Cadeira de Escritório" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira"
+              required>
+          </div>
+        </div>
+
+        <div>
+          <br>
+          <div class="block">
+            <small></small>
+            <label for="quantidade">Quantidade</label>
+            <input value="12" name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade" required>
+          </div>
+        </div>
+
+        <div>
+          <br>
+          <div class="block">
+            <small></small>
+            <select name="my-select" required>
+              <option value="" id="selectfn">Selecione o Fornecedor...</option>
+              {{#each fornecedores}}
+              <option value="{{id}}">{{for_nome}}</option>
+              <input value="{{for_nome}}" name="for_nome" id="for_nome" style="display:none">
+              {{/each}}
+            </select>
+            {{!-- Cadeira de Escritório Comfy Way --}}
+            {{!-- Comfy - Cadeiras e Acessórios para Escritório --}}
+          </div>
+        </div>
+
+        <div>
+          <br>
+          <div class="data">
+            <small></small>
+            <label for="data">Data de Aquisição</label>
+            <input class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22"
+              placeholder="Definir Data" required>
+          </div>
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="preco_unitario">Preço Unitário</label>
+          <input value="100.00" name="preco_unitario" type="number" step="0.01" id="preco_unitario"
+            placeholder="Definir Preço Unitário" required>
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="categoria">Categoria do Item</label>
+          <input name="categoria" type="text" id="categoria" placeholder="Ex. Eletrônicos, Móveis, etc.">
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="descricao">Descrição Detalhada</label>
+          <input name="descricao" id="descricao" placeholder="Descreva o item em detalhes"></input>
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="localizacao">Localização</label>
+          <input name="localizacao" type="text" id="localizacao" placeholder="Onde o item está guardado">
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="dataAquisicao">Data de Aquisição</label>
+          <input name="dataAquisicao" type="date" id="dataAquisicao" placeholder="Data de aquisição do item">
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="valorCompra">Valor de Compra</label>
+          <input name="valorCompra" type="number" id="valorCompra" step="0.01" placeholder="Preço de compra do item">
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="valorVenda">Valor de Venda</label>
+          <input name="valorVenda" type="number" id="valorVenda" step="0.01" placeholder="Preço de venda do item">
+        </div>
+
+        <div class="block">
+          <small></small>
+          <label for="estadoConservacao">Estado de Conservação</label>
+          <select name="estadoConservacao" id="estadoConservacao">
+            <option value="novo">Novo</option>
+            <option value="usado">Usado</option>
+            <option value="danificado">Danificado</option>
+            <!-- Adicione mais opções, se necessário -->
+          </select>
+        </div>
+
+        <button type="submit">Salvar</button>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+
+<script src="js/cadastro.js"></script>
+
+</html>

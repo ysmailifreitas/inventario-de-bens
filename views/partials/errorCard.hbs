@@ -1,0 +1,53 @@
+<div id="errorPopup" style="display: none;" class="error-popup" onmouseover="closeErrorPopup()">
+    <div class="error-content">
+        <h2>Ocorreu um Erro!</h2>
+        <p>{{errorMessage}}</p>
+    </div>
+</div>
+
+<script>
+    function closeErrorPopup() {
+        const errorPopup = document.getElementById('errorPopup');
+        errorPopup.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        errorPopup.style.display = 'block';
+        setTimeout(function() {
+            errorPopup.style.display = 'none';
+        }, 5000);
+    });
+</script>
+
+<style>
+    .error-popup {
+        position: fixed;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f8d7da;
+        border: 1px solid #e74c3c;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 999;
+        transition: all .1s ease-in-out;
+    }
+
+    .error-content {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .error-content h2 {
+        color: #e74c3c;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .error-content p {
+        color: #e74c3c;
+        font-size: 16px;
+        margin: 0;
+    }
+</style>

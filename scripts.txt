@@ -1,4 +1,4 @@
-CREATE TABLE bens (
+CREATE TABLE itens (
   be_id int not null auto_increment,
   be_descricao varchar(50) not null,
   be_quantidade int not null,

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 
-:root{
+:root {
   --blue-cor-padrao: #476DF4;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   outline: none;
@@ -12,13 +12,13 @@
   text-decoration: none;
 }
 
-body{
+body {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  background-color:rgb(221, 221, 221)
+  background-color: rgb(221, 221, 221)
 }
 
-.aside-menu{
+.aside-menu {
   width: 270px;
   height: 100%;
   position: fixed;
@@ -26,12 +26,12 @@ body{
   text-align: center;
 }
 
-.aside-menu .logo{
+.aside-menu .logo {
   padding: 40px;
   cursor: pointer;
 }
 
-.aside-menu .line{
+.aside-menu .line {
   background-color: white;
   width: 70%;
   margin: 0 auto;
@@ -39,25 +39,25 @@ body{
   border: none;
 }
 
-.aside-menu .nav ul{
+.aside-menu .nav ul {
   flex-direction: column;
   padding: 10px;
   list-style: none;
 }
 
-.aside-menu .nav ul li{
+.aside-menu .nav ul li {
   padding: 0;
   cursor: pointer;
   transition: all .3s ease-out;
 
 }
 
-.aside-menu .nav ul li:hover{
+.aside-menu .nav ul li:hover {
   background-color: #0d50b5;
   margin: 0px 10px;
 }
 
-.aside-menu .nav ul li a{
+.aside-menu .nav ul li a {
   color: white;
   display: block;
   padding: 20px 0;

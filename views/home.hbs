@@ -1,75 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/relatorioHome.css">
-    <link rel="stylesheet" href="css/template.css">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/relatorioHome.css">
+  <link rel="stylesheet" href="css/template.css">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .containercards {
+      padding: 20px 100px;
+    }
+
+    .dashboard-container {
+      text-align: center;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      max-width: 100%;
+      padding: 20px;
+      margin-top: 100px;
+    }
+
+    .dashboard-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 10px;
+    }
+
+    .grid-item {
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .grid-label {
+      font-weight: bold;
+    }
+
+    .result-value {
+      color: #3366cc;
+    }
+
+    .chart-container {
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .dashboard-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+
 </head>
+
 <body>
 
-        <img src="../img/central-de-atendimento.png" id="logoSuporte">
+  {{> nav}}
 
-        <div class="aside-menu">
-              <div class="logo">
-                  <a target="_blank" href="home.html">
-                      <img height="150px" width="150px" src="../img/logo-inventario.png">
-                  </a>
-              </div>
-              <hr class="line">
-              <div class="nav">
-                  <ul>
-                      <li><a href="home">PAINEL</a></li>
-                      <li><a href="itens">LISTAGEM DE BENS</a></li>
-                      <li><a href="fornecedores">FORNECEDORES</a></li>
+  <section class="containercards">
+    <div class="dashboard-container">
+      <div class="link">
+      <a href="/cadastrarUsuario">Cadastrar Novo Usuário</a>
+    </div>
+      <h2 class="dashboard-title">Dashboard do Item</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <div class="grid-label">Qtd em Estoque:</div>
+          <div class="result-value">{{countItens}}</div>
+        </div>
+        {{!-- <div class="grid-item">
+          <div class="grid-label">Preço Unitário:</div>
+          <div class="result-value">{{dadosDashboard.preco_unitario}}</div>
+        </div> --}}
+        <div class="grid-item">
+          <div class="grid-label">Depreciação Anual(DA):</div>
+          <div class="result-value">{{dadosDashboard.depreciacao_anual}}</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-label">Valor Total:</div>
+          <div class="result-value">{{dadosDashboard.valor_total}}</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-label">Valor Líquido(Vl):</div>
+          <div class="result-value">{{dadosDashboard.valor_liquido }}</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-label">Taxa de Depreciação Anual(%):</div>
+          <div class="result-value">{{dadosDashboard.taxa_depreciacao_anual}}</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-label">Taxa de Utilização(%):</div>
+          <div class="result-value">{{dadosDashboard.taxa_utilizacao}}</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-label">ROI(Retorno sobre o investimento):</div>
+          <div class="result-value">{{dadosDashboard.roi}}</div>
+        </div>
+      </div>
+    </div>
 
-                      <!-- a opção editar perfil ainda não funciona, passará
-                      a funcionar quando implementar a sessão do usuário logado -->
-                      <li><a href="">EDITAR PERFIL</a></li>
 
-                      <li><a href="login">SAIR</a></li>
-                  </ul>
-              </div>
-          </div>
+    <div class="chart-container">
+      <h2>% Depreciação</h2>
+      <canvas id="depreciationChart"></canvas>
+    </div>
+  </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <section class="containercards">
-
-            <div id="relatorio">
-                <img alt="relatorio" src="./img/relatorio-de-negocios (1).png">
-                <h2>Relatorio</h2>
-            </div>
-            <div id="card-container">
-                <div id="card">
-                   <img style="margin:20px; margin-bottom:0;" alt="card item 2" src="./img/fornecedor.png">
-                        <p style="padding-bottom:20px;">{{#if countFornecedores}}{{countFornecedores}}{{else}}0{{/if}}</p>
-                        <h4 style="text-align:center;">Quantidade de fornecedores</h4>
-                </div>
-                <div id="card1">
-                    <div>
-                        <img alt="card item 2" src="./img/itemcard2.png">
-                        <p>{{itemComMaiorQuantidade.it_quantidade}}</p>
-                        <p style="font-size: 1.5rem;" id="card_sabonete">{{itemComMaiorQuantidade.it_nome}}</p>
-                        <h4>Maior item
-                            em Estoque</h4>
-                    </div>
-                </div>
-                <div id="card">
-                    <div>
-                    <img alt="card item 2" src="./img/itemcard3.png">
-                    <p>{{#if countItens}}{{countItens}}{{else}}0{{/if}}</p>
-                    <h4>Total de itens
-                        unicos no
-                        estoque</h4>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <section class="container-grafico">
-        </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('depreciationChart').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Ano 1', 'Ano 2', 'Ano 3', 'Ano 4', 'Ano 5'],
+          datasets: [{
+            label: '% Depreciação',
+            data: [10, 8, 6, 4, 2],
+            backgroundColor: 'rgba(51, 102, 204, 0.2)',
+            borderColor: 'rgba(51, 102, 204, 1)',
+            borderWidth: 1,
+            fill: true,
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10,
+            }
+          }
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>

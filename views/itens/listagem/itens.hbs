@@ -17,27 +17,7 @@
 
     <img src="../img/central-de-atendimento.png" id="logoSuporte">
 
-    <div class="aside-menu">
-        <div class="logo">
-            <a target="_blank" href="home.html">
-                <img height="150px" width="150px" src="../img/logo-inventario.png">
-            </a>
-        </div>
-        <hr class="line">
-        <div class="nav">
-            <ul>
-                <li><a href="home">PAINEL</a></li>
-                <li><a href="itens">LISTAGEM DE BENS</a></li>
-                <li><a href="fornecedores">FORNECEDORES</a></li>
-
-                <!-- a opção editar perfil ainda não funciona, passará
-                a funcionar quando implementar a sessão do usuário logado -->
-                <li><a href="">EDITAR PERFIL</a></li>
-
-                <li><a href="login">SAIR</a></li>
-            </ul>
-        </div>
-    </div>
+    {{> nav}}
 
     <div class="container">
         <h1></h1>
@@ -48,7 +28,7 @@
 
             <div class="listagem">
               <h2 style="color:black">LISTAGEM DE BENS</h2>
-              <a href="/cadastrarItem">
+              <a href="/itens/cadastrarItem">
                 <button class="button" type="submit">Criar Novo Item</button>
               </a>
               <a href="/relatorioItens/"><button>Gerar Relatório</button></a>
@@ -62,6 +42,7 @@
                           <th>DATA AQUISIÇÃO</th>
                           <th>FORNECEDOR</th>
                           <th>DATA MODIFICAÇÃO</th>
+                          <th>PREÇO UNITÁRIO</th>
                           <th>ACÕES</th>
                       </tr>
                       </thead>
@@ -74,6 +55,7 @@
                           <td>{{#formatDate it_dataAquisicao}}{{/formatDate}}</td>
                           <td>{{it_for_nome}}</td>
                           <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
+                          <td>R${{it_preco_unitario}}</td>
                           <td>
                             <table class="icones">
                               <tr>

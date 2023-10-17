@@ -1,100 +1,100 @@
 body {
-    background-color: rgb(228, 228, 228);
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(228, 228, 228);
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 div img {
-    width: 100px;
-    margin: 5px;
-    margin-left: 15px;
-    display: inline-block;
+  width: 100px;
+  margin: 5px;
+  margin-left: 15px;
+  display: inline-block;
 }
 
 div {
-    padding: 5px;
-    width: 100%;
-    background-color: white;
-    margin: 0;
+  padding: 5px;
+  width: 100%;
+  background-color: white;
+  margin: 0;
 }
 
 #main {
-    background-color: white;
-    margin: 20px auto;
-    display: block;
-    height: 400px;
-    width: 800px;
-    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    text-align: center;
-    padding: 15px;
+  background-color: white;
+  margin: 20px auto;
+  display: block;
+  height: 400px;
+  width: 800px;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  text-align: center;
+  padding: 15px;
 }
 
 .centralAjuda {
-    background-color: rgb(95, 155, 244);
-    width: 40%;
-    padding: 15px;
-    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    margin: auto;
-    color: white;
-    margin-bottom: 15px;
+  background-color: rgb(95, 155, 244);
+  width: 40%;
+  padding: 15px;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin: auto;
+  color: white;
+  margin-bottom: 15px;
 }
 
 .dados {
-    display: inline-block;
-    padding: 5px;
-    border: 1px solid gray;
-    margin-top: 10px;
-    margin: 10px auto;
-    width: 35%;
-    border-radius: 10px;
-    background-color: lightgray;
-    color: gray;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid gray;
+  margin-top: 10px;
+  margin: 10px auto;
+  width: 35%;
+  border-radius: 10px;
+  background-color: lightgray;
+  color: gray;
 }
 
 .confirmacao {
-    width: 25%;
-    margin: 10px;
-    margin-top: 25px;
-    color: white;
-    padding: 5px;
-    border: none;
-    border-radius: 10px;
+  width: 25%;
+  margin: 10px;
+  margin-top: 25px;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
 }
 
-button:hover{
-    cursor: pointer;
+button:hover {
+  cursor: pointer;
 }
 
-#contato{
-    text-align: center;
-    padding: 15px;
-    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin-right: 40px;
+#contato {
+  text-align: center;
+  padding: 15px;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin-right: 40px;
 }
 
-#contato img{
-    width: 90px;
-    margin: 2px;
-    margin-top: 30px;
+#contato img {
+  width: 90px;
+  margin: 2px;
+  margin-top: 30px;
 }
 
-#rodape{
-    padding: 5px;
-    width: 100%;
-    background-color: rgb(45, 43, 43);
-    margin: 0;
-    margin-top: 15px;
-    height: 123px;
-    text-align: center;
-    color: white;
+#rodape {
+  padding: 5px;
+  width: 100%;
+  background-color: rgb(45, 43, 43);
+  margin: 0;
+  margin-top: 15px;
+  height: 123px;
+  text-align: center;
+  color: white;
 }
 
-#voltarHome:hover{
-cursor:pointer;
+#voltarHome:hover {
+  cursor: pointer;
 }

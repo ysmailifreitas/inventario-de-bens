@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-      <div id="card">
-       <img src="img/INVENTÁRIO-nobg.png" id="logo">
-       <form action="/auth/login" method="POST" class="loginForm">
-          <h1>LOGIN</h1>
-          <input type="text" id="username" name="username" class="input" placeholder="USUÁRIO DO SISTEMA">
-          <input type="password" id="password" name="password" class="input" placeholder="SENHA">
-        <button type="submit" class="botao">ENTRAR</button>
-      </form>
-      </div>
+  <div id="card">
+    <img src="img/INVENTÁRIO-nobg.png" id="logo">
+    {{#if errorMessage}}
+    {{> errorCard}}
+    {{/if}}
+    <form action="/login" method="POST" class="loginForm">
+      <h1>LOGIN</h1>
+      <input type="text" id="username" name="username" class="input" placeholder="USUÁRIO DO SISTEMA">
+      <input type="password" id="password" name="password" class="input" placeholder="SENHA">
+      <button type="submit" class="botao">ENTRAR</button>
+    </form>
+    <div class="link">
+      <a href="/cadastrarUsuario">Cadastrar Novo Usuário</a>
+    </div>
+  </div>
 </body>
+
 </html>

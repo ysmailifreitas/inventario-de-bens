@@ -1,31 +1,23 @@
-const {use} = require("express/lib/router");
-const mysql = require("mysql");
+const User = require('../models/Users');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const db = mysql.createConnection({
-  host     : process.env.DATABASE_HOST,
-  user     : process.env.DATABASE_USER,
-  password : process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE
-});
+exports.login = async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
 
-exports.login = (req, res) => {
-  console.log(req.body);
+  try {
+    const user = await User.findOne({ where: { username: username } });
 
-  const user = req.body.username;
-  const pass = req.body.password;
-
-  db.query('SELECT username, password FROM users WHERE username = ? AND password =?', [user, pass], (error, results)=>{
-    if(error){
-      console.log(error);
+    if (user && bcrypt.compareSync(password, user.password)) {
+      const token = jwt.sign({ username: username }, 'secret_key');
+      res.cookie('token', token, { httpOnly: true });
+      res.redirect('/home');
+    } else {
+      res.render('login', { errorMessage: 'Credenciais inválidas. Verifique seu nome de usuário e senha e tente novamente.' });
     }
-    if(results.length > 0){
-      res.redirect('home')
-    }else{
-      res.render('login')
-    }
-  });
-}
-
-exports.home = (req, res) => {
-  res.render('home')
-}
+  } catch (error) {
+    console.error('Erro ao encontrar usuário:', error);
+    res.render('login', { errorMessage: 'Ocorreu um erro durante o login. Tente novamente mais tarde.' });
+  }
+};

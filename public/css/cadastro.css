@@ -1,48 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
 
 body {
-    background-color:rgb(221, 221, 221)
+  background-color: rgb(221, 221, 221)
 }
 
 input[type=number] {
-   -moz-appearance: textfield;
-   appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 
 }
 
 input {
-    margin: 10px 10px 10px 0px;
-    border: none;
-    border-bottom: 1px gray solid;
-    display: block;
-    padding: 20px;
-    font-size: 15px;
-    width: 100%;
+  margin: 10px 10px 10px 0px;
+  border: none;
+  border-bottom: 1px gray solid;
+  display: block;
+  padding: 20px;
+  font-size: 15px;
+  width: 100%;
 }
 
 textarea {
-    width: 100%;
+  width: 100%;
 }
 
 .desc {
-    width: 100%;
-    text-align: left;
-    display: inline-block;
+  width: 100%;
+  text-align: left;
+  display: inline-block;
 }
 
 #data {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 label {
-    display: block;
+  display: block;
 }
 
 small {
-    font-size: 10px;
-    color: #ff0000;
-    visibility: hidden;
+  font-size: 10px;
+  color: #ff0000;
+  visibility: hidden;
 }
 
 .block {
@@ -51,37 +51,38 @@ small {
   display: inline-block;
 }
 
-.data{
+.data {
   width: 100%;
 }
 
-input:focus, textarea:focus {
-    transition: 0.5s;
-    background-color: rgb(224, 224, 224);
+input:focus,
+textarea:focus {
+  transition: 0.5s;
+  background-color: rgb(224, 224, 224);
 }
 
-.block.error input{
-    border-bottom: 1px rgb(255, 0, 0) solid;
+.block.error input {
+  border-bottom: 1px rgb(255, 0, 0) solid;
 }
 
-.block.error small{
-    visibility: visible;
+.block.error small {
+  visibility: visible;
 }
 
-select{
-    margin: 10px 10px 10px 0px;
-    border: none;
-    border-bottom: 1px gray solid;
-    display: block;
-    padding: 20px;
-    font-size: 15px;
-    width: 100%;
-    color: gray;
+select {
+  margin: 10px 10px 10px 0px;
+  border: none;
+  border-bottom: 1px gray solid;
+  display: block;
+  padding: 20px;
+  font-size: 15px;
+  width: 100%;
+  color: gray;
 }
 
-#selectfn{
-    color: gray;
-    visibility: hidden;
+#selectfn {
+  color: gray;
+  visibility: hidden;
 }
 
 /* button {

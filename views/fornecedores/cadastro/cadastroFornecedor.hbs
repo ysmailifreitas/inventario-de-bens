@@ -13,28 +13,8 @@
 </head>
 
 <body>
-    <div class="aside-menu">
-        <div class="logo">
-            <a target="_blank" href="home.html">
-                <img height="150px" width="150px" src="../img/logo-inventario.png">
-            </a>
-        </div>
-        <hr class="line">
-        <div class="nav">
-            <ul>
-                <li><a href="home">PAINEL</a></li>
-                <li><a href="cadastrarBem">CADASTRAR BEM</a></li>
-                <li><a href="itens">LISTAGEM DE BENS</a></li>
-                <li><a href="fornecedores">FORNECEDORES</a></li>
-
-                <!-- a opção editar perfil ainda não funciona, passará
-                a funcionar quando implementar a sessão do usuário logado -->
-                <li><a href="">EDITAR PERFIL</a></li>
-
-                <li><a href="login">SAIR</a></li>
-            </ul>
-        </div>
-    </div>
+    
+    {{> nav}}
 
     <div class="container">
         <h1></h1>
@@ -43,15 +23,13 @@
                 <a href="/fornecedores" class="voltar">↩ Voltar</a>
             </div>
 
-            <form id="form" action="/fornecedor/atualizarFornecedor/{{id}}" method="post">
-                Editando o id: {{id}}<br>
-                Editando Fornecedor: {{fornecedor.for_nome}}
+            <form id="form" action="fornecedor/cadastrarFornecedor" method="POST">
                 <div>
                     <br>
                     <div style="" class="block">
                         <small></small>
                         <label for="nome">Nome</label>
-                        <input value="{{fornecedor.for_nome}}" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
+                        <input value="Comfy Way" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
                     </div>
                 </div>
 
@@ -60,7 +38,7 @@
                     <div class="block">
                         <small></small>
                         <label for="telefone">Telefone</label>
-                        <input value="{{fornecedor.for_telefone}}" name="telefone" type="tel" placeholder="Razão Social do fornecedor" id="telefone">
+                        <input value="678811298921" name="telefone" type="tel" placeholder="Razão Social do fornecedor" id="telefone">
                     </div>
                 </div>
 
@@ -69,7 +47,7 @@
                     <div class="block">
                         <small></small>
                         <label for="email">Email</label>
-                        <input value="{{fornecedor.for_email}}" name="email" type="email" placeholder="Razão Social do fornecedor" id="email">
+                        <input value="comfy@gmail.com" name="email" type="email" placeholder="Razão Social do fornecedor" id="email">
                     </div>
                 </div>
 
