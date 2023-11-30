@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/css-default.css">
+    <link rel="stylesheet" href="css/listagem.css">
+    <link rel="stylesheet" href="css/editPermissions.css">
+    <title>Document</title>
+</head>
+
+<body>
+{{> nav}}
+<div class="main-content">
+    <div class="painel-selecao">
+        <div style="text-align: center">
+            <h1 style="margin:0 auto">Selecione um Usuário</h1>
+        </div>
+        <div class="painel-search-box">
+            <label for="userSearch">
+                <img src="../img/search.png" alt="Search Icon" class="search-icon">
+            </label>
+            <input type="text" id="userSearch" oninput="searchUsers()" placeholder="Digite o nome do usuário...">
+        </div>
+        <div class="table-wrapper">
+            <table class="fl-table" style="border-collapse: collapse">
+                <thead>
+                <tr>
+                    <th>USUÁRIO</th>
+                    <th>ACÕES</th>
+                </tr>
+                </thead>
+                <tbody id="userTableBody">
+
+                {{#each users}}
+                    <tr>
+                        <td>{{username}}</td>
+                        <td>
+                            <table class="icones">
+                                <tr>
+                                    <td>
+                                        <a href="/visualizarUsuario/{{id}}">
+                                            <img height="25px" width="25px" src="../img/Eye.png" alt="Visualizar">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a id="editUserPermission" href="/usuario/{{id}}">
+                                            <img height="25px" width="25px" src="../img/Registration.png"
+                                                 alt="Editar">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a id="chat" href="/enviarMensagem/{{id}}">
+                                            <img height="25px" width="25px" src="../img/chat.png"
+                                                 alt="Enviar Mensagem">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchUsers() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("userSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("userTableBody");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            var cells = tr[i].getElementsByTagName("td");
+            var found = false;
+
+            for (var j = 0; j < cells.length; j++) {
+                td = cells[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break; // Break if the search term is found in any cell
+                    }
+                }
+            }
+
+            if (found || tr[i].classList.contains("icon-row")) {
+                tr[i].style.display = ""; // Show the entire row
+            } else {
+                tr[i].style.display = "none"; // Hide the entire row
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

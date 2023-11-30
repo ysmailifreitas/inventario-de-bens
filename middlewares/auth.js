@@ -1,18 +1,18 @@
 const checkAuth = (req, res, next) => {
-  const token = req.cookies.token;
-  const currentPath = req.path;
+    const token = req.cookies.token;
+    const currentPath = req.path;
 
-  if (currentPath === "/cadastrarUsuario") {
-    next();
-  } else {
-    if (token) {
-      next();
+    if (currentPath === "/cadastrarUsuario") {
+        next();
     } else {
-      res.redirect("/login");
+        if (token) {
+            next();
+        } else {
+            res.redirect("/login");
+        }
     }
-  }
 };
 
 module.exports = {
-  checkAuth
+    checkAuth
 };

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "update-packages": "ncu -u",
+    "install-packages": "npm install"
   },
   "keywords": [],
   "author": "",
@@ -18,19 +20,21 @@
   "homepage": "https://github.com/ysmailifreitas/inventario-de-bens#readme",
   "description": "",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cookie-parser": "^1.4.6",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "hbs": "^4.2.0",
-    "html-pdf": "^3.0.1",
-    "jsonwebtoken": "^8.5.1",
-    "moment": "^2.29.4",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.6.1",
-    "nodemailer": "^6.9.3",
-    "nodemon": "^2.0.20",
-    "pdfkit": "^0.13.0",
-    "sequelize": "^6.30.0"
+    "bcrypt": "*",
+    "cookie-parser": "*",
+    "dotenv": "*",
+    "express": "*",
+    "hbs": "*",
+    "helmet": "^7.1.0",
+    "html-pdf": "*",
+    "jsonwebtoken": "*",
+    "moment": "*",
+    "mysql": "*",
+    "mysql2": "*",
+    "mysqldump": "^3.2.0",
+    "nodemailer": "*",
+    "nodemon": "*",
+    "pdfkit": "*",
+    "sequelize": "*"
   }
 }

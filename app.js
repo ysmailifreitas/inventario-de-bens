@@ -54,6 +54,7 @@ app.use('/', require('./routes/suporte'));
 app.use('/', require('./routes/email'));
 app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
+app.use('/', require('./routes/editPermissions'));
 
 app.listen(5000, () => {
   console.log("listening on port 5000");

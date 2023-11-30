@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" href="css/css-default.css">
+    <link rel="stylesheet" href="css/edit-permission-user.css">
+    <title>Manage User Permissions</title>
+</head>
+
+<body>
+{{> nav}}
+<div class="main-content">
+    <div class="painel-edicao-usuario">
+        <div>
+            <h1 style="margin: 0 auto">Usuário Selecionado: {{user.username}}</h1>
+        </div>
+        <div class="user-card" style="">
+
+            <img style="" src="{{user.profile_photo}}" alt="Foto de Perfil">
+            <div class="user-info">
+                <p><strong>Username:</strong> {{user.username}}</p>
+                <p><strong>Email:</strong> {{user.company_email}}</p>
+                <p><strong>Company Name:</strong> {{user.company_name}}</p>
+                <p><strong>CNPJ:</strong> {{user.cnpj}}</p>
+                <p><strong>Address:</strong> {{user.address}}</p>
+                <p><strong>Full Name:</strong> {{user.fullname}}</p>
+            </div>
+
+            <form id="form" action="/usuario/atualizarRole/{{user.id}}" method="post">
+                <label for="roleSelect">Selecione a Permissão:</label>
+                <select name="role" id="roleSelect">
+                    <option value="1">Gestor</option>
+                    <option value="2">Administrador</option>
+                    <option value="3">Supervisor</option>
+                    <option value="4">Comum</option>
+                </select>
+                <button type="submit">Atualizar Role</button>
+            </form>
+
+        </div>
+        Role: {{role_id}}
+
+    </div>
+</div>
+
+</body>
+
+</html>

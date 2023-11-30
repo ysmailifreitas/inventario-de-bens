@@ -1,9 +1,9 @@
-function removerFornecedor(){
-var a = document.querySelector("#deletar")
+function removerFornecedor() {
+    var a = document.querySelector("#deletar")
 
-var confirmarAcao = confirm("Deseja deletar o fornecedor?")
+    var confirmarAcao = confirm("Deseja deletar o fornecedor?")
 
-if(confirmarAcao == false){
-    a.href = "/fornecedores"
-}
+    if (confirmarAcao == false) {
+        a.href = "/fornecedores"
+    }
 }

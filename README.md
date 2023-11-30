@@ -40,6 +40,7 @@ Escolha uma licença apropriada para o seu projeto e insira os detalhes aqui.
 Insira informações de contato, caso alguém queira entrar em contato com você.
 
 # inventario-de-bens
+
 instala as dependencias listagas no package.json: npm install
 inicia o servidor: npm start
 

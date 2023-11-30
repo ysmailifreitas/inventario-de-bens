@@ -24,16 +24,16 @@
         <input type="text" id="address" name="address" class="input" placeholder="ENDEREÇO" value="Rua Exemplo, 123">
         <input type="text" id="fullname" name="fullname" class="input" placeholder="NOME COMPLETO" value="Fulano da Silva">
 
-        <div class="checkbox-group">
-            <input type="checkbox" id="gestor" name="tipo_permissao" value="Gestor">
-            <label for="gestor">Gestor</label><br>
-            <input type="checkbox" id="administrador" name="tipo_permissao" value="Administrador">
-            <label for="administrador">Administrador</label><br>
-            <input type="checkbox" id="supervisor" name="tipo_permissao" value="Supervisor">
-            <label for="supervisor">Supervisor</label><br>
-            <input type="checkbox" id="comum" name="tipo_permissao" value="Comum">
-            <label for="comum">Comum</label><br>
-        </div>
+        <label for="roles">Selecione a Permissão:</label>
+        <select id="roles" name="roles">
+            <option value="1">Gestor</option>
+            <option value="2">Administrador</option>
+            <option value="3">Supervisor</option>
+            <option value="4">Comum</option>
+        </select>
+
+        <label for="profile_photo">Foto de Perfil (opcional):</label>
+        <input type="file" id="profile_photo" name="profile_photo" accept="image/*">
 
         <button type="submit" class="botao">CADASTRAR</button>
     </form>
