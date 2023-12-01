@@ -21,7 +21,7 @@ ou usando o Wget:
 `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
 
 -*Nodejs: *
-`nvm i v20.5.0`
+`nvm i  v21.2.0`
 
 ## Uso
 
@@ -46,6 +46,6 @@ inicia o servidor: npm start
 
 Dependências:
 Mysql;
-Nodejs v20.5.0;
+Nodejs v21.2.0;
 
 Instale o nvm para instalar o Node, fica muito mais fácil.
