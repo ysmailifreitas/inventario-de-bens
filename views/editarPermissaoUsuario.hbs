@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
-    <link rel="stylesheet" href="css/css-default.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/edit-permission-user.css">
     <title>Manage User Permissions</title>
 </head>
 
 <body>
 {{> nav}}
-<div class="main-content">
+<div class="container">
     <div class="painel-edicao-usuario">
         <div>
             <h1 style="margin: 0 auto">Usuário Selecionado: {{user.username}}</h1>
@@ -37,7 +37,7 @@
                     <option value="3">Supervisor</option>
                     <option value="4">Comum</option>
                 </select>
-                <button type="submit">Atualizar Role</button>
+                <button class="button" type="submit">Atualizar Role</button>
             </form>
 
         </div>

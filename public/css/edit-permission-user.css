@@ -10,17 +10,6 @@ body {
 }
 
 /* Global Styles */
-.nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-}
-
-.main-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
 .painel-edicao-usuario {
     text-align: center;
@@ -31,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid #ddd;
+    border: 30px solid #ddd;
     padding: 20px;
     margin-top: 20px;
 }
@@ -56,8 +45,8 @@ body {
     font-size: 14px;
 }
 
-button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
+/*button {*/
+/*    padding: 20px;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*}*/

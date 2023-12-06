@@ -77,9 +77,9 @@ CREATE TABLE itens
 -- Insert data into the Item table
 INSERT INTO itens (it_nome, it_quantidade, it_dataAquisicao, it_preco_unitario, it_valor_total, it_depreciacao_anual,
                    for_id, it_for_nome, it_categoria, it_descricao, it_localizacao, it_valor_compra, it_valor_venda,
-                   it_estado_conservacao)
+                   it_estado_conservacao, createdAt, updatedAt)
 VALUES ('Exemplo Item', 10, '2023-11-18', 19.99, 199.90, 5.0, 'fornecedor123', 'Fornecedor XYZ', 'Eletrônicos',
-        'Um exemplo de item', 'Sala 101', 150.00, 249.99, 'Bom');
+        'Um exemplo de item', 'Sala 101', 150.00, 249.99, 'Bom', '2021-11-18 00:00:00', '2021-11-18 00:00:00');
 
 -- Insert data into the dados_dashboard table
 CREATE TABLE dados_dashboards
@@ -92,8 +92,10 @@ CREATE TABLE dados_dashboards
     valor_liquido          FLOAT,
     roi                    FLOAT,
     item_id                INT,
-    FOREIGN KEY (item_id) REFERENCES itens (id)
+    FOREIGN KEY (item_id) REFERENCES itens (id),
+    createdAt              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt              TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 INSERT INTO dados_dashboards (valor_total, depreciacao_anual, taxa_depreciacao_anual, taxa_utilizacao, valor_liquido,
-                              roi, item_id)
-VALUES (10.2, 2.3, 0.2, 0.5, 8.9, 0.1, 1);
+                              roi, item_id, createdAt, updatedAt)
+VALUES (10.2, 2.3, 0.2, 0.5, 8.9, 0.1, 1, '2021-11-18 00:00:00', '2021-11-18 00:00:00');

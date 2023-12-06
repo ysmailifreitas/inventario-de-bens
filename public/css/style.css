@@ -46,7 +46,7 @@ body {
 
 .aside-menu .nav ul {
     flex-direction: column;
-    
+
     list-style: none;
 }
 
@@ -59,7 +59,7 @@ body {
 
 .aside-menu .nav ul li:hover {
     background-color: #E2E8F0;
- 
+
 }
 
 .aside-menu .nav ul li a {
@@ -77,25 +77,29 @@ body {
 }
 
 .container {
-    margin-left: 270px;
+    margin-left: 200px;
     text-align: center;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
 }
 
 .card {
     opacity: 0.8;
-  
     border-top: 25px rgba(71, 109, 244, 0.7) solid;
     text-align: center;
-    width: 80%;
+    width: 100%;
+    max-width: 900px; /* Set a maximum width if needed */
     box-shadow: 2px 2px 2px 2px rgba(134, 134, 134, 0.7);
     border-radius: 10px 10px 0px 0px;
-    margin: auto;
     padding: 40px;
     backdrop-filter: blur(50px);
     background-color: rgba(255, 255, 255, 0.4);
-    border: 2px solid #727272;
-
+    margin-top: 100px;
+    /* Remove margin-left and margin-right */
 }
 
 .voltar {

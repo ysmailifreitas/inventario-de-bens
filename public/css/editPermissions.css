@@ -1,8 +1,14 @@
 /* Search Box Styles */
+.painel-selecao{
+    text-align: center;
+    width: 80%;
+}
+
 .painel-search-box {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .search-icon {
