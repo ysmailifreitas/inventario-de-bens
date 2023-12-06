@@ -1,0 +1,9 @@
+{{#if user}}
+    <div class="usuario-logado">
+        <img src="{{user.profilePicture}}" alt="{{user.username}}" class="profile-picture">
+        <span class="username">{{user.username}}</span>
+        <a href="/logout">Sair</a>
+    </div>
+{{else}}
+    <a href="/login">Entrar</a>
+{{/if}}

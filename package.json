@@ -26,6 +26,7 @@
     "cookie-parser": "*",
     "dotenv": "*",
     "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
     "express-session": "^1.17.3",
     "hbs": "*",
     "helmet": "^7.1.0",

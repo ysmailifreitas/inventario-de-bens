@@ -6,12 +6,31 @@ const moment = require('moment');
 const hbs = require("hbs");
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const session = require('express-session')
-
+const session = require('express-session');
+const helmet = require('helmet');
+const rateLimit = require("express-rate-limit");
 
 dotenv.config({path: './.env'});
 
 const app = express();
+
+app.use(helmet.hsts({
+  maxAge: 31536000,
+  includeSubDomains: true,
+  preload: true,
+}));
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({ action: 'deny' }));
+
+
+const limiter = rateLimit({
+  windowMs: 15 * 1000,
+  max: 200,
+  message: "Too many requests from this IP, please try again later."
+});
+
+
+app.use(limiter);
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,14 +42,20 @@ const db = mysql.createPool({
   database: process.env.DATABASE
 });
 
-app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+app.use(session({
+  secret: 'your-secret-key',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 300000,
+  }
+}));
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
 
 // Configuração do diretório de visualizações
 app.set('views', path.join(__dirname, 'views'));
