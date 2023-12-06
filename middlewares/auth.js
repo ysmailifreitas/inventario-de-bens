@@ -5,7 +5,7 @@ const checkAuth = (req, res, next) => {
     if (currentPath === "/cadastrarUsuario") {
         next();
     } else {
-        if (token) {
+        if (req.session.username) {
             next();
         } else {
             res.redirect("/login");

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,9 @@
   <link rel="stylesheet" href="css/template.css">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .containercards {
       padding: 20px 100px;
@@ -80,6 +84,58 @@
           <div class="grid-label">Qtd em Estoque:</div>
           <div class="result-value">{{countItens}}</div>
         </div>
+         <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-red-400 ">
+      <div class="w-20 h-20 bg-gradient-to-b from-red-500 to-blue-300 rounded-lg mr-4 ">
+        <img src="icons/grafico-preditivo.png">
+      </div>
+      <div class="flex flex-col ustify-center items-center">
+            <p class="text-gray-700 text-lg ">Total Itens</p>
+            <p class="text-gray-500 text-lg">{{countItens}}</p>
+
+      </div>
+
+    </div>
+
+    <!-- Card 2 -->
+    <!-- Card 1 -->
+    <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-blue-300 ">
+      <div class="w-20 h-20 bg-gradient-to-b from-blue-500 to-blue-300 rounded-lg mr-4 ">
+        <img src="icons/pasta (1).png">
+      </div>
+      <div class="flex flex-col ustify-center items-center">
+            <p class="text-gray-700 text-lg">Em falta</p>
+            <p class="text-gray-500 text-lg">Lampada</p>
+
+      </div>
+
+    </div>
+
+    <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-green-300 ">
+      <div class="w-20 h-20 bg-gradient-to-b from-green-600 to-green-300 rounded-lg mr-4 ">
+        <img src="icons/tudo.png">
+      </div>
+      <div class="flex flex-col ustify-center items-center">
+            <p class="text-gray-700 text-lg">Valor Total</p>
+            <p class="text-gray-500 text-md">R$ 460009,00</p>
+
+      </div>
+
+    </div>
+        <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-gray-500  ">
+           <div class="w-20 h-20 bg-gradient-to-b from-gray-500 to-blue-300 rounded-lg mr-4 ">
+        <img src="icons/conta-bancaria.png">
+      </div>
+      <div class="flex flex-col ustify-center items-center">
+            <p class="text-gray-700 text-lg">Vencido</p>
+            <p class="text-gray-500 text-lg">Lampada</p>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
         {{!-- <div class="grid-item">
           <div class="grid-label">Preço Unitário:</div>
           <div class="result-value">{{dadosDashboard.preco_unitario}}</div>

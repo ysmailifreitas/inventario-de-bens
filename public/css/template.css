@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 :root {
     --blue-cor-padrao: #476DF4;
@@ -15,15 +16,19 @@
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    background-color: rgb(221, 221, 221)
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 158, 250, 0.6));
 }
+.aside-menu {
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à direita */
+  }
 
 .aside-menu {
     width: 270px;
     height: 100%;
     position: fixed;
-    background-color: var(--blue-cor-padrao);
+    background-color: #f5f6fa;
     text-align: center;
+    border-right: 1px solid #d4d4d4; /* Borda direita para separar do conteúdo principal */
 }
 
 .aside-menu .logo {
@@ -41,28 +46,35 @@ body {
 
 .aside-menu .nav ul {
     flex-direction: column;
-    padding: 10px;
+    
     list-style: none;
 }
 
 .aside-menu .nav ul li {
     padding: 0;
     cursor: pointer;
-    transition: all .3s ease-out;
+    transition: all 0.3s ease-out;
 
 }
 
 .aside-menu .nav ul li:hover {
-    background-color: #0d50b5;
-    margin: 0px 10px;
+    background-color: #E2E8F0;
+ 
 }
 
 .aside-menu .nav ul li a {
-    color: white;
+    color: #718096;
     display: block;
     padding: 20px 0;
-}
+    transition: 0.3s;
 
+}
+.aside-menu .nav ul li a:hover {
+    color: #718096;
+    display: block;
+    padding: 20px 0;
+    color:#00ccff;
+}
 .container {
     margin-left: 270px;
     text-align: center;
@@ -70,15 +82,36 @@ body {
 }
 
 .card {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.4);
     border-top: 25px rgb(71, 109, 244) solid;
     text-align: center;
     width: 80%;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 2px rgba(124, 124, 124, 0.2);
     border-radius: 10px 10px 0px 0px;
     margin: auto;
     padding: 40px;
+    backdrop-filter: blur(50px);
 }
+li{
+    font-weight: 400;
+}
+
+li a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+  }
+  
+  li a ion-icon {
+   
+    width: 30px;
+    height: 30px;
+    margin-bottom: -8px; /* Ajuste negativo para alinhar o ícone um pouco mais para baixo */
+    margin-right: 5px; /* Adicione uma margem à direita para separar o ícone do texto */
+  }
+  
+
 
 .voltar {
     text-align: left;
@@ -116,4 +149,8 @@ button:hover {
     -moz-transition: .3s;
     -ms-transition: .3s;
     -o-transition: .3s;
+}
+
+td:hover{
+    color: orange;
 }

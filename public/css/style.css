@@ -15,15 +15,20 @@
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    background-color: rgb(221, 221, 221)
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 158, 250, 0.6));
 }
+
+.aside-menu {
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à direita */
+  }
 
 .aside-menu {
     width: 270px;
     height: 100%;
     position: fixed;
-    background-color: var(--blue-cor-padrao);
+    background-color: #f5f6fa;
     text-align: center;
+    border-right: 1px solid #d4d4d4; /* Borda direita para separar do conteúdo principal */
 }
 
 .aside-menu .logo {
@@ -41,26 +46,34 @@ body {
 
 .aside-menu .nav ul {
     flex-direction: column;
-    padding: 10px;
+    
     list-style: none;
 }
 
 .aside-menu .nav ul li {
     padding: 0;
     cursor: pointer;
-    transition: all .3s ease-out;
+    transition: all 0.3s ease-out;
 
 }
 
 .aside-menu .nav ul li:hover {
-    background-color: #0d50b5;
-    margin: 0px 10px;
+    background-color: #E2E8F0;
+ 
 }
 
 .aside-menu .nav ul li a {
-    color: white;
+    color: #718096;
     display: block;
     padding: 20px 0;
+    transition: 0.3s;
+
+}
+.aside-menu .nav ul li a:hover {
+    color: #718096;
+    display: block;
+    padding: 20px 0;
+    color:#00ccff;
 }
 
 .container {
@@ -70,14 +83,19 @@ body {
 }
 
 .card {
-    background-color: #fff;
-    border-top: 25px rgb(71, 109, 244) solid;
+    opacity: 0.8;
+  
+    border-top: 25px rgba(71, 109, 244, 0.7) solid;
     text-align: center;
     width: 80%;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 2px rgba(134, 134, 134, 0.7);
     border-radius: 10px 10px 0px 0px;
     margin: auto;
     padding: 40px;
+    backdrop-filter: blur(50px);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid #727272;
+
 }
 
 .voltar {

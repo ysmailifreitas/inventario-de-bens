@@ -5,7 +5,7 @@ const {checkAuth} = require('../middlewares/auth');
 router.use(checkAuth);
 
 router.get("/logout", (req, res) => {
-    res.clearCookie("token");
+    req.session.destroy();
     res.redirect("/login");
 });
 

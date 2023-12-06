@@ -5,6 +5,8 @@ const path = require('path');
 const moment = require('moment');
 const hbs = require("hbs");
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session')
 
 
 dotenv.config({path: './.env'});
@@ -12,19 +14,23 @@ dotenv.config({path: './.env'});
 const app = express();
 
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = mysql.createPool({ // Use createPool em vez de createConnection
+const db = mysql.createPool({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE
 });
 
+app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
 
 // Configuração do diretório de visualizações
 app.set('views', path.join(__dirname, 'views'));
