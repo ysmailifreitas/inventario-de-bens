@@ -15,6 +15,8 @@ CREATE TABLE users
     address        VARCHAR(255) NOT NULL DEFAULT 'default_address',
     fullname       VARCHAR(255) NOT NULL DEFAULT 'default_fullname',
     tipo_permissao VARCHAR(255) NOT NULL DEFAULT 'Comum',
+    resetToken     VARCHAR(255) DEFAULT NULL,
+    resetTokenExpires TIMESTAMP DEFAULT NULL,
     createdAt      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
     updatedAt      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

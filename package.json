@@ -20,11 +20,12 @@
   "homepage": "https://github.com/ysmailifreitas/inventario-de-bens#readme",
   "description": "",
   "dependencies": {
+    "amqplib": "^0.10.3",
     "bcrypt": "*",
     "body-parser": "^1.20.2",
     "cookie-parser": "*",
     "dotenv": "*",
-    "express": "*",
+    "express": "^4.18.2",
     "express-session": "^1.17.3",
     "hbs": "*",
     "helmet": "^7.1.0",
@@ -38,6 +39,7 @@
     "nodemon": "*",
     "pdfkit": "*",
     "sequelize": "*",
-    "tailwind": "*"
+    "tailwind": "*",
+    "uuid": "^9.0.1"
   }
 }

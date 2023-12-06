@@ -50,6 +50,14 @@ const User = db.sequelize.define(
             allowNull: false,
             defaultValue: "Comum",
         },
+        resetToken: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        resetTokenExpires: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
     },
     {}
 );
