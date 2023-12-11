@@ -10,13 +10,14 @@ router.get("/cadastrarUsuario", (req, res) => {
 });
 
 router.post('/cadastrarUsuario', async (req, res) => {
-    const { username, password, company_email, company_name, cnpj, address, fullname, roles } = req.body;
-
+    const { username, password, confirm_password, company_email, company_name, cnpj, address, fullname, roles } = req.body;
     try {
         const userExists = await User.findOne({ where: { username: username } });
 
         if (userExists) {
             res.render('login', { errorMessage: 'Nome de usuário já está em uso. Por favor, escolha outro nome de usuário.' });
+        } if (password !== confirm_password) {
+            return res.render('cadastrarUsuario', { errorMessage: 'As senhas não coincidem. Por favor, tente novamente.' });
         } else {
             const hashedPassword = await bcrypt.hash(password, 10);
 

@@ -57,19 +57,19 @@ app.use(express.static(publicDirectory));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-// Configuração do diretório de visualizações
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// Configuração do diretório de parciais
+
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
-// Configuração do diretório de layouts
+
 app.set('layout', 'layouts/layout');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Registre os helpers do HBS
+
 hbs.registerHelper('formatDate', function (date) { return moment(date).format('DD/MM/YYYY'); });
 hbs.registerHelper('formatDateHour', function (date) { return moment(date).format('DD/MM/YYYY HH:mm:ss'); });
 hbs.registerHelper('isdefined', function (value) {

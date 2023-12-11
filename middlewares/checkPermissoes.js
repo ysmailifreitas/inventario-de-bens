@@ -1,9 +1,8 @@
-const RoleAssignments = require('../models/RoleAssignmentss');
+const RoleAssignments = require('../models/RoleAssignments');
 
 const checkPermissions = (requiredPermission) => {
     return async (req, res, next) => {
         try {
-            // Verifica se req.user existe e possui a propriedade 'userId'
             if (!req.session.userId) {
                 return res.status(401).send('Usuário não autenticado');
             }
