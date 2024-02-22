@@ -1,34 +1,59 @@
-DROP TABLE dados_dashboards;
-DROP TABLE fornecedores;
-DROP TABLE itens;
-DROP TABLE users;
-DROP TABLE role_assignments;
+USE inventario;
+
+DROP TABLE IF EXISTS role_assignments;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS dados_dashboards;
+DROP TABLE IF EXISTS fornecedores;
+DROP TABLE IF EXISTS itens;
 
 CREATE TABLE users
 (
-    id             INT AUTO_INCREMENT PRIMARY KEY,
-    username       VARCHAR(255) NOT NULL DEFAULT 'admin',
-    company_email  VARCHAR(255) NOT NULL DEFAULT 'example@example.com',
-    password       VARCHAR(255) NOT NULL DEFAULT '$2b$10$KeWip07yeZcurqQKAUv3ouVwbNFzM0WvaTwAG9zX7OkPceKghSoxu',
-    company_name   VARCHAR(255) NOT NULL DEFAULT 'default_company_name',
-    cnpj           VARCHAR(255) NOT NULL DEFAULT 'default_cnpj',
-    address        VARCHAR(255) NOT NULL DEFAULT 'default_address',
-    fullname       VARCHAR(255) NOT NULL DEFAULT 'default_fullname',
-    tipo_permissao VARCHAR(255) NOT NULL DEFAULT 'Comum',
-    resetToken     VARCHAR(255) DEFAULT NULL,
-    resetTokenExpires TIMESTAMP DEFAULT NULL,
-    createdAt      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
-    updatedAt      TIMESTAMP             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    id                INT AUTO_INCREMENT PRIMARY KEY,
+    username          VARCHAR(255) NOT NULL DEFAULT 'admin',
+    company_email     VARCHAR(255) NOT NULL DEFAULT 'example@example.com',
+    password          VARCHAR(255) NOT NULL DEFAULT '$2b$10$KeWip07yeZcurqQKAUv3ouVwbNFzM0WvaTwAG9zX7OkPceKghSoxu',
+    company_name      VARCHAR(255) NOT NULL DEFAULT 'default_company_name',
+    cnpj              VARCHAR(255) NOT NULL DEFAULT 'default_cnpj',
+    address           VARCHAR(255) NOT NULL DEFAULT 'default_address',
+    fullname          VARCHAR(255) NOT NULL DEFAULT 'default_fullname',
+    tipo_permissao    VARCHAR(255) NOT NULL DEFAULT 'Comum',
+    resetToken        VARCHAR(255)          DEFAULT NULL,
+    resetTokenExpires TIMESTAMP             DEFAULT NULL,
+    createdAt         TIMESTAMP             DEFAULT CURRENT_TIMESTAMP,
+    updatedAt         TIMESTAMP             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+insert into users
+(id, username, company_email, password, company_name, cnpj, address, fullname, tipo_permissao, createdAt, updatedAt)
+values ('1', 'admin', 'comp@email', '$2b$10$iS/kpcc8pTnLPdvmAWFE6uHqjhEXnQgdVY1eoiR5V1Rohzk48W5.G', 'comp',
+        '0932093209000123', 'rua charlote', 'admino', 'Comum', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+CREATE TABLE roles
+(
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    role      VARCHAR(30) not null,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+insert into roles(id, role, createdAt, updatedAt)
+values (2, 'Administrador', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into roles(id, role, createdAt, updatedAt)
+values (1, 'Gestor', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into roles(id, role, createdAt, updatedAt)
+values (3, 'Supervisor', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into roles(id, role, createdAt, updatedAt)
+values (4, 'Comum', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Create the role-assignments table
 CREATE TABLE role_assignments
 (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    user_id    INT NOT NULL,
-    role_id    INT NOT NULL,
-    createdAt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    user_id   INT NOT NULL,
+    role_id   INT NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (role_id) REFERENCES roles (id)
 );

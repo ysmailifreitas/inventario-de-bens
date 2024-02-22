@@ -87,6 +87,6 @@ app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
 app.use('/', require('./routes/editPermissions'));
 
-app.listen(3000, () => {
+app.listen(5000, () => {
   console.log("listening on port 5000");
 });
