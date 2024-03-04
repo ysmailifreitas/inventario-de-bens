@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/edit-permission-user.css">
-    <title>Manage User Permissions</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <title>Editar Permissões do Usuário</title>
 </head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
 
-<body>
-{{> nav}}
-<div class="container">
-    <div class="painel-edicao-usuario">
-        <div>
-            <h1 style="margin: 0 auto">Usuário Selecionado: {{user.username}}</h1>
-        </div>
-        <div class="user-card" style="">
-
-            <img style="" src="{{user.profile_photo}}" alt="Foto de Perfil">
-            <div class="user-info">
-                <p><strong>Username:</strong> {{user.username}}</p>
-                <p><strong>Email:</strong> {{user.company_email}}</p>
-                <p><strong>Company Name:</strong> {{user.company_name}}</p>
-                <p><strong>CNPJ:</strong> {{user.cnpj}}</p>
-                <p><strong>Address:</strong> {{user.address}}</p>
-                <p><strong>Full Name:</strong> {{user.fullname}}</p>
-            </div>
-
-            <form id="form" action="/usuario/atualizarRole/{{user.id}}" method="post">
-                <label for="roleSelect">Selecione a Permissão:</label>
-                <select name="role" id="roleSelect">
-                    <option value="1">Gestor</option>
-                    <option value="2">Administrador</option>
-                    <option value="3">Supervisor</option>
-                    <option value="4">Comum</option>
-                </select>
-                <button class="button" type="submit">Atualizar Role</button>
-            </form>
-
-        </div>
-        Role: {{role_id}}
-
+<div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <h1 class="text-2xl font-bold mb-4">Editar Permissões do Usuário</h1>
+    <div>
+        <a>{{user.username}}</a>
+        <a>{{role_id}}</a>
     </div>
+    <form action="/usuario/atualizarRole/{{userId}}" method="POST">
+        <div class="mb-4">
+            <label for="roles" class="block text-sm font-medium text-gray-600">Funções do Usuário</label>
+            <select id="roles" name="roles[]" multiple class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                <option value="gestor" {{#ifEquals role_id 1}} selected {{/ifEquals}}>Gestor</option>
+                <option value="admin" {{#ifEquals role_id 2}} selected {{/ifEquals}}>Administrador</option>
+                <option value="supervisor" {{#ifEquals role_id 3}} selected {{/ifEquals}}>Supervisor</option>
+                <option value="comum" {{#ifEquals role_id 4}} selected {{/ifEquals}}>Comum</option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-4">
+            <label for="permissions" class="block text-sm font-medium text-gray-600">Permissões Associadas</label>
+
+            <div class="mt-2 space-y-2">
+                <div class="flex items-center">
+                    <input type="checkbox" id="permissionVisualizar" name="permissions[]" value="visualizar_item" class="form-checkbox h-5 w-5 text-blue-500">
+                    <label for="permissionVisualizar" class="ml-2 text-sm text-gray-700">Visualizar Item</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="permissionExcluir" name="permissions[]" value="excluir_item" class="form-checkbox h-5 w-5 text-blue-500">
+                    <label for="permissionExcluir" class="ml-2 text-sm text-gray-700">Excluir Item</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="permissionEditar" name="permissions[]" value="editar_item" class="form-checkbox h-5 w-5 text-blue-500">
+                    <label for="permissionEditar" class="ml-2 text-sm text-gray-700">Editar Item</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="permissionAdicionar" name="permissions[]" value="adicionar_item" class="form-checkbox h-5 w-5 text-blue-500">
+                    <label for="permissionAdicionar" class="ml-2 text-sm text-gray-700">Adicionar Item</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-end">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Salvar Permissões
+            </button>
+        </div>
+    </form>
 </div>
 
 </body>
-
 </html>

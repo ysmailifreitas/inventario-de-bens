@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "update-packages": "ncu -u",
-    "install-packages": "npm install"
+    "install-packages": "npm install",
+    "build:css" : "npx tailwindcss-cli@latest build -i ./public/style.css -o ./public/css/estilo.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
   "description": "",
   "dependencies": {
     "amqplib": "^0.10.3",
+    "autoprefixer": "^10.4.17",
     "bcrypt": "*",
     "body-parser": "^1.20.2",
     "cookie-parser": "*",
@@ -39,8 +41,12 @@
     "nodemailer": "*",
     "nodemon": "*",
     "pdfkit": "*",
+    "postcss": "^8.4.35",
     "sequelize": "*",
     "tailwind": "*",
+    "tailwindcss": "^3.4.1",
     "uuid": "^9.0.1"
   }
 }
+
+

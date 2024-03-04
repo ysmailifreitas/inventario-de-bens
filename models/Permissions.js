@@ -1,39 +1,43 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const db = require('./db');
 
 const Permissions = db.sequelize.define('permissions', {
-    id: {
+    permission_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    permission: {
+    permission_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
+    },
+    description: {
+        type: DataTypes.STRING
     }
 });
 
-// Adicione outras configurações ou associações conforme necessário
-
-// Sincronize o modelo e crie registros padrão
 const defaultPermissions = [
-    { permission: 'adicionar_item' },
-    { permission: 'editar_item' },
-    { permission: 'excluir_item' },
-    { permission: 'visualizar_item' }
-    // Adicione outras permissões conforme necessário
+    { permission_name: 'adicionar_item', description: 'Permissão para adicionar item' },
+    { permission_name: 'editar_item', description: 'Permissão para editar item' },
+    { permission_name: 'excluir_item', description: 'Permissão para excluir item' },
+    { permission_name: 'visualizar_item', description: 'Permissão para visualizar item' }
 ];
 
 Permissions.sync()
     .then(async () => {
-        for (const permission of defaultPermissions) {
-            await Permissions.findOrCreate({ where: permission });
+        for (const permissionData of defaultPermissions) {
+            await Permissions.findOrCreate({
+                where: { permission_name: permissionData.permission_name },
+                defaults: { ...permissionData }
+            });
         }
-        console.log('Registros padrão de permissões adicionados com sucesso.');
+
+        console.log('Registros padrão de permissions adicionados com sucesso.');
     })
     .catch((error) => {
-        console.error('Erro ao sincronizar e adicionar registros padrão de permissões:', error);
+        console.error('Erro ao sincronizar tabela de PERMISSIONS:', error);
     });
 
 module.exports = Permissions;
