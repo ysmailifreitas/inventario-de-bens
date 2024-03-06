@@ -5,7 +5,10 @@
   "scripts": {
     "start": "nodemon app.js",
     "update-packages": "ncu -u",
-    "install-packages": "npm install"
+    "install-packages": "npm install",
+    "test": "jest",
+    "test:coverage": "nyc npm test",
+    "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +34,8 @@
     "hbs": "*",
     "helmet": "^7.1.0",
     "html-pdf": "*",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-instrument": "^6.0.2",
     "jsonwebtoken": "*",
     "moment": "*",
     "mysql": "*",
@@ -38,9 +43,13 @@
     "mysqldump": "^3.2.0",
     "nodemailer": "*",
     "nodemon": "*",
+    "nyc": "^15.1.0",
     "pdfkit": "*",
     "sequelize": "*",
     "tailwind": "*",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

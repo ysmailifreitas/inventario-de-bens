@@ -99,6 +99,9 @@ exports.atualizarItem = (req, res) => {
 };
 
 exports.deletarItem = (req, res) => {
+    DadosDashboard.destroy({
+        where: {id: req.params.id},
+    })
     Itens.destroy({
         where: {id: req.params.id},
     })
