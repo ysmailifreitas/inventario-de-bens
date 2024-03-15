@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventário - Cadastrar Bem</title>
+    <title>Login</title>
     <base href="/">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cadastro.css">
-    <script src="js/cadastro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/cadastroitem.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <title>Menu Lateral e Barra Superior com Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="javascripts/dashboard.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css" integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/tailadmin@2.0.0/dist/tailadmin.min.css" rel="stylesheet">
+<style>
+.fixed-menu {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Defina um valor de z-index apropriado para a sobreposição */
+    /* Outros estilos desejados, como largura, altura, cor de fundo, etc. */
+}
+</style>
 </head>
-
 <body>
     
     {{> nav}}
 
-    <div class="container">
-        <h1></h1>
-        <div class="card">
-            <div  class="voltar">
-                <a href="/fornecedores" class="voltar">↩ Voltar</a>
+   <div class="flex items-center justify-center card_registro">
+    <div class="max-w-sm mx-auto p-8 rounded-lg card">
+        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR FORNECEDOR</h2>
+      
+        <form id="form "action="/cadastrarFornecedor" method="POST" >
+            <div class="mb-4">
+                <label for="nome" class="block text-sm font-medium text-gray-700 ">Nome do Fornecedor</label>
+                <input type="text" id="nome" name="nome"  class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+            <div class="mb-4">
+                <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
             </div>
 
-            <form id="form" action="/cadastrarFornecedor" method="POST">
-                <div>
-                    <br>
-                    <div style="" class="block">
-                        <small></small>
-                        <label for="nome">Nome</label>
-                        <input value="Comfy Way" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
-                    </div>
-                </div>
 
-                <div>
-                    <br>
-                    <div class="block">
-                        <small></small>
-                        <label for="telefone">Telefone</label>
-                        <input value="678811298921" name="telefone" type="tel" placeholder="Razão Social do fornecedor" id="telefone">
-                    </div>
-                </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
 
-                <div>
-                    <br>
-                    <div class="block">
-                        <small></small>
-                        <label for="email">Email</label>
-                        <input value="comfy@gmail.com" name="email" type="email" placeholder="Razão Social do fornecedor" id="email">
-                    </div>
-                </div>
-
-                <button type="submit">Salvar</button>
-
-            </form>
-        </div>
+            <div class="flex justify-center">
+                <button type="submit" class="button-30 flex items-center justify-center">Cadastrar</button>
+            </div>
+            
+        </form>
     </div>
+   </div>
+
+
 
 </body>
 

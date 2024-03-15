@@ -1,88 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventário - Cadastrar Item</title>
+    <title>Itens</title>
     <base href="/">
-    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/listagem.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-    <script src="js/cadastro.js"></script>
-    <script src="js/itens.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css" integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/tailadmin@2.0.0/dist/tailadmin.min.css" rel="stylesheet">
+<style>
+.fixed-menu {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Defina um valor de z-index apropriado para a sobreposição */
+    /* Outros estilos desejados, como largura, altura, cor de fundo, etc. */
+}
+</style>
+
 </head>
-
-<body>
-
-<img src="../img/central-de-atendimento.png" id="logoSuporte">
-
-{{> nav}}
-
-<div class="container">
-    <!-- Consider removing the empty <h1> element if not needed -->
-    <div class="card">
-        <div class="voltar">
-            <a href="/home" class="voltar">↩ Voltar</a>
-        </div>
-
-        <div class="listagem">
-            <h2 style="color:black">LISTAGEM DE BENS</h2>
-            <a href="/cadastrarItem">
-                <button class="button" type="submit">Criar Novo Item</button>
-            </a>
-            <a href="/relatorioItens/"><button class="button">Gerar Relatório</button></a>
-
-            <div class="table-wrapper">
-                <table class="fl-table">
-                    <thead>
-                    <tr>
-                        <th>NOME</th>
-                        <th>QUANTIDADE</th>
-                        <th>DATA AQUISIÇÃO</th>
-                        <th>FORNECEDOR</th>
-                        <th>DATA MODIFICAÇÃO</th>
-                        <th>PREÇO UNITÁRIO</th>
-                        <th>ACÕES</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each itens}}
+<body class="bg-gray-100">
+    {{> nav}}
+    <div class="flex flex-col justify-center items-center top_site">
+        <div class="flex justify-end bg-gray-50 add_button">
+        <button class="font-bold py-2 px-4 rounded"><a href="/cadastrarItem">Adicionar Item</a></button>
+      </div>
+        <div class="max-w-screen-lg overflow-auto rounded-lg shadow-lg table-container">
+          <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center">Listagem de Itens</h1>
+          <table class="w-full min-w-full rounded-lg overflow-hidden divide-y divide-gray-200  ">
+            <thead class="thead-fixed sticky top-0">
+              <tr>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Quantidade</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Data de Aquisição</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Fornecedor</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Modificação</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200 ">
+                {{#each itens}}
                         <tr>
-                            <td>{{it_nome}}</td>
-                            <td>{{it_quantidade}}</td>
-                            <td>{{#formatDate it_dataAquisicao}}{{/formatDate}}</td>
-                            <td>{{it_for_nome}}</td>
-                            <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
-                            <td>R${{it_preco_unitario}}</td>
-                            <td>
+                            <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{it_nome}}</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{it_quantidade}}</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDate it_dataAquisicao}}{{/formatDate}}</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{it_for_nome}}</td> 
+                <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>     
+                <td>
                                 <table class="icones">
                                     <tr>
-                                        <td>
-                                            <a href="/editarItem/{{id}}">
+                                          <td>
+                                            <a href="/editarItem/{{id}}" class="px-2 py-1 inline-block text-white rounded-lg">
                                                 <img height="25px" width="25px" src="../img/edit.png"></img>
                                             </a>
                                         </td>
                                         <td>
-                                            <a id="deletar"  href="/deletarItem/{{id}}" onclick="removerItem()">
+                                            <a id="deletar"  href="/deletarItem/{{id}}" onclick="removerItem()" class="p-2">
                                                 <img height="25px" width="25px" src="../img/delete.png"></img>
                                             </a>
                                         </td>
                                     </tr>
                                 </table>
-                            </td>
-                        </tr>
+                            </td>               
                     {{/each}}
-                    </tbody>
-                </table>
-            </div>
+            </tbody>
+          </table>
         </div>
-    </div>
-</div>
+      </div>
+      
 
-<script src="js/cadastro.js"></script>
+
 
 </body>
-
 </html>
+
+
+
+
+
+
+

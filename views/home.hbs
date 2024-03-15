@@ -1,206 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/relatorioHome.css">
-  <link rel="stylesheet" href="css/template.css">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    .containercards {
-      padding: 20px 100px;
-    }
-
-    .dashboard-container {
-      text-align: center;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      max-width: 100%;
-      padding: 20px;
-      margin-top: 100px;
-    }
-
-    .dashboard-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-gap: 10px;
-    }
-
-    .grid-item {
-      background-color: #ffffff;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .grid-label {
-      font-weight: bold;
-    }
-
-    .result-value {
-      color: #3366cc;
-    }
-
-    .chart-container {
-      margin-top: 50px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .dashboard-title {
-        font-size: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela inicial</title>
+  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/home.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+     
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="javascripts/dashboard.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css" integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+.fixed-menu {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Defina um valor de z-index apropriado para a sobreposição */
+    /* Outros estilos desejados, como largura, altura, cor de fundo, etc. */
+}
+</style>
 
 </head>
+<body class="bg-gray-100">
+{{> nav}}
 
-<body>
-
-  {{> nav}}
-
-  <section class="containercards">
-      {{> usuarioLogado}}
-    <div class="dashboard-container">
-      <h2 class="dashboard-title">Dashboard do Item</h2>
-      <div class="grid">
-        <div class="grid-item">
-          <div class="grid-label">Qtd em Estoque:</div>
-          <div class="result-value">{{countItens}}</div>
+    <div class="flex flex-wrap justify-center">
+        <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 backdrop-blur-lg rounded-lg overflow-hidden caixa">
+          <div class="px-6 py-4">
+            <a href="/itens"><img src="img/caixa.png" class="w-full h-auto" alt="Imagem de Caixa"></a>
+            <div class="font-bold text-xl mb-2 text-gray-500 text">Inventário</div>
+          </div>
         </div>
-         <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-red-400 ">
-      <div class="w-20 h-20 bg-gradient-to-b from-red-500 to-blue-300 rounded-lg mr-4 ">
-        <img src="icons/grafico-preditivo.png">
-      </div>
-      <div class="flex flex-col ustify-center items-center">
-            <p class="text-gray-700 text-lg ">Total Itens</p>
-            <p class="text-gray-500 text-lg">{{countItens}}</p>
-
-      </div>
-
-    </div>
-
-    <!-- Card 2 -->
-    <!-- Card 1 -->
-    <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-blue-300 ">
-      <div class="w-20 h-20 bg-gradient-to-b from-blue-500 to-blue-300 rounded-lg mr-4 ">
-        <img src="icons/pasta (1).png">
-      </div>
-      <div class="flex flex-col ustify-center items-center">
-            <p class="text-gray-700 text-lg">Em falta</p>
-            <p class="text-gray-500 text-lg">Lampada</p>
-
-      </div>
-
-    </div>
-
-    <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-green-300 ">
-      <div class="w-20 h-20 bg-gradient-to-b from-green-600 to-green-300 rounded-lg mr-4 ">
-        <img src="icons/tudo.png">
-      </div>
-      <div class="flex flex-col ustify-center items-center">
-            <p class="text-gray-700 text-lg">Valor Total</p>
-            <p class="text-gray-500 text-md">R$ 460009,00</p>
-
-      </div>
-
-    </div>
-        <div class="w-70 bg-white rounded-lg shadow-lg p-6 m-2 flex justify-center items-center hover:shadow-xl transition-transform transform duration-600 hover:scale-105 cursor-pointer hover:bg-gray-500  ">
-           <div class="w-20 h-20 bg-gradient-to-b from-gray-500 to-blue-300 rounded-lg mr-4 ">
-        <img src="icons/conta-bancaria.png">
-      </div>
-      <div class="flex flex-col ustify-center items-center">
-            <p class="text-gray-700 text-lg">Vencido</p>
-            <p class="text-gray-500 text-lg">Lampada</p>
-
-      </div>
-
-    </div>
-
-
-
-  </div>
-        {{!-- <div class="grid-item">
-          <div class="grid-label">Preço Unitário:</div>
-          <div class="result-value">{{dadosDashboard.preco_unitario}}</div>
-        </div> --}}
-        <div class="grid-item">
-          <div class="grid-label">Depreciação Anual(DA):</div>
-          <div class="result-value">{{dadosDashboard.depreciacao_anual}}</div>
+      
+        <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg  overflow-hidden fornecedor">
+          <div class="px-6 py-4">
+            <a href="/fornecedores"><img src="img/fornecedor.png" class="w-full h-auto" alt="Imagem de Fornecedor"></a>
+            <div class="font-bold text-xl mb-2 text-gray-500 text">Fornecedor</div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="grid-label">Valor Total:</div>
-          <div class="result-value">{{dadosDashboard.valor_total}}</div>
+      
+        <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg overflow-hidden perfil">
+          <div class="px-6 py-4">
+            <img src="img/perfil-de-usuario.png" class="w-full h-auto" alt="Imagem de Perfil de Usuário">
+            <div class="font-bold text-xl mb-2 text-gray-500 text">Perfil de Usuário</div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="grid-label">Valor Líquido(Vl):</div>
-          <div class="result-value">{{dadosDashboard.valor_liquido }}</div>
-        </div>
-        <div class="grid-item">
-          <div class="grid-label">Taxa de Depreciação Anual(%):</div>
-          <div class="result-value">{{dadosDashboard.taxa_depreciacao_anual}}</div>
-        </div>
-        <div class="grid-item">
-          <div class="grid-label">Taxa de Utilização(%):</div>
-          <div class="result-value">{{dadosDashboard.taxa_utilizacao}}</div>
-        </div>
-        <div class="grid-item">
-          <div class="grid-label">ROI(Retorno sobre o investimento):</div>
-          <div class="result-value">{{dadosDashboard.roi}}</div>
+      
+        <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg overflow-hidden relatorio">
+          <div class="px-6 py-4">
+            <img src="img/relatorio.png" class="w-full h-auto" alt="Imagem de Relatório">
+            <div class="font-bold text-xl mb-2 text-gray-500 text">Relatório</div>
+          </div>
         </div>
       </div>
-    </div>
-
-
-    <div class="chart-container">
-      <h2>% Depreciação</h2>
-      <canvas id="depreciationChart"></canvas>
-    </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var ctx = document.getElementById('depreciationChart').getContext('2d');
-      var chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Ano 1', 'Ano 2', 'Ano 3', 'Ano 4', 'Ano 5'],
-          datasets: [{
-            label: '% Depreciação',
-            data: [10, 8, 6, 4, 2],
-            backgroundColor: 'rgba(51, 102, 204, 0.2)',
-            borderColor: 'rgba(51, 102, 204, 1)',
-            borderWidth: 1,
-            fill: true,
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 10,
-            }
-          }
-        }
-      });
-    });
-  </script>
+      
 </body>
-
 </html>
+
+
+
+
+
+
+

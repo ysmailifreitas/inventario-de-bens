@@ -14,52 +14,49 @@
 </head>
 
 <body>
-{{> nav}}
+    {{> nav}}
 
-<div class="container">
-    <h1></h1>
-    <div class="card">
-        <div class="voltar">
-            <a href="/itens" class="voltar">↩ Voltar</a>
+    <div class="container">
+        <h1></h1>
+        <div class="card">
+            <div  class="voltar">
+                <a href="/itens" class="voltar">↩ Voltar</a>
+            </div>
+
+            <form id="form" action="/atualizarItem/{{id}}" method="post">
+                Editando o id: {{id}}<br>
+                Editando Item: {{item.it_nome}}
+                <div>
+                    <br>
+                    <div style="" class="block">
+                        <small></small>
+                        <label for="descricao">Nome</label>
+                        <input value="{{item.it_nome}}" name="descricao" type="text" id="descricao" placeholder="Ex. caneta, cadeira">
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div class="block">
+                        <small></small>
+                        <label for="quantidade">Quantidade</label>
+                        <input value="{{item.it_quantidade}}" name="quantidade" type="int" id="quantidade" placeholder="Definir Quantidade">
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div class="data">
+                        <small></small>
+                        <label for="data">Data de Aquisição</label>
+                        <input value="{{item.it_dataAquisicao}}" class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22" placeholder="Definir Data">
+                    </div>
+                </div>
+                <button type="submit">Salvar</button>
+
+            </form>
         </div>
-
-        <form id="form" action="itens/atualizarItem/{{id}}" method="post">
-            Editando o id: {{id}}<br>
-            Editando Item: {{item.it_nome}}
-            <div>
-                <br>
-                <div style="" class="block">
-                    <small></small>
-                    <label for="descricao">Nome</label>
-                    <input value="{{item.it_nome}}" name="descricao" type="text" id="descricao"
-                           placeholder="Ex. caneta, cadeira">
-                </div>
-            </div>
-
-            <div>
-                <br>
-                <div class="block">
-                    <small></small>
-                    <label for="quantidade">Quantidade</label>
-                    <input value="{{item.it_quantidade}}" name="quantidade" type="int" id="quantidade"
-                           placeholder="Definir Quantidade">
-                </div>
-            </div>
-
-            <div>
-                <br>
-                <div class="data">
-                    <small></small>
-                    <label for="data">Data de Aquisição</label>
-                    <input value="{{item.it_dataAquisicao}}" class="data" name="data_aquisicao" type="date" id="data"
-                           value="2023-07-22" placeholder="Definir Data">
-                </div>
-            </div>
-            <button type="submit">Salvar</button>
-
-        </form>
     </div>
-</div>
 
 </body>
 
