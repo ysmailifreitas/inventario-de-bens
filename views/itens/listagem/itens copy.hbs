@@ -9,7 +9,8 @@
     <base href="/">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/listagem.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css">
+
     <script src="js/cadastro.js"></script>
     <script src="js/itens.js"></script>
 </head>
@@ -32,7 +33,9 @@
             <a href="/cadastrarItem">
                 <button class="button" type="submit">Criar Novo Item</button>
             </a>
-            <a href="/relatorioItens/"><button class="button">Gerar Relatório</button></a>
+            <a href="/relatorioItens/">
+                <button class="button">Gerar Relatório</button>
+            </a>
 
             <div class="table-wrapper">
                 <table class="fl-table">
@@ -65,7 +68,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a id="deletar"  href="/deletarItem/{{id}}" onclick="removerItem()">
+                                            <a id="deletar" href="/deletarItem/{{id}}" onclick="removerItem()">
                                                 <img height="25px" width="25px" src="../img/delete.png"></img>
                                             </a>
                                         </td>

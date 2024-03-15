@@ -13,49 +13,51 @@
 </head>
 
 <body>
-    
-    {{> nav}}
 
-    <div class="container">
-        <h1></h1>
-        <div class="card">
-            <div  class="voltar">
-                <a href="/fornecedores" class="voltar">↩ Voltar</a>
+{{> nav}}
+
+<div class="container">
+    <h1></h1>
+    <div class="card">
+        <div class="voltar">
+            <a href="/fornecedores" class="voltar">↩ Voltar</a>
+        </div>
+
+        <form id="form" action="/cadastrarFornecedor" method="POST">
+            <div>
+                <br>
+                <div style="" class="block">
+                    <small></small>
+                    <label for="nome">Nome</label>
+                    <input value="Comfy Way" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
+                </div>
             </div>
 
-            <form id="form" action="/cadastrarFornecedor" method="POST">
-                <div>
-                    <br>
-                    <div style="" class="block">
-                        <small></small>
-                        <label for="nome">Nome</label>
-                        <input value="Comfy Way" name="nome" type="text" id="nome" placeholder="Ex. caneta, cadeira">
-                    </div>
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="telefone">Telefone</label>
+                    <input value="678811298921" name="telefone" type="tel" placeholder="Razão Social do fornecedor"
+                           id="telefone">
                 </div>
+            </div>
 
-                <div>
-                    <br>
-                    <div class="block">
-                        <small></small>
-                        <label for="telefone">Telefone</label>
-                        <input value="678811298921" name="telefone" type="tel" placeholder="Razão Social do fornecedor" id="telefone">
-                    </div>
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="email">Email</label>
+                    <input value="comfy@gmail.com" name="email" type="email" placeholder="Razão Social do fornecedor"
+                           id="email">
                 </div>
+            </div>
 
-                <div>
-                    <br>
-                    <div class="block">
-                        <small></small>
-                        <label for="email">Email</label>
-                        <input value="comfy@gmail.com" name="email" type="email" placeholder="Razão Social do fornecedor" id="email">
-                    </div>
-                </div>
+            <button type="submit">Salvar</button>
 
-                <button type="submit">Salvar</button>
-
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 
 </body>
 
