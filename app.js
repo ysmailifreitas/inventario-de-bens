@@ -30,7 +30,6 @@ const limiter = rateLimit({
 });
 
 
-app.use(limiter);
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,6 +49,7 @@ app.use(session({
     maxAge: 300000,
   }
 }));
+
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
@@ -75,6 +75,12 @@ hbs.registerHelper('formatDateHour', function (date) { return moment(date).forma
 hbs.registerHelper('isdefined', function (value) {
   return value !== undefined;
 });
+hbs.registerHelper('ifEquals', function(arg1, arg2, options){
+  return(arg1 === arg2) ? options.fn(this) : options.inverse(this);
+});
+hbs.registerHelper('includes', function (array, value, options) {
+  return array.includes(value) ? options.fn(this) : options.inverse(this);
+});
 
 app.use('/', require('./routes/login'));
 app.use('/', require("./routes/logout"));
@@ -87,6 +93,6 @@ app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
 app.use('/', require('./routes/editPermissions'));
 
-app.listen(5000, () => {
-  console.log("listening on port 5000");
+app.listen(4000, () => {
+  console.log("listening on port 4000");
 });

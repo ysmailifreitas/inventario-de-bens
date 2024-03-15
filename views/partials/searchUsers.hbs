@@ -1,0 +1,62 @@
+<div class="painel-selecao">
+    <div class="text-center">
+        <h1 class="m-0">Selecione um Usuário</h1>
+    </div>
+    <div class="painel-search-box flex justify-center items-center">
+        <label for="userSearch">
+            <img src="../img/search.png" alt="Search Icon" class="search-icon">
+        </label>
+        <input type="text" id="userSearch" oninput="searchUsers()" placeholder="Digite o nome do usuário..."
+               class="w-full ml-2 px-2 py-1 border border-gray-300 rounded">
+    </div>
+    <div class="table-wrapper">
+        <table class="fl-table w-full border-collapse">
+            <thead>
+            <tr>
+                <th class="border p-2">USUÁRIO</th>
+            </tr>
+            </thead>
+            <tbody id="userTableBody">
+
+            {{#each users}}
+                <tr class="">
+                    <td class="border p-2 cursor-pointer bg-dark">{{username}}</td>
+                </tr>
+            {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function searchUsers() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("userSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("userTableBody");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            var cells = tr[i].getElementsByTagName("td");
+            var found = false;
+
+            for (var j = 0; j < cells.length; j++) {
+                td = cells[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break; // Break if the search term is found in any cell
+                    }
+                }
+            }
+
+            if (found || tr[i].classList.contains("icon-row")) {
+                tr[i].style.display = ""; // Show the entire row
+            } else {
+                tr[i].style.display = "none"; // Hide the entire row
+            }
+        }
+    }
+</script>

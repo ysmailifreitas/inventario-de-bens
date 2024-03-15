@@ -2,27 +2,35 @@ const { Sequelize, DataTypes } = require('sequelize');
 const db = require('./db');
 
 const Roles = db.sequelize.define('roles', {
-    id: {
+    role_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    role: {
+    role_name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true // Certifica-se de que cada papel seja único
+        unique: true
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     }
 });
 
-const defaultRoles = ['Gestor', 'Administrador', 'Supervisor', 'Comum'];
+const defaultRoleNames = ['Gestor', 'Administrador', 'Supervisor', 'Comum'];
+const defaultDescriptions = ['Gestor do sistema', 'Administrador do Sistema', 'Supervisor do Sistema', 'Agente Comum do Sistema']
 
 Roles.sync()
     .then(async () => {
-        for (const role of defaultRoles) {
+        for (let i = 0; i < defaultRoleNames.length; i++) {
+            const role_name = defaultRoleNames[i];
+            const description = defaultDescriptions[i];
             await Roles.findOrCreate({
-                where: { role },
-                defaults: { role }
+                where: { role_name },
+                defaults: { role_name, description }
             });
         }
 

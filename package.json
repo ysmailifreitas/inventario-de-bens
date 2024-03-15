@@ -8,7 +8,8 @@
     "install-packages": "npm install",
     "test": "jest",
     "test:coverage": "nyc npm test",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "build:css" : "npx tailwindcss-cli@latest build -i ./public/style.css -o ./public/css/estilo.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
   "description": "",
   "dependencies": {
     "amqplib": "^0.10.3",
+    "autoprefixer": "^10.4.17",
     "bcrypt": "*",
     "body-parser": "^1.20.2",
     "cookie-parser": "*",
@@ -45,11 +47,15 @@
     "nodemon": "*",
     "nyc": "^15.1.0",
     "pdfkit": "*",
+    "postcss": "^8.4.35",
     "sequelize": "*",
     "tailwind": "*",
+    "tailwindcss": "^3.4.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "jest": "^29.7.0"
   }
 }
+
+

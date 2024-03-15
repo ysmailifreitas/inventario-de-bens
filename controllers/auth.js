@@ -24,6 +24,7 @@ exports.login = async (req, res) => {
         if (user && bcrypt.compareSync(password, user.password)) {
             req.session.username = username;
             res.render('home');
+            
         } else {
             res.render('login', { errorMessage: 'Credenciais inválidas. Verifique seu nome de usuário e senha e tente novamente.' });
         }

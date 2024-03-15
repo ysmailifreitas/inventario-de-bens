@@ -1,33 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <base href="/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="javascripts/dashboard.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css"
+          integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailadmin@2.0.0/dist/tailadmin.min.css" rel="stylesheet">
+
 </head>
-
-<body>
-  <div id="card">
-    <img src="img/INVENTÁRIO-nobg.png" id="logo">
-    {{#if errorMessage}}
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+{{#if errorMessage}}
     {{> errorCard}}
-    {{/if}}
-    <form action="/login" method="POST" class="loginForm">
-      <h1>LOGIN</h1>
-      <input type="text" id="username" name="username" class="input" placeholder="USUÁRIO DO SISTEMA">
-      <input type="password" id="password" name="password" class="input" placeholder="SENHA">
-      <button type="submit" class="botao">ENTRAR</button>
-    </form>
-    <div class="link">
-      <a href="/cadastrarUsuario">Cadastrar Novo Usuário</a>
-    </div>
-    <div class="link">
-      <a href="/forgot-password">Esqueci a Senha</a>
-    </div>
-  </div>
-</body>
+{{/if}}
+<div class="max-w-sm mx-auto p-8 rounded-lg card">
+    <h2 class="text-2xl font-semibold mb-4 text-center">LOGIN</h2>
 
+    <form action="/login" method="POST" class="loginForm">
+        <div class="mb-4">
+            <label for="username" class="block text-sm font-medium text-gray-700">Usuário</label>
+            <input type="text" id="username" name="username"
+                   class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700 ">Senha</label>
+            <input type="password" id="password" name="password"
+                   class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+        </div>
+        <div class="flex justify-between items-center mb-4">
+            <a href="/forgot-password" class="text-sm hover:underline register_text">Recuperar senha</a>
+            <button type="submit" class="px-4 py-2 text-white shadow-md shine button_login">Entrar</button>
+        </div>
+        <p class="text-sm text-center text-gray-500">Ainda não tem uma conta? <a href="/cadastrarUsuario"
+                                                                                 class="hover:underline register_text">Crie
+            sua conta</a></p>
+    </form>
+</div>
+</body>
 </html>
+
+
+
+
+

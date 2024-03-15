@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Cadastrar Item</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/listagem.css">
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <script src="js/cadastro.js"></script>
+    <script src="js/itens.js"></script>
+</head>
+
+<body>
+
+<img src="../img/central-de-atendimento.png" id="logoSuporte">
+
+{{> nav}}
+
+<div class="container">
+    <!-- Consider removing the empty <h1> element if not needed -->
+    <div class="card">
+        <div class="voltar">
+            <a href="/home" class="voltar">↩ Voltar</a>
+        </div>
+
+        <div class="listagem">
+            <h2 style="color:black">LISTAGEM DE BENS</h2>
+            <a href="/cadastrarItem">
+                <button class="button" type="submit">Criar Novo Item</button>
+            </a>
+            <a href="/relatorioItens/">
+                <button class="button">Gerar Relatório</button>
+            </a>
+
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>QUANTIDADE</th>
+                        <th>DATA AQUISIÇÃO</th>
+                        <th>FORNECEDOR</th>
+                        <th>DATA MODIFICAÇÃO</th>
+                        <th>PREÇO UNITÁRIO</th>
+                        <th>ACÕES</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each itens}}
+                        <tr>
+                            <td>{{it_nome}}</td>
+                            <td>{{it_quantidade}}</td>
+                            <td>{{#formatDate it_dataAquisicao}}{{/formatDate}}</td>
+                            <td>{{it_for_nome}}</td>
+                            <td>{{#formatDateHour updatedAt}}{{/formatDateHour}}</td>
+                            <td>R${{it_preco_unitario}}</td>
+                            <td>
+                                <table class="icones">
+                                    <tr>
+                                        <td>
+                                            <a href="/editarItem/{{id}}">
+                                                <img height="25px" width="25px" src="../img/edit.png"></img>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a id="deletar" href="/deletarItem/{{id}}" onclick="removerItem()">
+                                                <img height="25px" width="25px" src="../img/delete.png"></img>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/cadastro.js"></script>
+
+</body>
+
+</html>
