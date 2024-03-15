@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize("inventario", "inventario_user", "password", {
-    host: 'mysql-container',
+    host: 'localhost',
+    // host: 'mysql-container',
     dialect: 'mysql'
 })
 

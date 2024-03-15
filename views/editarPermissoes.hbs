@@ -4,102 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet" href="css/css-default.css">-->
-    <link rel="stylesheet" href="css/listagem.css">
-    <link rel="stylesheet" href="css/editPermissions.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!--    <link rel="stylesheet" href="css/css-default.css">-->
+    <!--    <link rel="stylesheet" href="css/listagem.css">-->
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Document</title>
 </head>
 
 <body>
 {{> nav}}
-<div class="container">
-    <div class="painel-selecao">
-        <div style="text-align: center">
-            <h1 style="margin:0 auto">Selecione um Usuário</h1>
-        </div>
-        <div class="painel-search-box">
-            <label for="userSearch">
-                <img src="../img/search.png" alt="Search Icon" class="search-icon">
-            </label>
-            <input type="text" id="userSearch" oninput="searchUsers()" placeholder="Digite o nome do usuário...">
-        </div>
-        <div class="table-wrapper">
-            <table class="fl-table" style="border-collapse: collapse">
-                <thead>
-                <tr>
-                    <th>USUÁRIO</th>
-                    <th>ACÕES</th>
-                </tr>
-                </thead>
-                <tbody id="userTableBody">
+<div class="items-center h-screen text-center justify-center ml-230 flex flex-col">
+    <div class="w-1000 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+        <!-- Left container -->
+        <div class="flex w-full space-x-6">
+            <div class="h-full w-full bg-white p-6 mb-6 rounded-lg shadow-md">
+                <form id="form" action="/editPermissions/updateUserRole/1" method="POST">
+                    <!-- Include the searchUsers partial -->
+                    {{> searchUsers}}
+                    <div class="mb-4">
+                        <label for="roles" class="block text-sm font-medium text-gray-600">Funções do Usuário</label>
+                        <select id="roles" name="role_id" multiple
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <option value="1" {{#ifEquals role_id 1}} selected {{/ifEquals}}>Gestor</option>
+                            <option value="2" {{#ifEquals role_id 2}} selected {{/ifEquals}}>Administrador</option>
+                            <option value="3" {{#ifEquals role_id 3}} selected {{/ifEquals}}>Supervisor</option>
+                            <option value="4" {{#ifEquals role_id 4}} selected {{/ifEquals}}>Comum</option>
+                        </select>
+                    </div>
 
-                {{#each users}}
-                    <tr>
-                        <td>{{username}}</td>
-                        <td>
-                            <table class="icones">
-                                <tr>
-                                    <td>
-                                        <a href="/visualizarUsuario/{{user_id}}">
-                                            <img height="25px" width="25px" src="../img/Eye.png" alt="Visualizar">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a id="editUserPermission" href="/editPermission/usuario/{{user_id}}">
-                                            <img height="25px" width="25px" src="../img/Registration.png"
-                                                 alt="Editar">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a id="chat" href="/enviarMensagem/{{user_id}}">
-                                            <img height="25px" width="25px" src="../img/chat.png"
-                                                 alt="Enviar Mensagem">
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                {{/each}}
+                    <div class="flex items-center justify-end">
+                        <button type="submit"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                            Salvar Permissões
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
+                <form action="/editPermissions/atualizarPermissoes/{{userId}}" method="POST">
+                    <div class="mb-4">
+                        <label for="roles" class="block text-sm font-medium text-gray-600">Permissões</label>
+                        <div>pesquisa aqui</div>
+                    </div>
 
-                </tbody>
-            </table>
+                    <div class="mb-4">
+                        <label for="permissions" class="block text-sm font-medium text-gray-600">Permissões
+                            Associadas</label>
+
+                        <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
+                        <div class="mt-2 space-y-2">
+                            {{#each permissions}}
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="permission{{@index}}" name="permissions[]"
+                                           value="{{this}}" class="form-checkbox h-5 w-5 text-blue-500"
+                                    >
+                                    <label for="permission{{@index}}"
+                                           class="ml-2 text-sm text-gray-700">{{permission_name}}</label>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end">
+                        <button type="submit"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                            Salvar Permissões
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
+                <form action="/editPermissions/atualizarRoles/{{userId}}" method="POST">
+                    <div class="mb-4">
+                        <label for="permissions" class="block text-sm font-medium text-gray-600">Roles</label>
+
+                        <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
+                        <div class="mt-2 space-y-2">
+                            {{#each roles}}
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="permission{{@index}}" name="roles[]" value="{{this}}"
+                                           class="form-checkbox h-5 w-5 text-blue-500"
+                                    >
+                                    <label for="permission{{@index}}"
+                                           class="ml-2 text-sm text-gray-700">{{role_name}}</label>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end">
+                        <button type="submit"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                            Salvar Permissões
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
 </div>
 
-<script>
-    function searchUsers() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("userSearch");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("userTableBody");
-        tr = table.getElementsByTagName("tr");
 
-        for (i = 0; i < tr.length; i++) {
-            var cells = tr[i].getElementsByTagName("td");
-            var found = false;
-
-            for (var j = 0; j < cells.length; j++) {
-                td = cells[j];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        found = true;
-                        break; // Break if the search term is found in any cell
-                    }
-                }
-            }
-
-            if (found || tr[i].classList.contains("icon-row")) {
-                tr[i].style.display = ""; // Show the entire row
-            } else {
-                tr[i].style.display = "none"; // Hide the entire row
-            }
-        }
-    }
-</script>
 </body>
 
 </html>

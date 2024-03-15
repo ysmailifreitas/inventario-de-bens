@@ -8,7 +8,7 @@ const {checkAuth} = require('../middlewares/auth');
 router.use(checkAuth);
 
 router.post("/cadastrarItem", itensController.cadastrarItem);
-router.post("/atualizarItem/:id", itensController.atualizarItem);
+router.get("/atualizarItem/:id", itensController.atualizarItem);
 router.get("/deletarItem/:id", itensController.deletarItem);
 
 
