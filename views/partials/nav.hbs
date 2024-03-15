@@ -1,26 +1,42 @@
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-<a href="/suporte">
-  <img src="../img/central-de-atendimento.png" id="logoSuporte">
-</a>
-<div class="aside-menu">
-    <div class="logo">
-      <a target="_blank" href="home.html">
-        <img height="150px" width="150px" src="../img/logo-inventario.png">
-      </a>
-    </div>
-    <hr class="line">
-    <div class="nav">
-      <ul>
-        <li><a href="home"><ion-icon name="browsers-outline"></ion-icon>PAINEL</a></li>
-        <li><a href="itens"> <ion-icon name="logo-dropbox"></ion-icon>LISTAGEM DE BENS</a></li>
-        <li><a href="fornecedores"><ion-icon name="storefront-outline"></ion-icon>FORNECEDORES</a></li>
-        <!-- a opção editar perfil ainda não funciona, passará
-                      a funcionar quando implementar a sessão do usuário logado -->
-        <li><a href="editarPermissoes"><ion-icon name="build-outline"></ion-icon>EDITAR PERMISSOES</a></li>
 
-        <li><a href="/logout"><ion-icon name="exit-outline"></ion-icon>SAIR</a></li>
-      </ul>
-    </div>
-  </div>
+  
+    <!-- Menu Lateral -->
+    <aside class="fixed-menu bg-white h-screen w-64 border-r border-gray-300 float-left shadow-lg" >
+        <!-- Título da Empresa -->
+        <div class="flex items-center justify-center box__style title__navbar"  >
+            <ion-icon name="cube-outline" class="w-12 h-12 flex cubo"></ion-icon>
+            <h1 class="text-xl font-semibold text-gray-800 ml-4 menu__navbar">Menu</h1>
+        </div>
+        
+        <hr class="shadow-lg h-2">
+        
+
+        <!-- Itens do Menu -->
+        <nav>
+            <ul class="space-y-2 ">
+                <li ><a href="/home" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center"><ion-icon name="home-outline" class="w-6 h-6 mr-2 flex" ></ion-icon>Dashboard</a></li>
+                <li><a href="/itens" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center"><ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 flex"></ion-icon>Listagem de Itens</a></li>
+                <li><a href="/fornecedores" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center"> <ion-icon name="business-outline" class="w-6 h-6 mr-2 flex"></ion-icon>Fornecedores</a></li>
+                <li><a href="#" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center"><ion-icon name="hammer-outline" class="w-6 h-6 mr-2 flex"></ion-icon>Editar Permissão</a></li>
+                <li><a href="logout" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center"><ion-icon name="log-out-outline" class="w-6 h-6 mr-2 flex"></ion-icon>Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Barra Superior -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto py-2">
+            <div class="flex justify-between items-center">
+                <div class="space-x-4 m-3 display flex items-center">
+                    
+                </div>
+                <div class="space-x-4 m-3 display flex items-center ml-auto">
+                    <a href="/suporte" class="text-gray-600 hover:text-gray-800 "><ion-icon name="call-outline"></ion-icon>Suporte</a>
+                    <span class="mx-2">|</span> <!-- Adiciona um separador -->
+                    <a href="#" class="text-gray-600 hover:text-gray-800 nome">{{}}</a>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </header>
