@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css"
+          integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
 <!-- Menu Lateral -->
 <aside class="fixed-menu bg-white h-screen w-64 border-r border-gray-300 float-left shadow-lg">
     <!-- Título da Empresa -->
@@ -38,17 +43,20 @@
     <div class="container mx-auto py-2">
         <div class="flex justify-between items-center">
             <div class="space-x-4 m-3 display flex items-center">
-
             </div>
             <div class="space-x-4 m-3 display flex items-center ml-auto">
                 <a href="/suporte" class="text-gray-600 hover:text-gray-800 ">
                     <ion-icon name="call-outline"></ion-icon>
                     Suporte</a>
                 <span class="mx-2">|</span> <!-- Adiciona um separador -->
-                <a href="#" class="text-gray-600 hover:text-gray-800 nome"></a>
+                {{> loggedUser}}
 
             </div>
+
+
         </div>
     </div>
 
 </header>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

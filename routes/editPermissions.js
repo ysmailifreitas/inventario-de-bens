@@ -11,7 +11,7 @@ const permissionsController = require("../controllers/permissions");
 router.get('/editPermissions', (req, res) => {
     Users.findAll().then((users) => {
         res.render('editarPermissoes', {
-            users: users
+            users: users, username: req.session.username
         });
     });
 });

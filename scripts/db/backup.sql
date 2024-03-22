@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS itens;
 
 CREATE TABLE users
 (
-    user_id                INT AUTO_INCREMENT PRIMARY KEY,
+    user_id           INT AUTO_INCREMENT PRIMARY KEY,
     username          VARCHAR(255) NOT NULL DEFAULT 'admin',
     company_email     VARCHAR(255) NOT NULL DEFAULT 'example@example.com',
     password          VARCHAR(255) NOT NULL DEFAULT '$2b$10$KeWip07yeZcurqQKAUv3ouVwbNFzM0WvaTwAG9zX7OkPceKghSoxu',
@@ -26,7 +26,8 @@ CREATE TABLE users
 );
 
 insert into users
-(user_id, username, company_email, password, company_name, cnpj, address, fullname, tipo_permissao, createdAt, updatedAt)
+(user_id, username, company_email, password, company_name, cnpj, address, fullname, tipo_permissao, createdAt,
+ updatedAt)
 values ('1', 'admin', 'comp@email', '$2b$10$iS/kpcc8pTnLPdvmAWFE6uHqjhEXnQgdVY1eoiR5V1Rohzk48W5.G', 'comp',
         '0932093209000123', 'rua charlote', 'admino', 'Comum', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
@@ -50,6 +51,15 @@ VALUES (3, 'Supervisor', 'Supervisor do Sistema', CURRENT_TIMESTAMP, CURRENT_TIM
 
 INSERT INTO roles (role_id, role_name, description, createdAt, updatedAt)
 VALUES (4, 'Comum', 'Agente Comum do Sistema', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+CREATE TABLE user_roles
+(
+    user_id int not null,
+    role_id int not null
+);
+
+INSERT INTO user_roles(user_id, role_id)
+values (1, 1);
 
 -- Create the Fornecedor table
 CREATE TABLE fornecedores

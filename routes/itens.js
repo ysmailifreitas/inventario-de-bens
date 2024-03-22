@@ -8,14 +8,14 @@ const {checkAuth} = require('../middlewares/auth');
 router.use(checkAuth);
 
 router.post("/cadastrarItem", itensController.cadastrarItem);
-router.get("/atualizarItem/:id", itensController.atualizarItem);
+router.post("/atualizarItem/:id", itensController.atualizarItem);
 router.get("/deletarItem/:id", itensController.deletarItem);
 
 
 router.get("/itens", (req, res) => {
     Itens.findAll().then(function (itens) {
         console.log(itens.for_id);
-        res.render("itens/listagem/itens", {itens});
+        res.render("itens/listagem/itens", {itens, username: req.session.username});
     });
 });
 

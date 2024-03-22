@@ -92,6 +92,7 @@ app.use('/', require('./routes/email'));
 app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
 app.use('/', require('./routes/editPermissions'));
+app.use('/', require('./routes/userProfile'));
 
 app.listen(4000, () => {
   console.log("listening on port 4000");

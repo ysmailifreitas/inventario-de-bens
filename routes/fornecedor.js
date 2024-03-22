@@ -12,7 +12,7 @@ router.get("/deletarFornecedor/:id", fornecedorController.deletarFornecedor);
 
 router.get("/fornecedores", (req, res) => {
     Fornecedor.findAll().then(function (fornecedores) {
-        res.render("fornecedores/listagem/fornecedores", {fornecedores: fornecedores});
+        res.render("fornecedores/listagem/fornecedores", {fornecedores: fornecedores,username: req.session.username});
     })
 })
 
@@ -27,6 +27,7 @@ router.get("/editarFornecedor/:id", function (req, res) {
         res.render("fornecedores/edicao/editarFornecedor", {
             fornecedor: fornecedor,
             id: req.params.id,
+            username: req.session.username
         });
     });
 });

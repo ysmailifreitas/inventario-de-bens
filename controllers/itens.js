@@ -81,22 +81,33 @@ exports.cadastrarItem = async (req, res) => {
 };
 
 exports.atualizarItem = (req, res) => {
+    console.log("Received update request for item ID:", req.params.id);
     Itens.findOne({
         where: {id: req.params.id},
-    }).then(function (item) {
-        if (item) {
-            item
-                .update({
-                    it_nome: req.body.descricao,
-                    it_quantidade: req.body.quantidade,
-                    it_dataAquisicao: req.body.data_aquisicao,
-                    for_id: req.body.fornecedores,
-                })
-                .then(function () {
-                    res.redirect("/itens");
-                });
-        }
-    });
+    })
+        .then(function (item) {
+            if (item) {
+                console.log("Item found:", item);
+                item
+                    .update({
+                        it_nome: req.body.descricao,
+                        it_quantidade: req.body.quantidade,
+                        it_dataAquisicao: req.body.data_aquisicao
+                    })
+                    .then(function () {
+                        console.log("Item updated successfully");
+                        res.redirect("/itens");
+                    })
+                    .catch(function (error) {
+                        console.error("Error updating item:", error);
+                    });
+            } else {
+                console.log("Item with ID", req.params.id, "not found");
+            }
+        })
+        .catch(function (error) {
+            console.error("Error finding item:", error);
+        });
 };
 
 exports.deletarItem = (req, res) => {

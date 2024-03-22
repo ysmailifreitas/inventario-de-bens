@@ -35,12 +35,11 @@ router.get("/home", async (req, res) => {
             Itens.count(),
             Fornecedor.count(),
         ]);
-        const username = req.session.username;
         preco_unitario = itemComMaiorQuantidade.it_quantidade;
         console.log("preco" + preco_unitario);
         
         res.render("home", {
-            username
+            username: req.session.username
         });
         
     } catch (error) {
