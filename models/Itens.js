@@ -56,6 +56,8 @@ const Itens = db.sequelize.define('itens', {
     }
 })
 
+
+
 Itens.afterSync(() => {
     // Adicione seus valores padrão aqui
     const defaultValues = {

@@ -1,4 +1,5 @@
 const Fornecedor = require("../models/Fornecedor")
+const Item = require("../models/Itens")
 
 exports.cadastrarFornecedor = (req, res) => {
     Fornecedor.create({
@@ -27,11 +28,20 @@ exports.atualizarFornecedor = (req, res) => {
 }
 
 exports.deletarFornecedor = (req, res) => {
-    Fornecedor.destroy({
+    Item.findOne(
+        {where: {for_id: req.params.id}}).then(item => {
+        const possuiItens = item ? true : false;
+        if(possuiItens) {
+            res.send("O fornecedor possui itens.");
+        }
+        else {
+           Fornecedor.destroy({
         where: {id: req.params.id}
     }).then(function () {
         res.redirect(req.get('referer'));
     }).catch(function (erro) {
         res.send('fornecedor não deletado')
+    }) 
+        }
     })
 }

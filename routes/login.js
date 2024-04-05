@@ -5,8 +5,7 @@ const authController = require('../controllers/auth');
 
 router.get("/login", (req, res) => {
     if (req.session.username) {
-
-        res.render('home', {username: req.session.username});
+        res.redirect('/home')
     }
     res.render("login");
 });
