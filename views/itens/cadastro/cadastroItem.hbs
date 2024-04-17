@@ -29,7 +29,7 @@
             <div class="mb-4">
                 <label for="quantidade" class="block text-sm font-medium text-gray-700">Quantidade</label>
                 <input type="int" id="quantidade" name="quantidade"
-                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" oninput="itValorTotal()">
             </div>
 
             <div>
@@ -56,9 +56,9 @@
             </div>
             <div class="mb-4">
                 <label for="preco_unitario" class="block text-sm font-medium text-gray-700">Preço unitario</label>
-                <input type="number" id="preco_unitario" name="preco_unitario"
+                <input type="number" id="precoUnitario" name="preco_unitario"
                        class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
-                       required>
+                       required oninput="itValorTotal()">
             </div>
             <div class="mb-4">
                 <label for="categoria" class="block text-sm font-medium text-gray-700 ">Categoria</label>
@@ -80,13 +80,13 @@
                 <label for="valorCompra" class="block text-sm font-medium text-gray-700">Valor de compra total</label>
                 <input type="number" id="valorCompra" name="valorCompra" step="0.01"
                        class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
-                       required>
+                       required readonly>
             </div>
             <div class="mb-4">
                 <label for="valorVenda" class="block text-sm font-medium text-gray-700">Valor da venda</label>
                 <input type="number" id="valorVenda" name="valorVenda" step="0.01"
                        class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
-                       required>
+                       required readonly value="0">
             </div>
             <div class="block">
                 <small></small>
