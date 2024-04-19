@@ -1,5 +1,7 @@
 const Fornecedor = require("../models/Fornecedores");
 const Patrimonio = require("../models/Patrimonio");
+const Estoque = require("../models/Estoque");
+const Movimentacao = require("../models/Movimentacao");
 const DadosDashboard = require("../models/DadosDashboard");
 const calculadorItensService = require("../services/calculardorItensService");
 
@@ -39,6 +41,19 @@ exports.cadastrarPatrimonio = async (req, res) => {
             pat_vida_util: req.body.vida_util,
             // pat_localizacao: req.body.localizacao,
         });
+        await Estoque.create({
+            estoque_pat_id: patrimonio.pat_id,
+            estoque_loc_id: req.body.localizacao,
+            estoque_qtde: req.body.quantidade
+        });
+
+        await Movimentacao.create({
+            mov_pat_id: patrimonio.pat_id,
+            mov_loc_origem_id: req.body.localizacao,
+            mov_loc_destino_id: req.body.localizacao,
+            mov_responsavel: req.session.username,
+            mov_tipo: 'Entrada'
+        })
 
         await DadosDashboard.create({
             valor_total: valorTotal,
@@ -74,7 +89,7 @@ exports.atualizarPatrimonio = (req, res) => {
                     })
                     .then(function () {
                         console.log("Patrimonio updated successfully");
-                        res.redirect("/patrimonio");
+                        // res.redirect("/patrimonio");
                     })
                     .catch(function (error) {
                         console.error("Error updating item:", error);

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <base href="/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/cadastroitem.css">
+    <title>Menu Lateral e Barra Superior com Tailwind CSS</title>
+    <link rel="stylesheet" href="css/estilo.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/tailadmin@2.0.0/dist/tailadmin.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+{{> nav}}
+
+<div class="flex items-center justify-center card_registro">
+    <div class="max-w-sm mx-auto p-8 rounded-lg card">
+        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR LOCALIZAÇÃO</h2>
+
+        <form id="form" action="/cadastrarLocalizacao" method="POST">
+            <div class="mb-4">
+                <label for="localizacao" class="block text-sm font-medium text-gray-700 ">Localização</label>
+                <input type="text" id="localizacao" name="localizacao"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+            <div class="mb-4">
+                <label for="descricao" class="block text-sm font-medium text-gray-700 ">Descrição</label>
+                <input type="text" id="descricao" name="descricao"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+            <div class="mb-4">
+                <label for="responsavel" class="block text-sm font-medium text-gray-700 ">Responsável</label>
+                <input type="text" id="responsavel" name="responsavel"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+
+
+            <button type="submit" class="button-30 flex items-center justify-center">Cadastrar</button>
+
+
+        </form>
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/localizacao.js"></script>
+
+
+</html>

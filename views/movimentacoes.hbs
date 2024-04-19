@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores</title>
+    <base href="/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/fornecedor.css">
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <script src="javascripts/dashboard.js"></script>
+
+
+</head>
+<body class="bg-gray-100">
+
+{{> nav}}
+
+<div class="flex flex-col justify-center items-center top_site">
+    <div class="max-w-screen-lg overflow-auto rounded-lg shadow-lg table-container">
+
+        <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center">Movimentações</h1>
+
+        <table class="w-full min-w-full rounded-lg overflow-hidden divide-y divide-gray-200  ">
+            <thead class="thead-fixed sticky top-0">
+            <tr>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Patrimonio ID
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Localização ID Origem
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Localização ID Destino
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Responsável
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Tipo
+                </th>
+
+<!--                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+<!--                    Ações-->
+<!--                </th>-->
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200 ">
+            {{#each movimentacao}}
+                <tr>
+                    <td class="px-6 py-4 whitespace-no-wrap">{{mov_pat_id}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap ">{{mov_loc_origem_id}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap ">{{mov_loc_destino_id}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap ">{{mov_responsavel}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap ">{{mov_tipo}}</td>
+<!--                    <td>-->
+<!--                        <table class="icones">-->
+<!--                            <tr>-->
+<!--                                <td>-->
+<!--                                    <a href="/editarEstoque/{{mov_id}}"-->
+<!--                                       class="px-2 py-1 inline-block text-white rounded-lg">-->
+<!--                                        <img height="25px" width="25px" src="../img/edit.png"></img>-->
+<!--                                    </a>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <a id="deletar" href="/deletarEstoque/{{mov_id}}" onclick="removerFornecedor()"-->
+<!--                                       class="px-2 py-1 inline-block text-white rounded-lg">-->
+<!--                                        <img height="25px" width="25px" src="../img/delete.png"></img>-->
+<!--                                    </a>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+<!--                    </td>-->
+                </tr>
+            {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -20,13 +20,46 @@
             <li><a href="/home" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
                 <ion-icon name="home-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
                 Dashboard</a></li>
-            <li><a href="/patrimonio" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+            <li><a href="/patrimonio"
+                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
                 <ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 flex"></ion-icon>
                 Listagem de Patrimonio</a></li>
-            <li><a href="/fornecedores"
+            <li>
+                <a href="/estoque"
                    class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                <ion-icon name="business-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                Fornecedores</a></li>
+                    <ion-icon name="file-tray-full-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Estoque</a></li>
+            <li>
+                <a href="/fornecedores"
+                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                    <ion-icon name="business-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Fornecedores</a></li>
+            <li>
+                <a href="/movimentacoes"
+                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                    <ion-icon name="stopwatch-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Movimentações</a></li>
+            <li class="dropdown ">
+                <a href="#"
+                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center dropdown-toggle">
+                    <ion-icon name="create-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Cadastros Básicos
+                </a>
+                <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
+                    <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
+                        <ion-icon name="location-outline" class="w-6 h-6 flex ml-4"></ion-icon>
+                        <a href="/cadastrarLocalizacao" class="block p-2 text-gray-600 hover:bg-gray-200">
+                            Cadastrar Localização
+                        </a>
+                    </li>
+                    <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
+                        <ion-icon name="git-merge-outline" class="w-6 h-6 flex ml-4"></ion-icon>
+                        <a href="/cadastrarDepartamento" class="block p-2 text-gray-600 hover:bg-gray-200">
+                            Cadastrar Departamento
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li><a href="/editPermissions"
                    class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
                 <ion-icon name="hammer-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
@@ -60,3 +93,66 @@
 </header>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+<!-- Adicione esses scripts ao final do <body> -->
+<script>
+    // Adiciona um evento de clique ao item principal do menu dropdown
+    document.querySelector('.dropdown-toggle').addEventListener('click', function (event) {
+        event.preventDefault(); // Impede a navegação ao clicar
+        // Encontra o submenu (ul.dropdown-menu) associado ao item principal (li.dropdown)
+        const dropdownMenu = this.nextElementSibling;
+
+        // Alterna a classe 'hidden' para mostrar ou ocultar o submenu
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Adiciona eventos de clique aos links do submenu para fechar o menu após a seleção
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    dropdownLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            // Encontra o submenu (ul.dropdown-menu) associado ao link e o esconde
+            const dropdownMenu = this.closest('.dropdown-menu');
+            dropdownMenu.classList.add('hidden');
+        });
+    });
+</script>
+
+<style>
+    /* Estilo para o menu dropdown */
+    .dropdown {
+        position: relative;
+        /*display: inline-block;*/
+    }
+
+    /* Estilo para o submenu dropdown */
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 0;
+        list-style: none;
+        margin: 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Ocultar o submenu por padrão */
+    .dropdown-menu.hidden {
+        display: none;
+    }
+
+    /* Estilo para os itens do submenu */
+    .dropdown-menu a {
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f0f0f0;
+    }
+</style>

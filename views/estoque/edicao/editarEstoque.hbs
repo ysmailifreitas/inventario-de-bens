@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário - Cadastrar Bem</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+{{> nav}}
+
+<div class="container">
+    <h1></h1>
+    <div class="card">
+        <div class="voltar">
+            <a href="/estoque" class="voltar">↩ Voltar</a>
+        </div>
+
+        <form id="form" action="/atualizarEstoque/{{estoque_id}}" method="post">
+            Editando o id: {{estoque_id}} | do Patrimonio ID: {{estoque.estoque_pat_id}}<br>
+            <div>
+                <br>
+                <div style="" class="block">
+                    <small></small>
+                    <label for="nome">Localizacao</label>
+                    <input value="{{estoque.estoque_loc_id}}" name="localizacao" type="number" id="localizacao"
+                           placeholder="Insira a localizacao">
+                </div>
+            </div>
+            <div>
+                <br>
+                <div style="" class="block">
+                    <small></small>
+                    <label for="nome">Quantidade</label>
+                    <input value="{{estoque.estoque_qtde}}" name="quantidade" type="number" id="quantidade"
+                           placeholder="Insira a quantidade">
+                </div>
+            </div>
+            <button type="submit" onclick="showMessage()">Salvar</button>
+
+        </form>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/estoque.js"></script>
+</html>

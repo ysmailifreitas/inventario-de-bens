@@ -31239,6 +31239,10 @@ video {
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+.swal-wide{
+  width:850px !important;
+}
+
 *{
   list-style: none;
   text-decoration: none;

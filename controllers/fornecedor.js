@@ -22,8 +22,6 @@ exports.atualizarFornecedor = (req, res) => {
                 for_telefone: req.body.telefone,
                 for_email: req.body.email
             }).then(function () {
-                res.redirect('/fornecedores')
-                // console.log('epa')
 
             })
         }

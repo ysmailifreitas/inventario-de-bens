@@ -1,5 +1,5 @@
 USE
-    inventario;
+inventario;
 
 DROP TABLE IF EXISTS cargo_permissao;
 DROP TABLE IF EXISTS cargo_usuario;
@@ -7,7 +7,11 @@ DROP TABLE IF EXISTS cargos;
 DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS dados_dashboards;
 DROP TABLE IF EXISTS fornecedores;
+DROP TABLE IF EXISTS estoque;
 DROP TABLE IF EXISTS patrimonio;
+DROP TABLE IF EXISTS localizacao;
+DROP TABLE IF EXISTS departamento;
+DROP TABLE IF EXISTS movimentacao;
 
 CREATE TABLE usuarios
 (
@@ -94,6 +98,69 @@ INSERT INTO patrimonio (pat_nome, pat_for_id, pat_tipo, pat_data_aquisicao, pat_
                         pat_depreciacao_anual, pat_vida_util, createdAt, updatedAt)
 VALUES ('Exemplo Patrimonio', 'fornecedor123', 'Eletrônicos', '2023-11-18', 199.90, 'Bom', 5.0, '10 anos',
         '2023-11-18 00:00:00', '2023-11-18 00:00:00');
+
+-- Create the Estoque table
+CREATE TABLE estoque
+(
+    estoque_id     INT AUTO_INCREMENT PRIMARY KEY,
+    estoque_pat_id VARCHAR(50)  NOT NULL,
+    estoque_loc_id VARCHAR(255) NOT NULL,
+    estoque_qtde   VARCHAR(255) NOT NULL,
+    createdAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert data into the patrimonio table
+INSERT INTO estoque (estoque_pat_id, estoque_loc_id, estoque_qtde, createdAt, updatedAt)
+VALUES (1, 1, 5, '2023-11-18 00:00:00', '2023-11-18 00:00:00');
+
+-- Create the Localizacao table
+CREATE TABLE localizacao
+(
+    loc_id     INT AUTO_INCREMENT PRIMARY KEY,
+    loc_nome VARCHAR(50)  NOT NULL,
+    loc_descricao VARCHAR(50)  NOT NULL,
+    loc_responsavel VARCHAR(50)  NOT NULL,
+    createdAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert data into the localizacao table
+INSERT INTO localizacao (loc_nome, loc_descricao, loc_responsavel, createdAt, updatedAt)
+VALUES ('Sala 3', 'Localização de Patrimonios Farmaceuticos', 'admin', '2023-11-18 00:00:00', '2023-11-18 00:00:00');
+
+-- Create the departamentos table
+CREATE TABLE departamentos
+(
+    dep_id     INT AUTO_INCREMENT PRIMARY KEY,
+    dep_nome VARCHAR(50)  NOT NULL,
+    dep_descricao VARCHAR(50)  NOT NULL,
+    dep_responsavel VARCHAR(50)  NOT NULL,
+    createdAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert data into the departamentos table
+INSERT INTO departamentos (dep_nome, dep_descricao, dep_responsavel, createdAt, updatedAt)
+VALUES ('GOVERNO', 'Departamento do Governo', 'admin', '2023-11-18 00:00:00', '2023-11-18 00:00:00');
+
+-- Create the movimentacao table
+CREATE TABLE movimentacao
+(
+    mov_id     INT AUTO_INCREMENT PRIMARY KEY,
+    mov_pat_id INT NOT NULL,
+    mov_loc_origem_id INT NOT NULL,
+    mov_loc_destino_id INT NOT NULL,
+    mov_responsavel VARCHAR(50)  NOT NULL,
+    mov_tipo VARCHAR(50)  NOT NULL,
+    createdAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert data into the departamentos table
+INSERT INTO movimentacao (mov_pat_id, mov_loc_origem_id, mov_loc_destino_id, mov_responsavel, mov_tipo, createdAt, updatedAt)
+VALUES (1, 1, 1, 'admin', 'Entrada', '2023-11-18 00:00:00', '2023-11-18 00:00:00');
+
 
 -- Insert data into the dados_dashboard table
 CREATE TABLE dados_dashboards
