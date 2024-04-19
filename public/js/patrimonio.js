@@ -1,13 +1,3 @@
-function removerPatrimonio() {
-    var a = document.querySelector("#deletar")
-
-    var confirmarAcao = confirm("Deseja deletar o fornecedor?")
-
-    if (confirmarAcao === false) {
-        a.href = "/fornecedores"
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form');
 
@@ -38,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showMessage('success');
     }
 
+
     form.addEventListener('submit', validarFormulario);
 
     function showMessage(tipo, mensagem) {
@@ -63,3 +54,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+function removerPatrimonio() {
+    var a = document.querySelector("#deletar")
+
+    var confirmarAcao = confirm("Deseja deletar o fornecedor?")
+
+    if (confirmarAcao === true) {
+        showMessage('success')
+    }
+}
+function showMessage(tipo) {
+    if (tipo === 'success') {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Operação realizada com sucesso!",
+            showConfirmButton: false,
+            timer: 1500,
+            toast: true
+        });
+    } else if (tipo === 'error') {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Ocorreu um erro nessa operação!",
+            text: mensagem,
+            showConfirmButton: false,
+            timer: 2000,
+            toast: true
+        });
+    }
+}

@@ -16,7 +16,8 @@ router.get("/deletarPatrimonio/:id", patrimonioController.deletarPatrimonio);
 router.get("/patrimonio", (req, res) => {
     Patrimonio.findAll().then(async function (patrimonio) {
         let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
-        res.render("patrimonio/listagem/patrimonio", {patrimonio, username: usuarioLogado});
+        let fornecedores = await Fornecedor.findAll().then((fornecedor)=>fornecedor);
+        res.render("patrimonio/listagem/patrimonio", {patrimonio:patrimonio, username: usuarioLogado, fornecedores: fornecedores});
     });
 });
 

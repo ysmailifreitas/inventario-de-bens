@@ -105,13 +105,15 @@ exports.atualizarPatrimonio = (req, res) => {
 
 exports.deletarPatrimonio = (req, res) => {
     DadosDashboard.destroy({
-        where: {id: req.params.id},
+        where: {pat_id: req.params.id},
     })
     Patrimonio.destroy({
         where: {pat_id: req.params.id},
     })
         .then(function () {
-            res.redirect(req.get("referer"));
+            setTimeout(() => {
+                res.redirect(req.get("referer"));
+            }, 1000);
         })
         .catch(function (erro) {
             res.send("patrimonio não deletado");

@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Roles = require('../models/Cargos.js');
-const Permissions = require('../models/Permissoes')
-const UserRoles = require('../models/CargoUsuario')
+const Permissoes = require('../models/Permissoes')
+const Cargos = require('../models/Cargos')
 const {where} = require("sequelize");
 const permissionsController = require("../controllers/permissions");
 const {Usuarios} = require('../models/Usuarios');
@@ -11,8 +10,10 @@ const {Usuarios} = require('../models/Usuarios');
 router.get('/editPermissions', (req, res) => {
     Usuarios.findAll().then(async (users) => {
         let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+        let permissoes = await Permissoes.findAll().then((permissoes) => permissoes)
+        let cargos = await Cargos.findAll().then((cargos) => cargos)
         res.render('editarPermissoes', {
-            users: users, username: usuarioLogado
+            users: users, username: usuarioLogado, permissoes: permissoes, cargos: cargos
         });
     });
 });

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/home.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
@@ -55,13 +54,13 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="cargos" class="block text-sm font-medium text-gray-600">Funções do Usuário</label>
+                        <label for="cargos" class="block text-sm font-medium text-gray-600">Cargos do Usuário</label>
                         <select id="cargos" name="cargo_id" multiple
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <option value="1" {{#ifEquals username.cargo_id 1}} selected {{/ifEquals}}>Gestor</option>
-                            <option value="2" {{#ifEquals username.cargo_id 2}} selected {{/ifEquals}}>Administrador</option>
-                            <option value="3" {{#ifEquals username.cargo_id 3}} selected {{/ifEquals}}>Supervisor</option>
-                            <option value="4" {{#ifEquals username.cargo_id 4}} selected {{/ifEquals}}>Comum</option>
+                            <option value="1" {{#ifEquals username.usr_cargo 1}} selected {{/ifEquals}}>Gestor</option>
+                            <option value="2" {{#ifEquals username.usr_cargo 2}} selected {{/ifEquals}}>Administrador</option>
+                            <option value="3" {{#ifEquals username.usr_cargo 3}} selected {{/ifEquals}}>Supervisor</option>
+                            <option value="4" {{#ifEquals username.usr_cargo 4}} selected {{/ifEquals}}>Comum</option>
                         </select>
                     </div>
 
@@ -81,18 +80,18 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="permissions" class="block text-sm font-medium text-gray-600">Permissões
+                        <label for="permissoes" class="block text-sm font-medium text-gray-600">Permissões
                             Associadas</label>
 
                         <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
                         <div class="mt-2 space-y-2">
-                            {{#each permissions}}
+                            {{#each permissoes}}
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="permission{{@index}}" name="permissions[]"
+                                    <input type="checkbox" id="permissao{{@index}}" name="permissoes[]"
                                            value="{{this}}" class="form-checkbox h-5 w-5 text-blue-500"
                                     >
-                                    <label for="permission{{@index}}"
-                                           class="ml-2 text-sm text-gray-700">{{permission_name}}</label>
+                                    <label for="permissao{{@index}}"
+                                           class="ml-2 text-sm text-gray-700">{{perm_nome}}</label>
                                 </div>
                             {{/each}}
                         </div>
@@ -109,17 +108,17 @@
             <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
                 <form action="/editPermissions/atualizarRoles/{{userId}}" method="POST">
                     <div class="mb-4">
-                        <label for="permissions" class="block text-sm font-medium text-gray-600">Cargos</label>
+                        <label for="cargos" class="block text-sm font-medium text-gray-600">Cargos</label>
 
                         <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
                         <div class="mt-2 space-y-2">
-                            {{#each roles}}
+                            {{#each cargos}}
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="permission{{@index}}" name="roles[]" value="{{this}}"
+                                    <input type="checkbox" id="cargo{{@index}}" name="cargos[]" value="{{this}}"
                                            class="form-checkbox h-5 w-5 text-blue-500"
                                     >
-                                    <label for="permission{{@index}}"
-                                           class="ml-2 text-sm text-gray-700">{{role_name}}</label>
+                                    <label for="cargo{{@index}}"
+                                           class="ml-2 text-sm text-gray-700">{{cargo_nome}}</label>
                                 </div>
                             {{/each}}
                         </div>
