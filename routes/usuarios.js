@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/Users');
+const {Usuarios} = require('../models/Usuarios');
 const bcrypt = require('bcrypt');
 
 router.get("/cadastrarUsuario", (req, res) => {
@@ -10,7 +10,7 @@ router.get("/cadastrarUsuario", (req, res) => {
 router.post('/cadastrarUsuario', async (req, res) => {
     const { username, password, confirm_password, company_email, company_name, cnpj, address, fullname, roles } = req.body;
     try {
-        const userExists = await User.findOne({ where: { username: username } });
+        const userExists = await Usuarios.findOne({ where: { usr_nome: username } });
 
         if (userExists) {
             res.render('login', { errorMessage: 'Nome de usuário já está em uso. Por favor, escolha outro nome de usuário.' });
@@ -29,14 +29,9 @@ router.post('/cadastrarUsuario', async (req, res) => {
                 console.log('Profile photo path:', profilePhotoPath);
             }
 
-            const user = await User.create({
-                username: username,
-                password: hashedPassword,
-                company_email: company_email,
-                company_name: company_name,
-                cnpj: cnpj,
-                address: address,
-                fullname: fullname,
+            const user = await Usuarios.create({
+                usr_nome: username,
+                usr_pass: hashedPassword,
                 profile_photo: profilePhotoPath,
             });
 

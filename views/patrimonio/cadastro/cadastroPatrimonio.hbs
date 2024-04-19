@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <base href="/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/cadastroitem.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <title>Menu Lateral e Barra Superior com Tailwind CSS</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="javascripts/dashboard.js"></script>
+</head>
+
+<body>
+{{> nav}}
+
+<div class="flex items-center justify-center card_registro">
+    <div class="max-w-sm mx-auto p-8 rounded-lg card">
+        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR ITEM</h2>
+
+        <form action="/cadastrarPatrimonio" method="POST">
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <select name="my-select" required>
+                        <option value="" id="selectfn">Selecione o Fornecedores...</option>
+                        {{#each fornecedores}}
+                            <option value="{{for_id}}">{{for_nome}}</option>
+                            <input value="{{for_nome}}" name="for_nome" id="for_nome" style="display:none">
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="nome" class="block text-sm font-medium text-gray-700 ">Nome do item</label>
+                <input type="text" id="password" name="nome"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+            <div class="mb-4">
+                <label for="quantidade" class="block text-sm font-medium text-gray-700">Quantidade</label>
+                <input type="int" id="quantidade" name="quantidade"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+
+            <div class="mb-4">
+                <label for="tipo" class="block text-sm font-medium text-gray-700 ">Tipo</label>
+                <input type="text" id="tipo" name="tipo"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" required>
+            </div>
+
+            <div class="data">
+                <small></small>
+                <label for="data" class="block text-sm font-medium text-gray-700">Data de Aquisição</label>
+                <input class="data" name="data_aquisicao" type="date" id="data" value="2023-07-22"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400"
+                       placeholder="Definir Data" required>
+            </div>
+            <div class="mb-4">
+                <label for="preco_unitario" class="block text-sm font-medium text-gray-700">Preço unitario</label>
+                <input type="number" id="preco_unitario" name="preco"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
+                       required>
+            </div>
+
+
+            <div class="block">
+                <small></small>
+                <label for="estadoConservacao" class="block text-sm font-medium text-gray-700">Estado de
+                    Conservação</label>
+                <select name="estadoConservacao" id="estadoConservacao">
+                    <option value="novo">Novo</option>
+                    <option value="usado">Usado</option>
+                    <option value="danificado">Danificado</option>
+
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="vida_util" class="block text-sm font-medium text-gray-700">Vida Útil</label>
+                <input type="number" id="vida_util" name="vida_util"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
+                       required>
+            </div>
+
+<!--            <div class="mb-4">-->
+<!--                <label for="localizacao" class="block text-sm font-medium text-gray-700 ">Localizacao</label>-->
+<!--                <input type="text" id="localizacao" name="localizacao"-->
+<!--                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" required>-->
+<!--            </div>-->
+
+
+            <div class="flex justify-center">
+                <button type="submit" class="button-30 flex items-center justify-center">Cadastrar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script src="js/cadastro.js"></script>
+
+</html>

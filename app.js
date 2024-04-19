@@ -85,7 +85,7 @@ hbs.registerHelper('includes', function (array, value, options) {
 app.use('/', require('./routes/login'));
 app.use('/', require("./routes/logout"));
 app.use('/', require('./routes/home'));
-app.use('/', require("./routes/itens"));
+app.use('/', require("./routes/patrimonio"));
 app.use('/', require("./routes/fornecedor"));
 app.use('/', require('./routes/suporte'));
 app.use('/', require('./routes/email'));

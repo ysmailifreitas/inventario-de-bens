@@ -1,47 +1,44 @@
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 const db = require("./db");
 
 
-const UserRoles = db.sequelize.define('user_roles', {
-    user_id: {
+const CargoUsuario = db.sequelize.define('cargo_usuario', {
+    usr_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
+        primaryKey: true,
         references: {
-            model: 'users',
-            key: 'user_id'
+            model: 'usuarios',
+            key: 'usr_id'
         }
     },
-    role_id: {
+    cargo_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: 'roles',
-            key: 'role_id'
-        }
+        primaryKey: false,
     }
 }, {
-    timestamps: false, // To disable createdAt and updatedAt columns
+    tableName: 'cargo_usuario',
+    timestamps: false,
     primaryKey: true
 });
 
-// Synchronize the table
-UserRoles.sync()
+CargoUsuario.sync()
     .then(() => {
         console.log('Tabela de user_roles sincronizada com sucesso.');
 
-        // Check if the table is empty
-        return UserRoles.count();
+
+        return CargoUsuario.count();
     })
     .then((count) => {
         if (count === 0) {
-            // Table is empty, add a new entry
-            return UserRoles.create({
-                user_id: 1,
-                role_id: 1
+
+            return CargoUsuario.create({
+                usr_id: 1,
+                cargo_id: 1
             });
         } else {
-            // Table is not empty
+
             console.log('A tabela já contém registros. Não é necessário adicionar uma nova entrada.');
         }
     })
@@ -53,5 +50,5 @@ UserRoles.sync()
     });
 
 module.exports = {
-    UserRoles
+    CargoUsuario: CargoUsuario
 };

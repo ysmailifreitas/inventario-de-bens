@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventário - Cadastrar Bem</title>
     <base href="/">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/estilo.css">
+
     <script src="js/cadastro.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -23,8 +24,8 @@
         </div>
 
         <form id="form" action="/atualizarFornecedor/{{id}}" method="post">
-            Editando o id: {{id}}<br>
-            Editando Fornecedor: {{fornecedor.for_nome}}
+            Editando o id: {{for_id}}<br>
+            Editando Fornecedores: {{fornecedor.for_nome}}
             <div>
                 <br>
                 <div style="" class="block">
@@ -55,13 +56,32 @@
                 </div>
             </div>
 
-            <button type="submit">Salvar</button>
+            <button type="submit" onclick="showToastifyMessage()">Salvar</button>
 
         </form>
     </div>
 </div>
 
 </body>
+<script>
+    function showToastifyMessage() {
+        Toastify({
+            text: "This is a toast",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+    }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <script src="js/cadastro.js"></script>
 

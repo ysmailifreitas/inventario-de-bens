@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrimonio</title>
+    <base href="/">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/listagem.css">
+    <link rel="stylesheet" href="css/estilo.css">
+
+</head>
+<body class="bg-gray-100">
+{{> nav}}
+<div class="flex flex-col justify-center items-center top_site">
+    <div class="flex justify-end bg-gray-50 add_button">
+        <button class="font-bold py-2 px-4 rounded"><a href="/cadastrarPatrimonio">Adicionar Item</a></button>
+    </div>
+    <div class="max-w-screen-lg overflow-auto rounded-lg shadow-lg table-container">
+        <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center">Listagem de Patrimonio</h1>
+        <table class="w-full min-w-full rounded-lg overflow-hidden divide-y divide-gray-200  ">
+            <thead class="thead-fixed sticky top-0">
+            <tr>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Nome
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Quantidade
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Data de Aquisição
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Fornecedor
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Modificação
+                </th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Ações
+                </th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200 ">
+            {{#each patrimonio}}
+                <tr>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{pat_nome}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">puxar do estoque</td>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDate
+                            pat_data_aquisicao}}{{/formatDate}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{pat_for_id}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDateHour
+                            updatedAt}}{{/formatDateHour}}</td>
+                    <td>
+                        <table class="icones">
+                            <tr>
+                                <td>
+                                    <a href="/editarPatrimonio/{{pat_id}}" class="px-2 py-1 inline-block text-white rounded-lg">
+                                        <img height="25px" width="25px" src="../img/edit.png"></img>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a id="deletar" href="/deletarPatrimonio/{{pat_id}}" onclick="removerItem()" class="p-2">
+                                        <img height="25px" width="25px" src="../img/delete.png"></img>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+

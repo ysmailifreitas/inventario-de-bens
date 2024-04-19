@@ -9,7 +9,7 @@
     "test": "jest",
     "test:coverage": "nyc npm test",
     "test:watch": "jest --watchAll",
-    "build:css" : "npx tailwindcss-cli@latest build -i ./public/style.css -o ./public/css/estilo.css --watch"
+    "build:css": "npx tailwindcss-cli@latest build -i ./public/style.css -o ./public/css/estilo.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -57,5 +57,3 @@
     "jest": "^29.7.0"
   }
 }
-
-

@@ -17,19 +17,51 @@
 <div class="items-center h-screen text-center justify-center ml-230 flex flex-col">
     <div class="w-1000 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
         <!-- Left container -->
+        {{#if errorMessage}}
+            {{> errorCard}}
+        {{/if}}
         <div class="flex w-full space-x-6">
             <div class="h-full w-full bg-white p-6 mb-6 rounded-lg shadow-md">
-                <form id="form" action="/editPermissions/updateUserRole/1" method="POST">
+                <form id="form" action="/editPermissions/atualizarCargoUsuario/1" method="POST">
                     <!-- Include the searchUsers partial -->
-                    {{> searchUsers}}
+                    <div class="painel-selecao">
+                        <div class="text-center">
+                            <h1 class="m-0">Selecione um Usuário</h1>
+                        </div>
+                        <div class="painel-search-box flex justify-center items-center">
+                            <label for="userSearch">
+                                <img src="../img/search.png" alt="Search Icon" class="search-icon">
+                            </label>
+                            <input type="text" id="userSearch" oninput="searchUsers()" placeholder="Digite o nome do usuário..."
+                                   class="w-full ml-2 px-2 py-1 border border-gray-300 rounded">
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="fl-table w-full border-collapse">
+                                <thead>
+                                <tr>
+                                    <th class="border p-2">USUÁRIO</th>
+                                </tr>
+                                </thead>
+                                <tbody id="userTableBody">
+
+                                {{#each users}}
+                                    <tr class="">
+                                        <td class="border p-2 cursor-pointer bg-dark">{{usr_nome}}</td>
+                                    </tr>
+                                {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="mb-4">
-                        <label for="roles" class="block text-sm font-medium text-gray-600">Funções do Usuário</label>
-                        <select id="roles" name="role_id" multiple
+                        <label for="cargos" class="block text-sm font-medium text-gray-600">Funções do Usuário</label>
+                        <select id="cargos" name="cargo_id" multiple
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <option value="1" {{#ifEquals role_id 1}} selected {{/ifEquals}}>Gestor</option>
-                            <option value="2" {{#ifEquals role_id 2}} selected {{/ifEquals}}>Administrador</option>
-                            <option value="3" {{#ifEquals role_id 3}} selected {{/ifEquals}}>Supervisor</option>
-                            <option value="4" {{#ifEquals role_id 4}} selected {{/ifEquals}}>Comum</option>
+                            <option value="1" {{#ifEquals username.cargo_id 1}} selected {{/ifEquals}}>Gestor</option>
+                            <option value="2" {{#ifEquals username.cargo_id 2}} selected {{/ifEquals}}>Administrador</option>
+                            <option value="3" {{#ifEquals username.cargo_id 3}} selected {{/ifEquals}}>Supervisor</option>
+                            <option value="4" {{#ifEquals username.cargo_id 4}} selected {{/ifEquals}}>Comum</option>
                         </select>
                     </div>
 
@@ -77,7 +109,7 @@
             <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
                 <form action="/editPermissions/atualizarRoles/{{userId}}" method="POST">
                     <div class="mb-4">
-                        <label for="permissions" class="block text-sm font-medium text-gray-600">Roles</label>
+                        <label for="permissions" class="block text-sm font-medium text-gray-600">Cargos</label>
 
                         <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
                         <div class="mt-2 space-y-2">

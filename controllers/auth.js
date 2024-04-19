@@ -1,5 +1,5 @@
 // controllers/auth.js
-const User = require('../models/Users');
+const {Usuarios} = require('../models/Usuarios');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const uuid = require('uuid');
@@ -19,12 +19,11 @@ exports.login = async (req, res) => {
     const password = req.body.password;
 
     try {
-        const user = await User.findOne({ where: { username: username } });
-
-        if (user && bcrypt.compareSync(password, user.password)) {
+        const user = await Usuarios.findOne({ where: { usr_nome: username } });
+        if (user && bcrypt.compareSync(password, user.usr_pass)) {
             req.session.username = username;
-            res.render('home', {username: req.session.username});
-            
+            res.redirect('/home')
+
         } else {
             res.render('login', { errorMessage: 'Credenciais inválidas. Verifique seu nome de usuário e senha e tente novamente.' });
         }
@@ -39,15 +38,13 @@ exports.resetPassword = async (req, res) => {
     const newPassword = req.body.newPassword;
 
     try {
-        const user = await User.findOne({ where: { resetToken: token } });
+        const user = await Usuarios.findOne({ where: { resetToken: token } });
 
         if (!user || user.resetTokenExpires < Date.now()) {
             return res.render('resetPassword', { errorMessage: 'Invalid or expired reset token. Please try again.' });
         }
 
-        const hashedPassword = bcrypt.hashSync(newPassword, 10);
-
-        user.password = hashedPassword;
+        user.password = bcrypt.hashSync(newPassword, 10);
         user.resetToken = null;
         user.resetTokenExpires = null;
 
@@ -66,7 +63,7 @@ exports.showResetPasswordForm = async (req, res) => {
     const token = req.params.token;
 
     try {
-        const user = await User.findOne({ where: { resetToken: token } });
+        const user = await Usuarios.findOne({ where: { resetToken: token } });
 
         if (!user || user.resetTokenExpires < Date.now()) {
             return res.render('resetPassword', { errorMessage: 'Invalid or expired reset token. Please try again.' });
@@ -87,10 +84,10 @@ exports.sendPasswordResetEmail = async (req, res) => {
     const company_email = req.body.company_email;
 
     try {
-        const user = await User.findOne({ where: { company_email } });
+        const user = await Usuarios.findOne({ where: { company_email } });
 
         if (!user) {
-            return res.render('forgotPassword', { errorMessage: 'User not found with the provided email.' });
+            return res.render('forgotPassword', { errorMessage: 'Usuarios not found with the provided email.' });
         }
 
         const resetToken = generateUniqueToken();

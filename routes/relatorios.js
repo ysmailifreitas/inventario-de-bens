@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Itens = require("../models/Itens");
-const Fornecedor = require("../models/Fornecedor");
+const Itens = require("../models/Patrimonio");
+const Fornecedor = require("../models/Fornecedores");
 const PDFDocument = require("pdfkit");
 const {checkAuth} = require('../middlewares/auth');
 

@@ -4,6 +4,6 @@ function removerItem() {
     var confirmarAcao = confirm("Deseja deletar o item?")
 
     if (confirmarAcao == false) {
-        a.href = "/itens"
+        a.href = "/patrimonio"
     }
 }

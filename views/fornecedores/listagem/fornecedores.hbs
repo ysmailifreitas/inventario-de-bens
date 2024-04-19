@@ -7,23 +7,10 @@
     <base href="/">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/fornecedor.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="css/estilo.css">
 
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="javascripts/dashboard.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css"
-          integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link href="https://cdn.jsdelivr.net/npm/tailadmin@2.0.0/dist/tailadmin.min.css" rel="stylesheet">
-    <style>
-        .fixed-menu {
-            position: sticky;
-            top: 0;
-            z-index: 1000; /* Defina um valor de z-index apropriado para a sobreposição */
-            /* Outros estilos desejados, como largura, altura, cor de fundo, etc. */
-        }
-    </style>
+
 
 </head>
 <body class="bg-gray-100">
@@ -32,7 +19,7 @@
 
 <div class="flex flex-col justify-center items-center top_site">
     <div class="flex justify-end bg-gray-50 add_button">
-        <button class="font-bold py-2 px-4 rounded"><a href="/cadastrarFornecedor">Adicionar Fornecedor</a></button>
+        <button class="font-bold py-2 px-4 rounded"><a href="/cadastrarFornecedor">Adicionar Fornecedores</a></button>
     </div>
     <div class="max-w-screen-lg overflow-auto rounded-lg shadow-lg table-container">
 
@@ -67,13 +54,13 @@
                         <table class="icones">
                             <tr>
                                 <td>
-                                    <a href="/editarFornecedor/{{id}}"
+                                    <a href="/editarFornecedor/{{for_id}}"
                                        class="px-2 py-1 inline-block text-white rounded-lg">
                                         <img height="25px" width="25px" src="../img/edit.png"></img>
                                     </a>
                                 </td>
                                 <td>
-                                    <a id="deletar" href="/deletarFornecedor/{{id}}" onclick="removerFornecedor()"
+                                    <a id="deletar" href="/deletarFornecedor/{{for_id}}" onclick="removerFornecedor()"
                                        class="px-2 py-1 inline-block text-white rounded-lg">
                                         <img height="25px" width="25px" src="../img/delete.png"></img>
                                     </a>

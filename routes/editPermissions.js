@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const Users = require('../models/Users');
-const Roles = require('../models/Roles.js');
-const Permissions = require('../models/Permissions')
-const UserRoles = require('../models/UserRoles')
+const Roles = require('../models/Cargos.js');
+const Permissions = require('../models/Permissoes')
+const UserRoles = require('../models/CargoUsuario')
 const {where} = require("sequelize");
 const permissionsController = require("../controllers/permissions");
+const {Usuarios} = require('../models/Usuarios');
 
 
 router.get('/editPermissions', (req, res) => {
-    Users.findAll().then((users) => {
+    Usuarios.findAll().then(async (users) => {
+        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
         res.render('editarPermissoes', {
-            users: users, username: req.session.username
+            users: users, username: usuarioLogado
         });
     });
 });
 
 router.get("/visualizarUsuario/:id", (req, res) => {
     const userId = req.params.id;
-    Users.findOne({where: {user_id: userId}}).then(function (user) {
+    Usuarios.findOne({where: {user_id: userId}}).then(function (user) {
         if (user) {
             res.send(user);
 
@@ -31,6 +32,6 @@ router.get("/visualizarUsuario/:id", (req, res) => {
     });
 });
 
-router.post("/editPermissions/updateUserRole/:id", permissionsController.atualizarUserRole);
+router.post("/editPermissions/atualizarCargoUsuario/:id", permissionsController.atualizarCargoUsuario);
 
 module.exports = router;

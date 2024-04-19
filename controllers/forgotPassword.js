@@ -1,6 +1,6 @@
 // controllers/auth.js
 const nodemailer = require("nodemailer");
-const User = require('../models/Users');
+const {Usuarios} = require('../models/Usuarios');
 const bcrypt = require('bcrypt');
 
 const agente = nodemailer.createTransport({
@@ -17,10 +17,10 @@ exports.forgotPassword = async (req, res) => {
     const { email } = req.body;
 
     try {
-        const user = await User.findOne({ where: { email } });
+        const user = await Usuarios.findOne({ where: { email } });
 
         if (!user) {
-            return res.render('forgotPassword', { errorMessage: 'User not found with the provided email.' });
+            return res.render('forgotPassword', { errorMessage: 'Usuarios not found with the provided email.' });
         }
 
         const resetToken = generateUniqueToken();
