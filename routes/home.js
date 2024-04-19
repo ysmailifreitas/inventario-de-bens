@@ -33,35 +33,81 @@ router.get('/home', async (req, res) => {
 router.get('/dadosGrafico', async (req, res) => {
 const seteDias = new Date();
 seteDias.setDate(seteDias.getDate() - 7)
+const seisDias = new Date();
+seisDias.setDate(seisDias.getDate() - 6)
+const cincoDias = new Date();
+cincoDias.setDate(cincoDias.getDate() - 5)
+const quatroDias = new Date();
+quatroDias.setDate(quatroDias.getDate() - 4)
+const tresDias = new Date();
+tresDias.setDate(tresDias.getDate() - 3)
+const doisDias = new Date();
+doisDias.setDate(doisDias.getDate() - 2)
 const umDia = new Date();
 umDia.setDate(umDia.getDate() - 1)
-
 
 const contagemHoje = await Itens.count();
 
 const haUmDia = await Itens.count({
-    where: {
-       createdAt: {
-          [Op.gte]: umDia,
-          [Op.lte]: new Date(),
-       }
-    }
+  where: {
+    createdAt: {
+      [Op.gt]: doisDias,
+      [Op.lt]: umDia,
+    },
+  },
 });
 
-const haSeteDias = await Itens.count({
-    where: {
-       createdAt: {
-          [Op.gte]: seteDias,
-          [Op.lte]: new Date(),
-       }
-    }
+const haDoisDias = await Itens.count({
+  where: {
+    createdAt: {
+      [Op.gt]: tresDias,
+      [Op.lt]: doisDias,
+    },
+  },
+});
+
+const haTresDias = await Itens.count({
+  where: {
+    createdAt: {
+      [Op.gt]: quatroDias,
+      [Op.lt]: tresDias,
+    },
+  },
+});
+
+const haQuatroDias = await Itens.count({
+  where: {
+    createdAt: {
+      [Op.gt]: cincoDias,
+      [Op.lt]: quatroDias,
+    },
+  },
+});
+
+const haCincoDias = await Itens.count({
+  where: {
+    createdAt: {
+      [Op.gt]: seisDias,
+      [Op.lt]: cincoDias,
+    },
+  },
+});
+
+const haSeisDias = await Itens.count({
+  where: {
+    createdAt: {
+    [Op.gt]: seteDias,
+    [Op.lt]: seisDias,
+    },
+  },
 });
 
 const graficoItens = {
       labels: ['1', '2', '3', '4', '5', '6', '7'],
       datasets: [{
         label: 'Estoque do Inventário',
-        data: [haSeteDias, 19, 3, 5, 2, haUmDia, contagemHoje],
+        data: [haSeisDias, haCincoDias, haQuatroDias, 
+          haTresDias, haDoisDias, haUmDia, contagemHoje],
         borderWidth: 1
       }]
     };
@@ -73,34 +119,81 @@ const graficoItens = {
 router.get('/graficoValor', async (req, res) => {
 const seteDias = new Date();
 seteDias.setDate(seteDias.getDate() - 7)
+const seisDias = new Date();
+seisDias.setDate(seisDias.getDate() - 6)
+const cincoDias = new Date();
+cincoDias.setDate(cincoDias.getDate() - 5)
+const quatroDias = new Date();
+quatroDias.setDate(quatroDias.getDate() - 4)
+const tresDias = new Date();
+tresDias.setDate(tresDias.getDate() - 3)
+const doisDias = new Date();
+doisDias.setDate(doisDias.getDate() - 2)
 const umDia = new Date();
-umDia.setDate(umDia.getDay() - 1)
-
+umDia.setDate(umDia.getDate() - 1)
 
 const contagemHoje = await Itens.sum('it_valor_total');
 
 const haUmDia = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-      [Op.gte]: umDia,
-      [Op.lte]: new Date(),
+//      [Op.gt]: doisDias,
+      [Op.lt]: umDia,
     },
   },
 });
 
-const haSeteDias = await Itens.count({
-    where: {
-       createdAt: {
-          [Op.gte]: seteDias,
-       }
-    }
+const haDoisDias = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+//      [Op.gt]: tresDias,
+      [Op.lt]: doisDias,
+    },
+  },
+});
+
+const haTresDias = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+//      [Op.gt]: quatroDias,
+      [Op.lt]: tresDias,
+    },
+  },
+});
+
+const haQuatroDias = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+//      [Op.gt]: cincoDias,
+      [Op.lt]: quatroDias,
+    },
+  },
+});
+
+const haCincoDias = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+//      [Op.gt]: seisDias,
+      [Op.lt]: cincoDias,
+    },
+  },
+});
+
+const haSeisDias = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+//      [Op.gt]: seteDias,
+      [Op.lt]: seisDias,
+    },
+  },
 });
 
 const valorGrafico = {
       labels: ['1', '2', '3', '4', '5', '6', '7'],
       datasets: [{
         label: 'Valor do Inventário',
-        data: [haSeteDias, 19, 3, 5, 2, haUmDia, contagemHoje],
+        data: [haSeisDias, haCincoDias, haQuatroDias, 
+          haTresDias, haDoisDias, haUmDia, contagemHoje],
         borderWidth: 1
       }]
     };
