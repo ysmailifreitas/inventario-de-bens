@@ -2,6 +2,7 @@ const PDFDocument = require('pdfkit');
 const express = require("express");
 const router = express.Router();
 const { Sequelize, Model, DataTypes } = require("sequelize");
+const Op = Sequelize.Op;
 const Itens = require("../models/Itens");
 const Fornecedor = require("../models/Fornecedor");
 const Usuarios = require("../models/Users")
@@ -9,6 +10,7 @@ const {checkAuth} = require('../middlewares/auth');
 
 router.use(checkAuth);
 
+//Impressões para o front
 router.get('/home', async (req, res) => {
   try {
     const item = await Itens.findAll();
@@ -27,6 +29,86 @@ router.get('/home', async (req, res) => {
       });
 });
 
+//Impressões para o gráfico de quantidade de Itens
+router.get('/dadosGrafico', async (req, res) => {
+const seteDias = new Date();
+seteDias.setDate(seteDias.getDate() - 7)
+const umDia = new Date();
+umDia.setDate(umDia.getDate() - 1)
+
+
+const contagemHoje = await Itens.count();
+
+const haUmDia = await Itens.count({
+    where: {
+       createdAt: {
+          [Op.gte]: umDia,
+          [Op.lte]: new Date(),
+       }
+    }
+});
+
+const haSeteDias = await Itens.count({
+    where: {
+       createdAt: {
+          [Op.gte]: seteDias,
+          [Op.lte]: new Date(),
+       }
+    }
+});
+
+const graficoItens = {
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
+      datasets: [{
+        label: 'Estoque do Inventário',
+        data: [haSeteDias, 19, 3, 5, 2, haUmDia, contagemHoje],
+        borderWidth: 1
+      }]
+    };
+
+    res.json(graficoItens)
+});
+
+//Impressões para o gráfico valor do Inventário
+router.get('/graficoValor', async (req, res) => {
+const seteDias = new Date();
+seteDias.setDate(seteDias.getDate() - 7)
+const umDia = new Date();
+umDia.setDate(umDia.getDay() - 1)
+
+
+const contagemHoje = await Itens.sum('it_valor_total');
+
+const haUmDia = await Itens.sum('it_valor_total', {
+  where: {
+    createdAt: {
+      [Op.gte]: umDia,
+      [Op.lte]: new Date(),
+    },
+  },
+});
+
+const haSeteDias = await Itens.count({
+    where: {
+       createdAt: {
+          [Op.gte]: seteDias,
+       }
+    }
+});
+
+const valorGrafico = {
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
+      datasets: [{
+        label: 'Valor do Inventário',
+        data: [haSeteDias, 19, 3, 5, 2, haUmDia, contagemHoje],
+        borderWidth: 1
+      }]
+    };
+
+    res.json(valorGrafico)
+});
+
+//Gerar PDF
 router.get('/gerar-pdf', async (req, res) => {
     // Criar um novo documento PDF
     const doc = new PDFDocument();

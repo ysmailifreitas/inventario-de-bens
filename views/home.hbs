@@ -57,19 +57,47 @@
     <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2 text-gray-500"> Depreciação </div>
-            <select id="listaritens">
-                <option value="none">Escolha um Item...</option>
+            <select id="listarItens">
+                <option value="nulo">Escolha um Item...</option>
              {{#each item}}
-                <option>
+                <option id="selectIt">
                     {{it_nome}}
                 </option>
              {{/each}}
             </select>
         </div>
     </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-500">Valor da Compra:</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"><p id="itValorCompra"></p></div>
+        </div>
+    </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-500">Localização do Item:</div>
+            <div class="font-bold text-xl mb-2 text-gray-500" ><p id="itLocalizacao"></p></div>
+        </div>
+    </div>
 </div>
 
-<script src="javascripts/dashboard.js"></script>
+
+<div class="flex flex-wrap justify-center">
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <canvas id="myChart">{{graficoItens}}</canvas>
+    </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <canvas id="myChart2"></canvas>
+    </div>
+</div>
+
+
+
+<script src="js/dashboard.js"></script>
+<script src="js/graficos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
