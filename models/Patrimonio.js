@@ -1,18 +1,11 @@
 const db = require("./db");
-const Fornecedor = require("./Fornecedores");
+const Fornecedores = require("./Fornecedores");
 
 const Patrimonio = db.sequelize.define('patrimonio', {
         pat_id: {
             type: db.Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },
-        pat_for_id: {
-            type: db.Sequelize.INTEGER,
-            references: {
-                model: Fornecedor,
-                key: 'for_id'
-            }
         },
         pat_nome: {
             type: db.Sequelize.STRING,
@@ -49,18 +42,7 @@ const Patrimonio = db.sequelize.define('patrimonio', {
         createdAt: 'createdAt',
         updatedAt: 'updatedAt'
     });
-Patrimonio.afterSync(() => {
-    const defaultValues = {
-        pat_nome: 'Nome Padrão',
-        pat_data_aquisicao: new Date(),
-        pat_valor: 0.0,
-        pat_depreciacao_anual: 0.0,
-        pat_vida_util: 0
-    };
 
-    return Patrimonio.create(defaultValues)
-        .then(() => console.log('Valores padrão adicionados com sucesso'))
-        .catch(err => console.error('Erro ao adicionar valores padrão:', err));
-});
+Patrimonio.belongsTo(Fornecedores, { foreignKey: 'pat_for_id', onDelete: 'RESTRICT', hooks: true });
 
 module.exports = Patrimonio;

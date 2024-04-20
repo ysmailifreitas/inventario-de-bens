@@ -1,7 +1,8 @@
 const express = require("express");
-const mysql = require("mysql2/promise");
-const dotenv = require('dotenv');
+const https = require("https");
 const path = require('path');
+const fs = require("fs");
+const dotenv = require('dotenv');
 const moment = require('moment');
 const hbs = require("hbs");
 const cookieParser = require('cookie-parser');
@@ -9,79 +10,77 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
+const sincronizarModelos = require("./models/sincronizarModelos");
 
 dotenv.config({path: './.env'});
 
 const app = express();
 
-app.use(helmet.hsts({
-  maxAge: 31536000,
-  includeSubDomains: true,
-  preload: true,
-}));
-app.use(helmet.noSniff());
-app.use(helmet.frameguard({ action: 'deny' }));
-
-
-const limiter = rateLimit({
-  windowMs: 15 * 1000,
-  max: 200,
-  message: "Too many requests from this IP, please try again later."
-});
-
-
-
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const db = mysql.createPool({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE
-});
-
-app.use(session({
-  secret: 'your-secret-key',
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 300000,
-  }
-}));
-
-
-const publicDirectory = path.join(__dirname, './public');
-app.use(express.static(publicDirectory));
-
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
+// -- Configurações iniciais
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-
-hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
-
-
 app.set('layout', 'layouts/layout');
 
+// -- Configurações do Express
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
+// -- Middlewares
 
-hbs.registerHelper('formatDate', function (date) { return moment(date).format('DD/MM/YYYY'); });
-hbs.registerHelper('formatDateHour', function (date) { return moment(date).format('DD/MM/YYYY HH:mm:ss'); });
-hbs.registerHelper('isdefined', function (value) {
-  return value !== undefined;
+// Helmet
+app.use(helmet.hsts({
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true,
+}));
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({action: 'deny'}));
+
+// Limite de requisições
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minuto
+    max: 500, //500 requisicoes por windowMs (se exceder mostra a mensagem)
+    message: "Too many requests from this IP, please try again later."
 });
-hbs.registerHelper('ifEquals', function(arg1, arg2, options){
-  return(arg1 === arg2) ? options.fn(this) : options.inverse(this);
+app.use(limiter);
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
+
+// -- Configuração de sessão e banco de dados
+app.use(session({
+    secret: 'your-secret-key',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 300000,
+    }
+}));
+
+sincronizarModelos();
+
+// -- Helpers do HBS
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
+hbs.registerHelper('formatDate', function (date) {
+    return moment(date).format('DD/MM/YYYY');
+});
+hbs.registerHelper('formatDateHour', function (date) {
+    return moment(date).format('DD/MM/YYYY HH:mm:ss');
+});
+hbs.registerHelper('isdefined', function (value) {
+    return value !== undefined;
+});
+hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
 });
 hbs.registerHelper('includes', function (array, value, options) {
-  return array.includes(value) ? options.fn(this) : options.inverse(this);
+    return array.includes(value) ? options.fn(this) : options.inverse(this);
 });
 
+// -- Rotas
 app.use('/', require('./routes/login'));
 app.use('/', require("./routes/logout"));
 app.use('/', require('./routes/home'));
@@ -97,6 +96,20 @@ app.use('/', require('./routes/cadastros'));
 app.use('/', require('./routes/estoque'));
 app.use('/', require('./routes/movimentacoes'));
 
-app.listen(4000, () => {
-  console.log("listening on port 4000");
+// Inicialização do servidor
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
+
+// const PORT = process.env.PORT || 3443;
+
+// const sslServer = https.createServer({
+//     key: fs.readFileSync('/root/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/inventario.based.lat/inventario.based.lat.key'),
+//     cert: fs.readFileSync('/etc/ssl/cert.pem'),
+// },app);
+//
+// sslServer.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// })

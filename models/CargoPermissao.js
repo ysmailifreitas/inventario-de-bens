@@ -1,12 +1,14 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const db = require('./db');
+const Cargos = require('../models/Cargos');
+const Permissoes = require('../models/Permissoes');
 
-const CargoPermissao = db.sequelize.define('cargo-permissao', {
+const CargoPermissao = db.sequelize.define('cargo_permissao', {
     cargo_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'cargos',
+            model: Cargos,
             key: 'cargo_id'
         }
     },
@@ -14,21 +16,13 @@ const CargoPermissao = db.sequelize.define('cargo-permissao', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'permissions',
+            model: Permissoes,
             key: 'perm_id'
         }
     }
 }, {
+    tableName: 'cargo_permissao',
     timestamps: false,
-    primaryKey: true
 });
-
-CargoPermissao.sync()
-    .then(() => {
-        console.log('Tabela de role_permissions sincronizada com sucesso.');
-    })
-    .catch((error) => {
-        console.error('Erro ao sincronizar tabela de ROLE_PERMISSIONS:', error);
-    });
 
 module.exports = CargoPermissao;

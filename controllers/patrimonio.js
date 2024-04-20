@@ -1,6 +1,7 @@
 const Fornecedor = require("../models/Fornecedores");
 const Patrimonio = require("../models/Patrimonio");
 const Estoque = require("../models/Estoque");
+const PatrimonioEstoque = require("../models/PatrimonioEstoque");
 const Movimentacao = require("../models/Movimentacao");
 const DadosDashboard = require("../models/DadosDashboard");
 const calculadorItensService = require("../services/calculardorItensService");
@@ -21,9 +22,7 @@ exports.cadastrarPatrimonio = async (req, res) => {
         const depreciacaoAnual = calculadorItensService.calcularDepreciacaoAnual(
             req.body.data_aquisicao
         );
-        const anosDecorridos = calculadorItensService.calcularAnosDecorridos(
-            req.body.data_aquisicao
-        );
+
         const taxaDepreciacaoAnual =
             calculadorItensService.calcularTaxaDepreciacaoAnual(
                 depreciacaoAnual,
@@ -38,13 +37,15 @@ exports.cadastrarPatrimonio = async (req, res) => {
             pat_valor: preco,
             pat_estado: req.body.estadoConservacao,
             pat_depreciacao_anual: depreciacaoAnual,
-            pat_vida_util: req.body.vida_util,
-            // pat_localizacao: req.body.localizacao,
+            pat_vida_util: req.body.vida_util
         });
-        await Estoque.create({
-            estoque_pat_id: patrimonio.pat_id,
+        const estoque = await Estoque.create({
             estoque_loc_id: req.body.localizacao,
-            estoque_qtde: req.body.quantidade
+        });
+        await PatrimonioEstoque.create({
+            quantidade: req.body.quantidade,
+            pat_id: req.body.pat_id,
+            estoque_id: estoque.estoque_id,
         });
 
         await Movimentacao.create({

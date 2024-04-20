@@ -19,5 +19,5 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
-    volumes:
-      - ./scripts/db:/docker-entrypoint-initdb.d
+#    volumes:
+#      - ./scripts/db:/docker-entrypoint-initdb.d

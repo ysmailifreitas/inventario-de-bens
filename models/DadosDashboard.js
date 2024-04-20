@@ -19,11 +19,11 @@ const DadosDashboard = db.sequelize.define("dados_dashboard", {
     roi: {
         type: db.Sequelize.FLOAT,
     },
-    item_id: {
+    pat_id: {
         type: db.Sequelize.INTEGER,
     },
+},{
+    tableName: 'dados_dashboard',
 });
-
-// DadosDashboard.sync({force:true})
 
 module.exports = DadosDashboard;

@@ -1,5 +1,4 @@
 const db = require("./db");
-const Patrimonio = require("./Patrimonio");
 
 const Fornecedores = db.sequelize.define('fornecedores', {
     for_id: {

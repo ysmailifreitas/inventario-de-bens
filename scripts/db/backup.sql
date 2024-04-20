@@ -1,5 +1,4 @@
-USE
-inventario;
+USE inventario;
 
 DROP TABLE IF EXISTS cargo_permissao;
 DROP TABLE IF EXISTS cargo_usuario;

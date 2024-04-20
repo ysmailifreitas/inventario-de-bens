@@ -2,6 +2,9 @@
 
 Breve descrição do seu projeto.
 
+usuario padrao: admin senha123
+mysql -u inventario_user -p  < ./scripts/db/backup.sql
+
 ## Instalação
 
 git clone https://github.com/ysmailifreitas/inventario-de-bens.git

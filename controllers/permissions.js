@@ -1,4 +1,4 @@
-const { CargoUsuario } = require("../models/CargoUsuario");
+const CargoUsuario= require("../models/CargoUsuario");
 const {getUsuarioCargoNome, Usuarios} = require("../models/Usuarios");
 const {where} = require("sequelize");
 
