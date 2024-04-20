@@ -41,7 +41,7 @@ app.use(helmet.frameguard({action: 'deny'}));
 
 // Limite de requisições
 const limiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minuto
+    windowMs: 60 * 1000, // 1 minuto
     max: 500, //500 requisicoes por windowMs (se exceder mostra a mensagem)
     message: "Too many requests from this IP, please try again later."
 });

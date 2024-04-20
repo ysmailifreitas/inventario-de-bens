@@ -74,7 +74,7 @@ exports.cadastrarPatrimonio = async (req, res) => {
     }
 };
 
-exports.atualizarPatrimonio = (req, res) => {
+exports.atualizarPatrimonio = (req) => {
     console.log("Received update request for item ID:", req.params.id);
     Patrimonio.findOne({
         where: {pat_id: req.params.id},
@@ -116,7 +116,7 @@ exports.deletarPatrimonio = (req, res) => {
                 res.redirect(req.get("referer"));
             }, 1000);
         })
-        .catch(function (erro) {
-            res.send("patrimonio não deletado");
+        .catch(function (err) {
+            res.send("patrimonio não deletado", err);
         });
 };
