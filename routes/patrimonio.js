@@ -3,6 +3,7 @@ const router = express.Router();
 const patrimonioController = require("../controllers/patrimonio");
 const Patrimonio = require("../models/Patrimonio");
 const Fornecedor = require("../models/Fornecedores");
+const Localizacao = require("../models/Localizacao");
 const {checkAuth} = require('../middlewares/auth');
 const {Usuarios} = require('../models/Usuarios');
 
@@ -13,15 +14,19 @@ router.post("/atualizarPatrimonio/:id", patrimonioController.atualizarPatrimonio
 router.get("/deletarPatrimonio/:id", patrimonioController.deletarPatrimonio);
 
 
-router.get("/patrimonio", (req, res) => {
-    Patrimonio.findAll().then(async function (patrimonio) {
-        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
-        let fornecedores = await Fornecedor.findAll().then((fornecedor)=>fornecedor);
-        res.render("patrimonio/listagem/patrimonio", {patrimonio:patrimonio, username: usuarioLogado, fornecedores: fornecedores});
+router.get("/patrimonio", async (req, res) => {
+    let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+    const patrimonio = await Patrimonio.findAll({
+        include: [{
+            model: Fornecedor,
+            as: 'fornecedor',
+            attributes: ['for_nome']
+        }]
     });
+    res.render("patrimonio/listagem/patrimonio", {patrimonio: patrimonio, username: usuarioLogado});
 });
 
-router.get("/pat/:id", (req, res) => {
+router.get("/patrimonio/:id", (req, res) => {
     const patId = req.params.id;
     Patrimonio.findOne({where: {pat_id: patId}}).then(function (pat) {
         if (pat) {
@@ -35,13 +40,11 @@ router.get("/pat/:id", (req, res) => {
     });
 });
 
-router.get("/cadastrarPatrimonio", (req, res) => {
-    Fornecedor.findAll().then(function (fornecedores) {
-        const plainFornecedores = fornecedores.map((fornecedor) =>
-            fornecedor.get()
-        );
-        res.render("patrimonio/cadastro/cadastroPatrimonio", {fornecedores: plainFornecedores});
-    });
+router.get("/cadastrarPatrimonio", async (req, res) => {
+    let fornecedores = await Fornecedor.findAll().then((fornecedores) => fornecedores);
+    let localizacao = await Localizacao.findAll().then((localizacao) => localizacao);
+    console.log(localizacao)
+    res.render("patrimonio/cadastro/cadastroPatrimonio", {fornecedores: fornecedores, localizacao: localizacao});
 });
 
 router.get("/editarPatrimonio/:id", function (req, res) {

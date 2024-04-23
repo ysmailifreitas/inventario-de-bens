@@ -1,10 +1,5 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.11.0/css/flag-icons.min.css"
-          integrity="sha512-ZQKxM5Z+PmOVa/VmISvHcqlUgzPejY92+I+sur69qiB7Vd+dAaDNMwy7AnRr6HcFbYY4so1FFPBgugE5s2jm7Q=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
 <!-- Menu Lateral -->
-<aside class="fixed-menu bg-white h-screen w-64 border-r border-gray-300 float-left shadow-lg">
+<aside class="fixed-menu bg-white h-screen w-64 border-r border-gray-300 float-left flex flex-col shadow-lg">
     <!-- Título da Empresa -->
     <div class="flex items-center justify-center box__style title__navbar">
         <ion-icon name="cube-outline" class="w-12 h-12 flex cubo"></ion-icon>
@@ -15,8 +10,8 @@
 
 
     <!-- Patrimonio do Menu -->
-    <nav>
-        <ul class="space-y-2 ">
+    <nav class="">
+        <ul class="space-y-2">
             <li><a href="/home" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
                 <ion-icon name="home-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
                 Dashboard</a></li>
@@ -64,11 +59,12 @@
                    class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
                 <ion-icon name="hammer-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
                 Editar Permissão</a></li>
-            <li><a href="logout" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                <ion-icon name="log-out-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                Logout</a></li>
+
         </ul>
     </nav>
+    <div class="w-full mt-auto mb-10"><a href="logout" class="block p-4 text-gray-600 bg-red-100 hover:bg-red-200 flex-end flex items-center justify-center">
+        <ion-icon name="log-out-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+        Logout</a></div>
 </aside>
 
 <!-- Barra Superior -->

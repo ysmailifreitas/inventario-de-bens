@@ -15,6 +15,6 @@ const Estoque = db.sequelize.define('estoque', {
         updatedAt: 'updatedAt'
     });
 
-Estoque.belongsTo(Localizacao, { foreignKey: 'estoque_loc_id' });
+Estoque.belongsTo(Localizacao, { foreignKey: 'estoque_loc_id', as: 'localizacao' });
 
 module.exports = Estoque;

@@ -10,7 +10,8 @@ const CargoPermissao = db.sequelize.define('cargo_permissao', {
         references: {
             model: Cargos,
             key: 'cargo_id'
-        }
+        },
+        primaryKey: true,
     },
     perm_id: {
         type: DataTypes.INTEGER,
@@ -18,7 +19,8 @@ const CargoPermissao = db.sequelize.define('cargo_permissao', {
         references: {
             model: Permissoes,
             key: 'perm_id'
-        }
+        },
+        primaryKey: true,
     }
 }, {
     tableName: 'cargo_permissao',

@@ -21,13 +21,13 @@
         </div>
 
         <form id="form" action="/atualizarEstoque/{{estoque_id}}" method="post">
-            Editando o id: {{estoque_id}} | do Patrimonio ID: {{estoque.estoque_pat_id}}<br>
+            Editando o id: {{estoque_id}} | do Patrimonio ID: {{estoque.pat_id}}<br>
             <div>
                 <br>
                 <div style="" class="block">
                     <small></small>
                     <label for="nome">Localizacao</label>
-                    <input value="{{estoque.estoque_loc_id}}" name="localizacao" type="number" id="localizacao"
+                    <input value="{{estoque.loc_id}}" name="localizacao" type="number" id="localizacao"
                            placeholder="Insira a localizacao">
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div style="" class="block">
                     <small></small>
                     <label for="nome">Quantidade</label>
-                    <input value="{{estoque.estoque_qtde}}" name="quantidade" type="number" id="quantidade"
+                    <input value="{{estoque.quantidade}}" name="quantidade" type="number" id="quantidade"
                            placeholder="Insira a quantidade">
                 </div>
             </div>

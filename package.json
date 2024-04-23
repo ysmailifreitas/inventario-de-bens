@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
+    "add:usuarioPadrao":"mysql -u inventario_user -p  < ./scripts/db/backup.sql",
     "update-packages": "ncu -u",
     "install-packages": "npm install",
     "test": "jest",

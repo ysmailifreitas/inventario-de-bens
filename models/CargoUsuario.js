@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const db = require("./db");
-const {Usuarios} = require("./Usuarios"); // Não é necessário desestruturar
-const Cargos = require("./Cargos"); // Não é necessário desestruturar
+const {Usuarios} = require("./Usuarios");
+const Cargos = require("./Cargos");
 
 const CargoUsuario = db.sequelize.define('cargo_usuario', {
     usr_id: {
@@ -9,7 +9,7 @@ const CargoUsuario = db.sequelize.define('cargo_usuario', {
         allowNull: false,
         primaryKey: true,
         references: {
-            model: Usuarios, // Nome do modelo, não o alias
+            model: Usuarios,
             key: 'usr_id'
         }
     },
@@ -18,7 +18,7 @@ const CargoUsuario = db.sequelize.define('cargo_usuario', {
         allowNull: false,
         primaryKey: true,
         references: {
-            model: Cargos, // Nome do modelo, não o alias
+            model: Cargos,
             key: 'cargo_id'
         }
     }

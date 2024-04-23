@@ -16,7 +16,7 @@
         <button class="font-bold py-2 px-4 rounded"><a href="/cadastrarPatrimonio">Adicionar Item</a></button>
     </div>
     <div class="max-w-screen-lg overflow-auto rounded-lg shadow-lg table-container">
-        <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center">Listagem de Patrimonio</h1>
+        <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center uppercase">Listagem de Patrimonio</h1>
         <table class="w-full min-w-full rounded-lg overflow-hidden divide-y divide-gray-200  ">
             <thead class="thead-fixed sticky top-0">
             <tr>
@@ -43,7 +43,7 @@
                     <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{pat_nome}}</td>
                     <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDate
                             pat_data_aquisicao}}{{/formatDate}}</td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{pat_for_id}}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{fornecedor.for_nome}}</td>
                     <td class="px-6 py-4 whitespace-no-wrap text-center align-middle">{{#formatDateHour
                             updatedAt}}{{/formatDateHour}}</td>
                     <td>

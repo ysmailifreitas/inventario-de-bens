@@ -24,7 +24,7 @@
                 <br>
                 <div class="block">
                     <small></small>
-                    <select name="my-select" required>
+                    <select class="p-2 mt-2 mb-2" name="my-select" required>
                         <option value="" id="selectfn">Selecione o Fornecedores...</option>
                         {{#each fornecedores}}
                             <option name="for_nome" id="for_nome" value="{{for_id}}">{{for_nome}}</option>
@@ -43,11 +43,24 @@
                 <input type="int" id="quantidade" name="quantidade"
                        class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
             </div>
-            <div class="mb-4">
-                <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização</label>
-                <input type="integer" id="localizacao" name="localizacao"
-                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização</label>
+                    <select class="p-2 mt-2 mb-2" name="localizacao" required>
+                        <option value="" id="selectfn">Selecione a Localização...</option>
+                        {{#each localizacao}}
+                            <option name="for_nome" id="for_nome" value="{{loc_id}}">{{loc_nome}}</option>
+                        {{/each}}
+                    </select>
+                </div>
             </div>
+<!--            <div class="mb-4">-->
+<!--                <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização</label>-->
+<!--                <input type="integer" id="localizacao" name="localizacao"-->
+<!--                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">-->
+<!--            </div>-->
 
             <div class="mb-4">
                 <label for="tipo" class="block text-sm font-medium text-gray-700 ">Tipo</label>
@@ -74,7 +87,7 @@
                 <small></small>
                 <label for="estadoConservacao" class="block text-sm font-medium text-gray-700">Estado de
                     Conservação</label>
-                <select name="estadoConservacao" id="estadoConservacao">
+                <select class="p-2 mt-2 mb-2" name="estadoConservacao" id="estadoConservacao">
                     <option value="novo">Novo</option>
                     <option value="usado">Usado</option>
                     <option value="danificado">Danificado</option>

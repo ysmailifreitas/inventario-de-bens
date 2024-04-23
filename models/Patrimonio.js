@@ -43,6 +43,6 @@ const Patrimonio = db.sequelize.define('patrimonio', {
         updatedAt: 'updatedAt'
     });
 
-Patrimonio.belongsTo(Fornecedores, { foreignKey: 'pat_for_id', onDelete: 'RESTRICT', hooks: true });
+Patrimonio.belongsTo(Fornecedores, { foreignKey: 'pat_for_id', as: 'fornecedor', onDelete: 'RESTRICT', hooks: true });
 
 module.exports = Patrimonio;

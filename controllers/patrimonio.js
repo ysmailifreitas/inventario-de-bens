@@ -34,7 +34,7 @@ exports.cadastrarPatrimonio = async (req, res) => {
             pat_nome: req.body.nome,
             pat_tipo: req.body.tipo,
             pat_data_aquisicao: req.body.data_aquisicao,
-            pat_valor: preco,
+            pat_valor: req.body.preco,
             pat_estado: req.body.estadoConservacao,
             pat_depreciacao_anual: depreciacaoAnual,
             pat_vida_util: req.body.vida_util
@@ -44,7 +44,7 @@ exports.cadastrarPatrimonio = async (req, res) => {
         });
         await PatrimonioEstoque.create({
             quantidade: req.body.quantidade,
-            pat_id: req.body.pat_id,
+            pat_id: patrimonio.pat_id,
             estoque_id: estoque.estoque_id,
         });
 
