@@ -30,7 +30,7 @@ INSERT INTO departamentos (dep_nome, dep_descricao, dep_responsavel, createdAt, 
 VALUES ('Departamento de TI', 'Responsável por gerenciar os recursos de tecnologia da informação da empresa.',
         'Elon Musk', '2024-04-22 14:21:48', '2024-04-22 14:21:48');
 
--- Create the usuarios table
+-- Create the usuarios.js table
 CREATE TABLE usuarios
 (
     usr_id            INT AUTO_INCREMENT PRIMARY KEY,

@@ -1,4 +1,3 @@
-// controllers/auth.js
 const nodemailer = require("nodemailer");
 const {Usuarios} = require('../models/Usuarios');
 const bcrypt = require('bcrypt');
@@ -14,13 +13,13 @@ const agente = nodemailer.createTransport({
 });
 
 exports.forgotPassword = async (req, res) => {
-    const { email } = req.body;
+    const {email} = req.body;
 
     try {
-        const user = await Usuarios.findOne({ where: { email } });
+        const user = await Usuarios.findOne({where: {email}});
 
         if (!user) {
-            return res.render('forgotPassword', { errorMessage: 'Usuarios not found with the provided email.' });
+            return res.render('forgotPassword', {errorMessage: 'Usuarios not found with the provided email.'});
         }
 
         const resetToken = generateUniqueToken();
@@ -39,13 +38,13 @@ exports.forgotPassword = async (req, res) => {
 
         await agente.sendMail(mailOptions);
 
-        res.render('forgot-password-success', { successMessage: 'Password reset email sent. Check your inbox.' });
+        res.render('forgot-password-success', {successMessage: 'Password reset email sent. Check your inbox.'});
     } catch (error) {
         console.error('Error in forgotPassword:', error);
-        res.render('forgot-password', { errorMessage: 'An error occurred. Please try again later.' });
+        res.render('forgot-password', {errorMessage: 'An error occurred. Please try again later.'});
     }
 };
 
 function generateUniqueToken() {
-    
+
 }

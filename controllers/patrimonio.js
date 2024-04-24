@@ -1,3 +1,4 @@
+const Localizacao = require("../models/Localizacao");
 const Fornecedor = require("../models/Fornecedores");
 const Patrimonio = require("../models/Patrimonio");
 const Estoque = require("../models/Estoque");
@@ -5,12 +6,52 @@ const PatrimonioEstoque = require("../models/PatrimonioEstoque");
 const Movimentacao = require("../models/Movimentacao");
 const DadosDashboard = require("../models/DadosDashboard");
 const calculadorItensService = require("../services/calculardorItensService");
+const {Usuarios} = require("../models/Usuarios");
+
+exports.getPatrimonioListagem = async (req, res) => {
+    let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+    const patrimonio = await Patrimonio.findAll({
+        include: [{
+            model: Fornecedor,
+            as: 'fornecedor',
+            attributes: ['for_nome']
+        }]
+    });
+    res.render("patrimonio/listagem/patrimonio", {patrimonio: patrimonio, username: usuarioLogado});
+};
+
+exports.getVisualizacaoPatrimonio = (req, res) => {
+    const patId = req.params.id;
+    Patrimonio.findOne({where: {pat_id: patId}}).then(function (pat) {
+        if (pat) {
+            res.send(pat);
+        } else {
+            res.status(404).send("Patrimonio não encontrado");
+        }
+    }).catch(function (error) {
+        console.error(error);
+        res.status(500).send("Erro ao buscar o patrimonio.");
+    });
+}
+
+exports.getCadastroPatrimonioForm = async (req, res) => {
+    let fornecedores = await Fornecedor.findAll().then((fornecedores) => fornecedores);
+    let localizacao = await Localizacao.findAll().then((localizacao) => localizacao);
+    console.log(localizacao)
+    res.render("patrimonio/cadastro/cadastroPatrimonio", {fornecedores: fornecedores, localizacao: localizacao});
+}
+
+exports.getEdicaoPatrimonioForm = function (req, res) {
+    Patrimonio.findOne({
+        where: {pat_id: req.params.id},
+    }).then(function (pat) {
+        res.render("patrimonio/edicao/editarPatrimonio", {patrimonio: pat, id: req.params.id});
+    });
+}
 
 exports.cadastrarPatrimonio = async (req, res) => {
     try {
         const selectElement = req.body["my-select"];
-        fornecedor = await Fornecedor.findOne({where: {for_id: selectElement}});
-        console.log(fornecedor);
 
         const quantidade = parseInt(req.body.quantidade);
         const preco = parseFloat(req.body.preco);
@@ -27,7 +68,7 @@ exports.cadastrarPatrimonio = async (req, res) => {
             calculadorItensService.calcularTaxaDepreciacaoAnual(
                 depreciacaoAnual,
                 1000
-        );
+            );
 
         const patrimonio = await Patrimonio.create({
             pat_for_id: selectElement,
@@ -67,7 +108,6 @@ exports.cadastrarPatrimonio = async (req, res) => {
         });
 
         res.redirect("/patrimonio");
-      
     } catch (e) {
         console.error(e);
         res.status(500).send("Erro ao cadastrar item!");

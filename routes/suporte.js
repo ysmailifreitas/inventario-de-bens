@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const {checkAuth} = require('../middlewares/auth');
+const suporteController = require('../controllers/suporte');
 
 router.use(checkAuth);
 
-router.get("/suporte", (req, res) => {
-    res.render("suporte");
-});
+// Get Views
+router.get("/suporte", suporteController.getSuportePage);
 
 module.exports = router;

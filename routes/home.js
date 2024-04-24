@@ -1,21 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const {checkAuth} = require('../middlewares/auth');
-const {Usuarios} = require('../models/Usuarios');
+const homeController = require('../controllers/home');
 
 router.use(checkAuth);
 
-router.get("/home", async (req, res) => {
-    try {
-        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
-        res.render("home", {
-            username: usuarioLogado
-        });
-        
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Erro ao buscar os dados.");
-    }
-});
+// Get Views
+router.get("/home", homeController.getHomePage);
 
 module.exports = router;

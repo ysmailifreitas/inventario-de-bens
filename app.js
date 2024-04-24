@@ -91,7 +91,7 @@ app.use('/', require('./routes/email'));
 app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
 app.use('/', require('./routes/editPermissions'));
-app.use('/', require('./routes/userProfile'));
+app.use('/', require('./routes/perfilUsuario'));
 app.use('/', require('./routes/cadastros'));
 app.use('/', require('./routes/estoque'));
 app.use('/', require('./routes/movimentacoes'));

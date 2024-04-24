@@ -1,4 +1,29 @@
 const Fornecedor = require("../models/Fornecedores")
+const {Usuarios} = require("../models/Usuarios");
+
+exports.getFornecedorListagem = (req, res) => {
+    Fornecedor.findAll().then(async function (fornecedores) {
+        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+        res.render("fornecedores/listagem/fornecedores", {fornecedores: fornecedores, username: usuarioLogado});
+    })
+}
+
+exports.getCadastroFornecedorForm = (req, res) => {
+    res.render("fornecedores/cadastro/cadastroFornecedor");
+}
+
+exports.getEdicaoFornecedorForm = function (req, res) {
+    Fornecedor.findOne({
+        where: {for_id: req.params.id},
+    }).then(async function (fornecedor) {
+        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+        res.render("fornecedores/edicao/editarFornecedor", {
+            fornecedor: fornecedor,
+            id: req.params.id,
+            username: usuarioLogado
+        });
+    });
+}
 
 exports.cadastrarFornecedor = (req, res) => {
     Fornecedor.create({

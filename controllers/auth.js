@@ -1,4 +1,3 @@
-// controllers/auth.js
 const {Usuarios} = require('../models/Usuarios');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
@@ -14,22 +13,31 @@ const agente = nodemailer.createTransport({
     },
 });
 
+exports.getLoginPage = async (req, res) => {
+    if (req.session.username) {
+        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+        res.render('home', {username: usuarioLogado});
+    } else {
+        res.render("login");
+    }
+}
+
 exports.login = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
     try {
-        const user = await Usuarios.findOne({ where: { usr_nome: username } });
+        const user = await Usuarios.findOne({where: {usr_nome: username}});
         if (user && bcrypt.compareSync(password, user.usr_pass)) {
             req.session.username = username;
             res.redirect('/home')
 
         } else {
-            res.render('login', { errorMessage: 'Credenciais inválidas. Verifique seu nome de usuário e senha e tente novamente.' });
+            res.render('login', {errorMessage: 'Credenciais inválidas. Verifique seu nome de usuário e senha e tente novamente.'});
         }
     } catch (error) {
         console.error('Erro ao encontrar usuário:', error);
-        res.render('login', { errorMessage: 'Ocorreu um erro durante o login. Tente novamente mais tarde.' });
+        res.render('login', {errorMessage: 'Ocorreu um erro durante o login. Tente novamente mais tarde.'});
     }
 };
 
@@ -38,10 +46,10 @@ exports.resetPassword = async (req, res) => {
     const newPassword = req.body.newPassword;
 
     try {
-        const user = await Usuarios.findOne({ where: { resetToken: token } });
+        const user = await Usuarios.findOne({where: {resetToken: token}});
 
         if (!user || user.resetTokenExpires < Date.now()) {
-            return res.render('resetPassword', { errorMessage: 'Invalid or expired reset token. Please try again.' });
+            return res.render('resetPassword', {errorMessage: 'Invalid or expired reset token. Please try again.'});
         }
 
         user.password = bcrypt.hashSync(newPassword, 10);
@@ -53,26 +61,25 @@ exports.resetPassword = async (req, res) => {
         return res.redirect('/login');
     } catch (error) {
         console.error('Error in resetPassword:', error);
-        return res.render('resetPassword', { errorMessage: 'An error occurred. Please try again later.' });
+        return res.render('resetPassword', {errorMessage: 'An error occurred. Please try again later.'});
     }
 };
-
 
 
 exports.showResetPasswordForm = async (req, res) => {
     const token = req.params.token;
 
     try {
-        const user = await Usuarios.findOne({ where: { resetToken: token } });
+        const user = await Usuarios.findOne({where: {resetToken: token}});
 
         if (!user || user.resetTokenExpires < Date.now()) {
-            return res.render('resetPassword', { errorMessage: 'Invalid or expired reset token. Please try again.' });
+            return res.render('resetPassword', {errorMessage: 'Invalid or expired reset token. Please try again.'});
         }
 
-        res.render('resetPassword', { token });
+        res.render('resetPassword', {token});
     } catch (error) {
         console.error('Error in showResetPasswordForm:', error);
-        res.render('resetPassword', { errorMessage: 'An error occurred. Please try again later.' });
+        res.render('resetPassword', {errorMessage: 'An error occurred. Please try again later.'});
     }
 };
 
@@ -84,10 +91,10 @@ exports.sendPasswordResetEmail = async (req, res) => {
     const company_email = req.body.company_email;
 
     try {
-        const user = await Usuarios.findOne({ where: { company_email } });
+        const user = await Usuarios.findOne({where: {company_email}});
 
         if (!user) {
-            return res.render('forgotPassword', { errorMessage: 'Usuarios not found with the provided email.' });
+            return res.render('forgotPassword', {errorMessage: 'Usuarios not found with the provided email.'});
         }
 
         const resetToken = generateUniqueToken();
@@ -106,10 +113,10 @@ exports.sendPasswordResetEmail = async (req, res) => {
 
         await agente.sendMail(mailOptions);
 
-        res.render('forgotPasswordSuccess', { successMessage: 'Password reset email sent. Check your inbox.' });
+        res.render('forgotPasswordSuccess', {successMessage: 'Password reset email sent. Check your inbox.'});
     } catch (error) {
         console.error('Error in sendPasswordResetEmail:', error);
-        res.render('forgotPassword', { errorMessage: 'An error occurred. Please try again later.' });
+        res.render('forgotPassword', {errorMessage: 'An error occurred. Please try again later.'});
     }
 };
 
