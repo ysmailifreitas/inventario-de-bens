@@ -28,5 +28,8 @@ jobs:
       # Push Docker image to Docker Hub
       - name: Push Docker image to Docker Hub
         run: |
-          docker push app:latest
+          # Tag Docker image built by Docker Compose
+          docker tag app:latest ysmailifreitas/inventario-bens-patrimoniais:latest
+          
+          # Push the tagged Docker image to Docker Hub
           docker push ysmailifreitas/inventario-bens-patrimoniais:latest
