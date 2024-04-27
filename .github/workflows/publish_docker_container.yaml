@@ -28,4 +28,4 @@ jobs:
       # Push Docker image to Docker Hub
       - name: Push Docker image to Docker Hub
         run: |
-          docker push inventario-bens-patrimoniais:latest
+          docker push app:latest inventario-bens-patrimoniais:latest
