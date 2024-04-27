@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const patrimonioController = require("../controllers/patrimonio");
+const patrimonioController = require("../controllers/patrimonioController");
 const {checkAuth} = require('../middlewares/auth');
 
 router.use(checkAuth);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const fornecedorController = require('../controllers/fornecedor');
+const fornecedorController = require('../controllers/fornecedorController');
 const {checkAuth} = require('../middlewares/auth');
 
 router.use(checkAuth);

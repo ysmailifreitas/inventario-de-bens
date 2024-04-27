@@ -1,4 +1,7 @@
 const nodemailer = require("nodemailer");
+
+// TODO IMPLEMENTAR A emailService E REFATORAR A CONTROLLER PARA SOMENTE EXECUTAR A CONSULTA DA SERVICE
+
 const agente = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
     port: 587,

@@ -1,4 +1,4 @@
-const movimentacaoController = require("../controllers/movimentacao");
+const movimentacaoController = require("../controllers/movimentacaoController");
 const express = require('express');
 const router = express.Router();
 

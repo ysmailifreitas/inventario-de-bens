@@ -1,5 +1,6 @@
 USE inventario;
 
+DROP TABLE IF EXISTS dados_dashboard;
 DROP TABLE IF EXISTS departamentos;
 DROP TABLE IF EXISTS cargo_usuario;
 DROP TABLE IF EXISTS usuarios;
@@ -11,7 +12,6 @@ DROP TABLE IF EXISTS patrimonio_estoque;
 DROP TABLE IF EXISTS patrimonio;
 DROP TABLE IF EXISTS fornecedores;
 DROP TABLE IF EXISTS estoque;
-DROP TABLE IF EXISTS dados_dashboard;
 DROP TABLE IF EXISTS localizacao;
 
 -- Create the departamentos table
@@ -89,7 +89,7 @@ CREATE TABLE permissoes
 (
     perm_id        INT AUTO_INCREMENT PRIMARY KEY,
     perm_nome      VARCHAR(30) not null,
-    perm_descricao VARCHAR(30) not null,
+    perm_descricao VARCHAR(60) not null,
     createdAt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

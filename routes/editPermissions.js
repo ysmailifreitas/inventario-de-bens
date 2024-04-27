@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const permissionsController = require("../controllers/permissions");
+const permissionsController = require("../controllers/permissionsController");
 
 // Get Views
 router.get('/editPermissions', permissionsController.getEditarPermissoes);

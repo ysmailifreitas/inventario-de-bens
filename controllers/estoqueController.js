@@ -3,6 +3,8 @@ const PatrimonioEstoque = require("../models/PatrimonioEstoque");
 const {Usuarios} = require("../models/Usuarios");
 const Localizacao = require("../models/Localizacao");
 
+// TODO IMPLEMENTAR A estoqueService E REFATORAR A CONTROLLER PARA SOMENTE EXECUTAR A CONSULTA DA SERVICE
+
 exports.getEstoqueListagem = async (req, res) => {
     try {
         const usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});

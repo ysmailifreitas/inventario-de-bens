@@ -1,5 +1,5 @@
 const express = require('express');
-const perfilUsuarioController = require('../controllers/perfilUsuario');
+const perfilUsuarioController = require('../controllers/perfilUsuarioController');
 const router = express.Router();
 
 // Get Views

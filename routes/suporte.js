@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {checkAuth} = require('../middlewares/auth');
-const suporteController = require('../controllers/suporte');
+const suporteController = require('../controllers/suporteController');
 
 router.use(checkAuth);
 

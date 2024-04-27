@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const relatorioController = require("../controllers/relatorio");
+const relatorioController = require("../controllers/relatorioController");
 const {checkAuth} = require('../middlewares/auth');
 
 router.use(checkAuth);

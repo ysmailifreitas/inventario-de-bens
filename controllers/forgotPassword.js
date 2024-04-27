@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const {Usuarios} = require('../models/Usuarios');
-const bcrypt = require('bcrypt');
+
+// TODO IMPLEMENTAR A forgotPasswordService E REFATORAR A CONTROLLER PARA SOMENTE EXECUTAR A CONSULTA DA SERVICE
 
 const agente = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
