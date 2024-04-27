@@ -7,8 +7,10 @@ COPY package-lock.json package-lock.json
 
 RUN npm install
 
+RUN apt-get update && apt-get install -y dockerize
+
 COPY . .
 
 EXPOSE 4000
 
-CMD ["npm", "start"]
+CMD ["dockerize", "-wait", "tcp://mysql:3306", "-timeout", "60s", "npm", "start"]
