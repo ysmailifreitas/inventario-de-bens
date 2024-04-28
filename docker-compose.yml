@@ -13,7 +13,7 @@ services:
     image: ysmailifreitas/inventario-bens-patrimoniais:latest
 
   mysql:
-    image: mysql:latest
+    image: mysql:5.7
     container_name: mysql-container
     environment:
       MYSQL_ROOT_PASSWORD: root-password
@@ -22,5 +22,5 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
-    volumes:
-      - ./scripts/db:/docker-entrypoint-initdb.d
+#    volumes:
+#      - ./scripts/db:/docker-entrypoint-initdb.d
