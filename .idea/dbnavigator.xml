@@ -21,6 +21,9 @@
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/scripts/db/backup.sql" connection-id="b5384fb2-2b8a-40b5-92b3-8f8159d9addc" session-id="MAIN" current-schema="inventario" />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />

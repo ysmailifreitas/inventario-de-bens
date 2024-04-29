@@ -31,8 +31,6 @@ router.get('/home', async (req, res) => {
 
 //Impressões para o gráfico de quantidade de Itens
 router.get('/dadosGrafico', async (req, res) => {
-const seteDias = new Date();
-seteDias.setDate(seteDias.getDate() - 7)
 const seisDias = new Date();
 seisDias.setDate(seisDias.getDate() - 6)
 const cincoDias = new Date();
@@ -51,7 +49,6 @@ const contagemHoje = await Itens.count();
 const haUmDia = await Itens.count({
   where: {
     createdAt: {
-      [Op.gt]: doisDias,
       [Op.lt]: umDia,
     },
   },
@@ -60,7 +57,6 @@ const haUmDia = await Itens.count({
 const haDoisDias = await Itens.count({
   where: {
     createdAt: {
-      [Op.gt]: tresDias,
       [Op.lt]: doisDias,
     },
   },
@@ -69,7 +65,6 @@ const haDoisDias = await Itens.count({
 const haTresDias = await Itens.count({
   where: {
     createdAt: {
-      [Op.gt]: quatroDias,
       [Op.lt]: tresDias,
     },
   },
@@ -78,7 +73,6 @@ const haTresDias = await Itens.count({
 const haQuatroDias = await Itens.count({
   where: {
     createdAt: {
-      [Op.gt]: cincoDias,
       [Op.lt]: quatroDias,
     },
   },
@@ -87,7 +81,6 @@ const haQuatroDias = await Itens.count({
 const haCincoDias = await Itens.count({
   where: {
     createdAt: {
-      [Op.gt]: seisDias,
       [Op.lt]: cincoDias,
     },
   },
@@ -96,7 +89,6 @@ const haCincoDias = await Itens.count({
 const haSeisDias = await Itens.count({
   where: {
     createdAt: {
-    [Op.gt]: seteDias,
     [Op.lt]: seisDias,
     },
   },
@@ -117,8 +109,6 @@ const graficoItens = {
 
 //Impressões para o gráfico valor do Inventário
 router.get('/graficoValor', async (req, res) => {
-const seteDias = new Date();
-seteDias.setDate(seteDias.getDate() - 7)
 const seisDias = new Date();
 seisDias.setDate(seisDias.getDate() - 6)
 const cincoDias = new Date();
@@ -137,7 +127,6 @@ const contagemHoje = await Itens.sum('it_valor_total');
 const haUmDia = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: doisDias,
       [Op.lt]: umDia,
     },
   },
@@ -146,7 +135,6 @@ const haUmDia = await Itens.sum('it_valor_total', {
 const haDoisDias = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: tresDias,
       [Op.lt]: doisDias,
     },
   },
@@ -155,7 +143,6 @@ const haDoisDias = await Itens.sum('it_valor_total', {
 const haTresDias = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: quatroDias,
       [Op.lt]: tresDias,
     },
   },
@@ -164,7 +151,6 @@ const haTresDias = await Itens.sum('it_valor_total', {
 const haQuatroDias = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: cincoDias,
       [Op.lt]: quatroDias,
     },
   },
@@ -173,7 +159,6 @@ const haQuatroDias = await Itens.sum('it_valor_total', {
 const haCincoDias = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: seisDias,
       [Op.lt]: cincoDias,
     },
   },
@@ -182,7 +167,6 @@ const haCincoDias = await Itens.sum('it_valor_total', {
 const haSeisDias = await Itens.sum('it_valor_total', {
   where: {
     createdAt: {
-//      [Op.gt]: seteDias,
       [Op.lt]: seisDias,
     },
   },
