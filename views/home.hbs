@@ -4,50 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial</title>
+    <base href="/">
 
-<!--    <link rel="stylesheet" href="css/home.css">-->
+    <!--    <link rel="stylesheet" href="css/home.css">-->
     <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/listagem.css">
 
 </head>
 <body class="bg-gray-100">
 {{> nav}}
 
-<div class="flex flex-wrap justify-center">
-    <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 backdrop-blur-lg rounded-lg overflow-hidden caixa">
-        <div class="px-6 py-4">
-            <a href="/itens"><img src="img/caixa.png" class="w-full h-auto" alt="Imagem de Caixa"></a>
-            <div class="font-bold text-xl mb-2 text-gray-500 text">Inventário</div>
-        </div>
+<div class="flex flex-col justify-center items-center top_site">
+    <div class="flex justify-end bg-gray-50 add_button">
+        <button class="font-bold py-2 px-4 rounded"><a href="/gerar-pdf">Gerar Relatório</a></button>
     </div>
+</div>
 
-    <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg  overflow-hidden fornecedor">
+<div class="flex flex-wrap justify-center text-center">
+    <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
         <div class="px-6 py-4">
-            <a href="/fornecedores"><img src="img/fornecedor.png" class="w-full h-auto" alt="Imagem de Fornecedor"></a>
-            <div class="font-bold text-xl mb-2 text-gray-500 text">Fornecedor</div>
-        </div>
-    </div>
-
-    <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg overflow-hidden perfil">
-        <div class="px-6 py-4">
-            <img src="img/perfil-de-usuario.png" class="w-full h-auto" alt="Imagem de Perfil de Usuário">
-            <div class="font-bold text-xl mb-2 text-gray-500 text">Perfil de Usuário</div>
-        </div>
-    </div>
-
-    <div class="max-w-xs mx-4 my-4 bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg overflow-hidden relatorio">
-        <div class="px-6 py-4">
-            <img src="img/relatorio.png" class="w-full h-auto" alt="Imagem de Relatório">
-            <div class="font-bold text-xl mb-2 text-gray-500 text">Relatório</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"> Valor Total Inventário</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"><p>R$ {{preco_total}}</p> </div>
         </div>
     </div>
 </div>
 
-<script src="javascripts/dashboard.js"></script>
+<div class="flex flex-wrap justify-center text-center">
+    <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-500">Total de Usuários</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_usuarios}}</p> </div>
+        </div>
+    </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-500">Total de Itens</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_itens}}</p> </div>
+        </div>
+    </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-500">Total de Fornecedores</div>
+            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_fornecedores}}</p> </div>
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-wrap justify-center">
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <canvas id="myChart">{{graficoItens}}</canvas>
+    </div>
+
+    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+        <canvas id="myChart2"></canvas>
+    </div>
+</div>
+
+
+
+<script src="js/dashboard.js"></script>
+<script src="js/graficos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>
-
 
 
 

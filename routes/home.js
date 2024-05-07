@@ -3,9 +3,9 @@ const express = require("express");
 const router = express.Router();
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const Op = Sequelize.Op;
-const Itens = require("../models/Itens");
-const Fornecedor = require("../models/Fornecedor");
-const Usuarios = require("../models/Users")
+const Itens = require("../models/Patrimonio");
+const Fornecedor = require("../models/Fornecedores");
+const { Usuarios } = require("../models/Usuarios")
 const {checkAuth} = require('../middlewares/auth');
 
 router.use(checkAuth);
@@ -13,12 +13,11 @@ router.use(checkAuth);
 //Impressões para o front
 router.get('/home', async (req, res) => {
   try {
-    const item = await Itens.findAll();
     const total_itens = await Itens.count();
     const total_fornecedores = await Fornecedor.count();
     const total_usuarios = await Usuarios.count();
-    const preco_total = await Itens.sum('it_valor_total');
-    res.render('home', { total_usuarios, total_itens, total_fornecedores, preco_total, item });
+    const preco_total = await Itens.sum('pat_valor');
+    res.render('home', { total_usuarios, total_itens, total_fornecedores, preco_total });
   } catch (error) {
     console.error('Erro ao fazer contagens:', error);
     res.status(500).send('Erro ao fazer contagens');
@@ -98,7 +97,7 @@ const graficoItens = {
       labels: ['1', '2', '3', '4', '5', '6', '7'],
       datasets: [{
         label: 'Estoque do Inventário',
-        data: [haSeisDias, haCincoDias, haQuatroDias, 
+        data: [haSeisDias, haCincoDias, haQuatroDias,
           haTresDias, haDoisDias, haUmDia, contagemHoje],
         borderWidth: 1
       }]
@@ -122,9 +121,9 @@ doisDias.setDate(doisDias.getDate() - 2)
 const umDia = new Date();
 umDia.setDate(umDia.getDate() - 1)
 
-const contagemHoje = await Itens.sum('it_valor_total');
+const contagemHoje = await Itens.sum('pat_valor');
 
-const haUmDia = await Itens.sum('it_valor_total', {
+const haUmDia = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: umDia,
@@ -132,7 +131,7 @@ const haUmDia = await Itens.sum('it_valor_total', {
   },
 });
 
-const haDoisDias = await Itens.sum('it_valor_total', {
+const haDoisDias = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: doisDias,
@@ -140,7 +139,7 @@ const haDoisDias = await Itens.sum('it_valor_total', {
   },
 });
 
-const haTresDias = await Itens.sum('it_valor_total', {
+const haTresDias = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: tresDias,
@@ -148,7 +147,7 @@ const haTresDias = await Itens.sum('it_valor_total', {
   },
 });
 
-const haQuatroDias = await Itens.sum('it_valor_total', {
+const haQuatroDias = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: quatroDias,
@@ -156,7 +155,7 @@ const haQuatroDias = await Itens.sum('it_valor_total', {
   },
 });
 
-const haCincoDias = await Itens.sum('it_valor_total', {
+const haCincoDias = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: cincoDias,
@@ -164,7 +163,7 @@ const haCincoDias = await Itens.sum('it_valor_total', {
   },
 });
 
-const haSeisDias = await Itens.sum('it_valor_total', {
+const haSeisDias = await Itens.sum('pat_valor', {
   where: {
     createdAt: {
       [Op.lt]: seisDias,
@@ -176,7 +175,7 @@ const valorGrafico = {
       labels: ['1', '2', '3', '4', '5', '6', '7'],
       datasets: [{
         label: 'Valor do Inventário',
-        data: [haSeisDias, haCincoDias, haQuatroDias, 
+        data: [haSeisDias, haCincoDias, haQuatroDias,
           haTresDias, haDoisDias, haUmDia, contagemHoje],
         borderWidth: 1
       }]
@@ -214,10 +213,10 @@ router.get('/gerar-pdf', async (req, res) => {
     doc.rect(column1, tableTop, column6 - column1, rowHeight)
        .fillAndStroke('#cccccc', '#000000'); // Preencher com cinza claro e borda preta
     doc.font('Helvetica-Bold').fontSize(10).fillColor('#000000').text('Nome', column1 + 5, tableTop + 2, textOptions);
-    doc.text('Quantidade', column2 + 5, tableTop + 2, textOptions);
+//    doc.text('Quantidade', column2 + 5, tableTop + 2, textOptions);
     doc.text('Data Aquisição', column3 + 5, tableTop + 2, textOptions);
-    doc.text('Fornecedor', column4 + 5, tableTop + 2, textOptions);
-    doc.text('Localização', column5 + 5, tableTop + 2, textOptions); // Adicionando o cabeçalho da nova coluna
+//    doc.text('Fornecedor', column4 + 5, tableTop + 2, textOptions);
+    doc.text('Estado', column5 + 5, tableTop + 2, textOptions); // Adicionando o cabeçalho da nova coluna
 
     // Adicionar os dados das colunas com estilo
     doc.font('Helvetica').fontSize(7);
@@ -227,10 +226,10 @@ router.get('/gerar-pdf', async (req, res) => {
         doc.rect(column1, y, column6 - column1, rowHeight)
            .fillAndStroke(backgroundColor, '#000000');
         doc.font('Helvetica-Bold').fontSize(7).fillColor('#000000').text(item.it_nome, column1 + 5, y + 2, textOptions);
-        doc.text(item.it_quantidade.toString(), column2 + 5, y + 2, textOptions);
-        doc.text(item.it_dataAquisicao, column3 + 5, y + 2, textOptions);
-        doc.text(item.it_for_nome, column4 + 5, y + 2, textOptions);
-        doc.text(item.it_localizacao, column5 + 5, y + 2, textOptions);
+//        doc.text(item.it_quantidade.toString(), column2 + 5, y + 2, textOptions);
+        doc.text(item.pat_data_aquisicao, column3 + 5, y + 2, textOptions);
+//        doc.text(item.it_for_nome, column4 + 5, y + 2, textOptions);
+        doc.text(item.pat_estado, column5 + 5, y + 2, textOptions);
 
         y += rowHeight;
     });
