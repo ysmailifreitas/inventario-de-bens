@@ -2,6 +2,7 @@ const { Sequelize, Model, DataTypes } = require("sequelize");
 const Itens = require("../models/Patrimonio");
 const Fornecedor = require("../models/Fornecedores");
 const {Usuarios} = require("../models/Usuarios");
+const checkPermissions = require('../middlewares/checkPermissoes')
 
 exports.getHomePage = async (req, res) => {
     try {

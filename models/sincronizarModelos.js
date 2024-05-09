@@ -11,6 +11,8 @@ const Patrimonio = require("./Patrimonio");
 const PatrimonioEstoque = require("./PatrimonioEstoque");
 const Permissoes = require("./Permissoes");
 const {Usuarios} = require("./Usuarios");
+const Tickets = require("./Tickets");
+const Comentarios = require("./Comentarios");
 
 // Função para sincronizar todos os modelos na sequência correta
 async function sincronizarModelos() {
@@ -28,6 +30,8 @@ async function sincronizarModelos() {
         await Estoque.sync();
         await PatrimonioEstoque.sync();
         await Movimentacao.sync();
+        await Tickets.sync();
+        await Comentarios.sync();
 
         console.log("Todos os modelos sincronizados com sucesso.");
     } catch (error) {
