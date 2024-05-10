@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Barra Superior</title>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div class="bg-white p-4 flex justify-between items-center menu_top">
+        <a href="#" class="text-white text-gray-800 "><p>Voltar para o site</p></a>
+        <div class="font-semibold text-gray-800 ml-4 text_div ">Suporte</div>
+        <div class="list_ticket"><a href="listagemticket.html">Listagem de ticket</a>
+        <a href="#">Criar ticket</a></div> 
+    </div>
+
+    <!-- Card de detalhes do ticket -->
+    <div class="container mx-auto mt-8 container_box">
+        <div class="max-w-3xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg max-h-screen">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Detalhes do Ticket</h2>
+                <p class="text-gray-600 mt-2"><span class="font-semibold">ID:</span> #{{ticket.ticket_id}}</p>
+                <p class="text-gray-600"><span class="font-semibold">Assunto:</span> {{ticket.ticket_assunto}}</p>
+                <p class="text-gray-600"><span class="font-semibold">Descrição:</span> {{ticket.ticket_descricao}}</p>
+            </div>
+            <div class="px-6 py-4 bg-gray-100">
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-600 bg-gray-200">Prioridade: {{ticket.ticket_prioridade}}</span>
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-200">Status: {{ticket.ticket_status}}</span>
+            </div>
+            <div class="px-6 py-4">
+                <a href="/suporte/tickets" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Voltar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

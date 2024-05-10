@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem ticket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body class="bg-gray-100">
+<div class="bg-white p-4 flex justify-between items-center menu_top">
+    <a href="/home" class="text-white text-gray-800 "><p>Voltar para o site</p></a>
+    <div class="font-semibold text-gray-800 ml-4 text_div ">Suporte</div>
+    <div class="list_ticket flex">
+        <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/suporte/tickets">Listagem de ticket</a>
+        <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/cadastrarTicket">Criar ticket</a>
+    </div>
+</div>
+<div class="container mx-auto mt-8">
+    <h2 class="text-lg font-semibold mb-4 text-center">Listagem de Tickets</h2>
+    <!-- Adicionei a classe "text-center" para centralizar -->
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+        <tr>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Assunto
+            </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Descrição
+            </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Prioridade
+            </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Status
+            </th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Ver Ticket
+            </th>
+        </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+        {{#each tickets}}
+            <tr class="select_td">
+                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_assunto}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_descricao}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_prioridade}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center">
+                    <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-500"
+                          title="Ticket Resolvido"></span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-center">
+                    <a class="uppercase" href="/suporte/tickets/{{ticket_id}}">ver ticket</a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

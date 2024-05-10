@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Barra Superior</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<div class="bg-white p-4 flex justify-between items-center menu_top">
+    <a href="/home" class="text-white text-gray-800 "><p>Voltar para o site</p></a>
+    <div class="font-semibold text-gray-800 ml-4 text_div ">Suporte</div>
+    <div class="list_ticket flex">
+        <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/suporte/tickets">Listagem de ticket</a>
+        <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/cadastrarTicket">Criar ticket</a>
+    </div>
+</div>
+
+<div class="flex justify-center card_center">
+    <div class="w-full lg:w-2/3">
+        <div class="bg-white shadow-md rounded-lg p-8 mt-10">
+            <h2 class="text-2xl font-semibold mb-4 text-center ">ABRIR TICKET</h2>
+            <form action="/cadastrarTicket" method="POST" class="">
+                <div class="mb-4">
+                    <label for="ticket_assunto" class="block text-sm font-medium text-gray-700">ASSUNTO:</label>
+                    <input type="text" id="ticket_assunto" name="ticket_assunto"
+                           class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 "
+                           placeholder="ticket não está aparecendo">
+                </div>
+                <div class="mb-4">
+                    <label for="ticket_descricao" class="block text-sm font-medium text-gray-700">DESCREVA O
+                        ASSUNTO:</label>
+                    <textarea id="ticket_descricao" name="ticket_descricao"
+                              class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 input_css align-top"
+                              placeholder="Descreva detalhadamente o problema"></textarea>
+                </div>
+
+
+                <button type="submit" class="button-30 flex items-center justify-center mx-auto">ENVIAR</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -12,7 +12,7 @@ const Tickets = db.sequelize.define('tickets', {
     ticket_assunto: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: false
     },
     ticket_descricao: {
         type: DataTypes.STRING
@@ -20,12 +20,12 @@ const Tickets = db.sequelize.define('tickets', {
     ticket_status: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: false
     },
     ticket_prioridade: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: false
     }
 }, {
     tableName: 'tickets',
