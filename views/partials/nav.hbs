@@ -1,126 +1,8 @@
-<!-- Menu Lateral -->
-<aside class="hidden fixed-menu bg-white h-screen w-64 border-r border-gray-300 float-left sm:flex flex-col shadow-lg ">
-    <!-- Título da Empresa -->
-    <div class="flex items-center justify-center box__style title__navbar">
-        <ion-icon name="cube-outline" class="w-12 h-12 flex cubo"></ion-icon>
-        <h1 class="text-xl font-semibold text-gray-800 ml-4 menu__navbar">Menu</h1>
-    </div>
-
-    <hr class="shadow-lg h-2">
-
-
-    <!-- Patrimonio do Menu -->
-    <nav class="">
-        <ul class="space-y-2">
-            <li><a href="/home" class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                <ion-icon name="home-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                Dashboard</a></li>
-            <li><a href="/patrimonio"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                <ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 flex"></ion-icon>
-                Listagem de Patrimonio</a></li>
-            <li>
-                <a href="/estoque"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                    <ion-icon name="file-tray-full-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                    Estoque</a></li>
-            <li>
-                <a href="/fornecedores"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                    <ion-icon name="business-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                    Fornecedores</a></li>
-            <li>
-                <a href="/movimentacoes"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                    <ion-icon name="stopwatch-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                    Movimentações</a></li>
-            <li class="dropdown ">
-                <a href="#"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center dropdown-toggle">
-                    <ion-icon name="create-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                    Cadastros Básicos
-                </a>
-                <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
-                    <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
-                        <ion-icon name="location-outline" class="w-6 h-6 flex ml-4"></ion-icon>
-                        <a href="/cadastrarLocalizacao" class="block p-2 text-gray-600 hover:bg-gray-200">
-                            Cadastrar Localização
-                        </a>
-                    </li>
-                    <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
-                        <ion-icon name="git-merge-outline" class="w-6 h-6 flex ml-4"></ion-icon>
-                        <a href="/cadastrarDepartamento" class="block p-2 text-gray-600 hover:bg-gray-200">
-                            Cadastrar Departamento
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="/editPermissions"
-                   class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
-                <ion-icon name="hammer-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-                Editar Permissão</a></li>
-
-        </ul>
-    </nav>
-    <div class="w-full mt-auto mb-10"><a href="logout" class="block p-4 text-gray-600 bg-red-100 hover:bg-red-200 flex-end flex items-center justify-center">
-        <ion-icon name="log-out-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
-        Logout</a></div>
-</aside>
-
-<!-- Barra Superior -->
-<header class="bg-white shadow-md">
-    <div class="container mx-auto py-2">
-        <div class="flex justify-between items-center">
-            <div class="space-x-4 m-3 display flex items-center">
-            </div>
-            <div class="space-x-4 m-3 display flex items-center ml-auto">
-                <a href="/suporte/tickets/" class="text-gray-600 hover:text-gray-800 ">
-                    <ion-icon name="call-outline"></ion-icon>
-                    Suporte</a>
-                <span class="mx-2">|</span> <!-- Adiciona um separador -->
-                {{> loggedUser}}
-
-            </div>
-
-
-        </div>
-    </div>
-
-</header>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-
-<!-- Adicione esses scripts ao final do <body> -->
-<script>
-    // Adiciona um evento de clique ao item principal do menu dropdown
-    document.querySelector('.dropdown-toggle').addEventListener('click', function (event) {
-        event.preventDefault(); // Impede a navegação ao clicar
-        // Encontra o submenu (ul.dropdown-menu) associado ao item principal (li.dropdown)
-        const dropdownMenu = this.nextElementSibling;
-
-        // Alterna a classe 'hidden' para mostrar ou ocultar o submenu
-        dropdownMenu.classList.toggle('hidden');
-    });
-
-    // Adiciona eventos de clique aos links do submenu para fechar o menu após a seleção
-    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
-    dropdownLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            // Encontra o submenu (ul.dropdown-menu) associado ao link e o esconde
-            const dropdownMenu = this.closest('.dropdown-menu');
-            dropdownMenu.classList.add('hidden');
-        });
-    });
-</script>
-
 <style>
-    /* Estilo para o menu dropdown */
     .dropdown {
         position: relative;
-        /*display: inline-block;*/
     }
 
-    /* Estilo para o submenu dropdown */
     .dropdown-menu {
         position: absolute;
         top: 100%;
@@ -135,12 +17,10 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
-    /* Ocultar o submenu por padrão */
     .dropdown-menu.hidden {
         display: none;
     }
 
-    /* Estilo para os itens do submenu */
     .dropdown-menu a {
         display: block;
         padding: 10px 20px;
@@ -152,3 +32,136 @@
         background-color: #f0f0f0;
     }
 </style>
+
+<!-- Menu Lateral -->
+<div class="sm:hidden duration-300 absolute text-black cursor-pointer z-20" onclick="toggleMenu()">
+    <ion-icon name="menu-outline" class="w-12 h-12 flex icone duration-300"></ion-icon>
+</div>
+<aside class="w-0 mt-0 asideMenu duration-300 fixed bg-white h-screen sm:w-64 border-r border-gray-300 sm:flex flex-col shadow-lg z-10">
+    <!-- Título da Empresa -->
+
+    <div class="asideContent opacity-0 sm:opacity-100">
+        <div class="flex items-center justify-center title__navbar">
+            <ion-icon name="cube-outline" class="w-12 h-12 flex" style="color:#00ccff"></ion-icon>
+            <h1 class="text-xl font-semibold text-gray-800 ml-4 menu__navbar">Menu</h1>
+        </div>
+
+        <hr class="shadow-lg h-2">
+        <!-- Patrimonio do Menu -->
+        <nav class="">
+            <ul class="space-y-2 ">
+                <li><a href="/home" class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                    <ion-icon name="home-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Dashboard</a></li>
+                <li><a href="/patrimonio"
+                       class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                    <ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Listagem de Patrimonio</a></li>
+                <li>
+                    <a href="/estoque"
+                       class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                        <ion-icon name="file-tray-full-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                        Estoque</a></li>
+                <li>
+                    <a href="/fornecedores"
+                       class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                        <ion-icon name="business-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                        Fornecedores</a></li>
+                <li>
+                    <a href="/movimentacoes"
+                       class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                        <ion-icon name="stopwatch-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                        Movimentações</a></li>
+                <li class="dropdown ">
+                    <a href="#"
+                       class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center dropdown-toggle">
+                        <ion-icon name="create-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                        Cadastros Básicos
+                    </a>
+                    <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
+                        <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
+                            <ion-icon name="location-outline" class="w-6 h-6 flex ml-4"></ion-icon>
+                            <a href="/cadastrarLocalizacao" class="block p-2 text-gray-600 hover:bg-gray-200">
+                                Cadastrar Localização
+                            </a>
+                        </li>
+                        <li class="flex flex-column items-center justify-center mt-0 mb-0 text-center">
+                            <ion-icon name="git-merge-outline" class="w-6 h-6 flex ml-4"></ion-icon>
+                            <a href="/cadastrarDepartamento" class="block p-2 text-gray-600 hover:bg-gray-200">
+                                Cadastrar Departamento
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/editPermissions"
+                       class="block p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center">
+                    <ion-icon name="hammer-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                    Editar Permissão</a></li>
+
+            </ul>
+        </nav>
+        <div class="w-full mt-auto mb-10">
+            <a href="logout"
+               class="block p-4 text-gray-600 bg-red-100 hover:bg-red-200 flex-end flex items-center justify-center">
+                <ion-icon name="log-out-outline" class="w-6 h-6 mr-2 flex"></ion-icon>
+                Logout
+            </a>
+        </div>
+    </div>
+</aside>
+
+<!-- Barra Superior -->
+<header class="bg-white shadow-md">
+    <div class="container mx-auto py-2">
+        <div class="flex justify-between items-center">
+            <div class="space-x-4 m-3 display flex items-center">
+            </div>
+            <div class="space-x-4 m-3 display flex items-center ml-auto">
+                <a href="/suporte/tickets/" class="text-gray-600 hover:text-gray-800 ">
+                    <ion-icon name="call-outline"></ion-icon>
+                    Suporte</a>
+                <span class="mx-2">|</span>
+                {{> loggedUser}}
+
+            </div>
+
+
+        </div>
+    </div>
+
+</header>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+<script>
+    document.querySelector('.dropdown-toggle').addEventListener('click', function (event) {
+        event.preventDefault();
+        const dropdownMenu = this.nextElementSibling;
+
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    const asideMenu = document.querySelector('.asideMenu');
+    const icone = document.querySelector('.icone');
+    const asideContent = document.querySelector('.asideContent');
+    dropdownLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            const dropdownMenu = this.closest('.dropdown-menu');
+            dropdownMenu.classList.add('hidden');
+        });
+    });
+
+    function toggleMenu() {
+        asideMenu.classList.toggle('w-full')
+        if(icone.name === 'menu-outline'){
+            icone.name = 'close-outline'
+            asideContent.classList.remove('opacity-0')
+            asideContent.classList.add('opacity-100')
+        }else{
+            icone.name = 'menu-outline'
+            asideContent.classList.remove('opacity-100')
+            asideContent.classList.add('opacity-0')
+        }
+    }
+</script>

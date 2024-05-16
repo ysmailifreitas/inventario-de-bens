@@ -12,52 +12,53 @@
 </head>
 <body class="bg-gray-100">
 {{> nav}}
-
-<div class="flex flex-col justify-center items-center top_site">
-    <div class="flex justify-end bg-gray-50 add_button">
-        <button class="font-bold py-2 px-4 rounded"><a href="/gerar-pdf">Gerar Relatório</a></button>
-    </div>
-</div>
-
-<div class="flex flex-wrap justify-center text-center">
-    <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-500"> Valor Total Inventário</div>
-            <div class="font-bold text-xl mb-2 text-gray-500"><p>R$ {{preco_total}}</p></div>
-        </div>
-    </div>
-</div>
-
-<div class="flex flex-wrap justify-center text-center">
-    <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-500">Total de Usuários</div>
-            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_usuarios}}</p></div>
+<div class="mt-20 sm:ml-64 mx-auto">
+    <div class="flex flex-col justify-center items-center">
+        <div class="flex justify-end bg-gray-50 add_button">
+            <button class="font-bold py-2 px-4 rounded"><a href="/gerar-pdf">Gerar Relatório</a></button>
         </div>
     </div>
 
-    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-500">Total de Itens</div>
-            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_itens}}</p></div>
+    <div class="flex flex-wrap justify-center text-center">
+        <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2 text-gray-500"> Valor Total Inventário</div>
+                <div class="font-bold text-xl mb-2 text-gray-500"><p>R$ {{preco_total}}</p></div>
+            </div>
         </div>
     </div>
 
-    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-500">Total de Fornecedores</div>
-            <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_fornecedores}}</p></div>
+    <div class="flex flex-wrap justify-center text-center">
+        <div class="max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2 text-gray-500">Total de Usuários</div>
+                <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_usuarios}}</p></div>
+            </div>
+        </div>
+
+        <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2 text-gray-500">Total de Itens</div>
+                <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_itens}}</p></div>
+            </div>
+        </div>
+
+        <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2 text-gray-500">Total de Fornecedores</div>
+                <div class="font-bold text-xl mb-2 text-gray-500"><p>{{total_fornecedores}}</p></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="flex flex-wrap justify-center">
-    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <canvas id="myChart">{{graficoItens}}</canvas>
-    </div>
+    <div class="flex flex-wrap justify-center">
+        <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <canvas id="myChart">{{graficoItens}}</canvas>
+        </div>
 
-    <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
-        <canvas id="myChart2"></canvas>
+        <div class="text-center max-w-xs mx-4 my-4 bg-white bg-opacity-75 backdrop-blur-lg border border-gray-200 rounded-lg overflow-hidden shadow-lg card1">
+            <canvas id="myChart2"></canvas>
+        </div>
     </div>
 </div>
 

@@ -95,7 +95,7 @@ app.use('/', require('./routes/perfilUsuario'));
 app.use('/', require('./routes/cadastros'));
 app.use('/', require('./routes/estoque'));
 app.use('/', require('./routes/movimentacoes'));
-
+console.log('a')
 // Inicialização do servidor
 const PORT = process.env.PORT || 4000;
 

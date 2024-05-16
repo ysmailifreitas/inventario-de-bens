@@ -11,13 +11,13 @@
 
 <body>
 {{> nav}}
-<div class="items-center h-screen text-center justify-center ml-230 flex flex-col">
-    <div class="w-1000 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+<div class="items-center h-screen text-center flex flex-col mt-20 sm:ml-64 mx-auto">
+    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
         <!-- Left container -->
         {{#if errorMessage}}
             {{> errorCard}}
         {{/if}}
-        <div class="flex w-full space-x-6">
+        <div class="flex flex-col sm:flex-row w-full space-x-6 sm:flex-wrap">
             <div class="h-full w-full bg-white p-6 mb-6 rounded-lg shadow-md">
                 <form id="form" action="/editPermissions/atualizarCargoUsuario/1" method="POST">
                     <!-- Include the searchUsers partial -->
@@ -70,7 +70,7 @@
                     </div>
                 </form>
             </div>
-            <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
+            <div class="h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin-left: 0">
                 <form action="/editPermissions/atualizarPermissoes/{{userId}}" method="POST">
                     <div class="mb-4">
                         <label for="roles" class="block text-sm font-medium text-gray-600">Permissões</label>
@@ -103,7 +103,7 @@
                     </div>
                 </form>
             </div>
-            <div class="h-full w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md">
+            <div class="h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin: 0">
                 <form action="/editPermissions/atualizarRoles/{{userId}}" method="POST">
                     <div class="mb-4">
                         <label for="cargos" class="block text-sm font-medium text-gray-600">Cargos</label>

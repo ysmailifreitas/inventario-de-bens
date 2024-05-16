@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon -e hbs,js app.js",
     "add:usuarioPadrao":"mysql -u inventario_user -p < ./scripts/db/backup.sql",
     "update-packages": "ncu -u",
     "install-packages": "npm install",
