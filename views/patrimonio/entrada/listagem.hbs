@@ -1,49 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html class="overflow-x-hidden" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movimentações</title>
+    <title>Entrada de Patrimônios</title>
     <base href="/">
     <link rel="stylesheet" href="css/listagem.css">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
+
 </head>
 <body class="bg-gray-100">
-
 {{> nav}}
-
 <div class="mt-28 sm:mt-44 sm:ml-64 mx-auto w-fit">
     <div class="flex flex-col justify-center items-center">
+        <div class="flex justify-end bg-gray-50 add_button">
+            <button class="font-bold py-2 px-4 rounded"><a href="/patrimonio/entrada/novaEntrada">Nova Entrada</a></button>
+        </div>
         <div class="w-5/6">
-            <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center uppercase">movimentações</h1>
+            <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center uppercase">Entradas Efetuadas</h1>
             <table class="w-full">
                 <thead class="">
                 <tr class="hidden sm:flex">
                     <th class="w-full pl-9 py-3 bg-gray-50 sm:text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Patrimonio ID
+                        Mov ID
                     </th>
                     <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Localização ID Origem
+                        Pat Nome
                     </th>
                     <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Localização ID Destino
+                        Fornecedor
                     </th>
                     <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Responsável
                     </th>
-                    <th class="w-full px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                        Data Modificação
+                    </th>
+                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Tipo
                     </th>
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                {{#each movimentacao}}
+                {{#each entradas}}
                     <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_pat_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_loc_origem_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_loc_destino_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{patrimonio.pat_nome}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{patrimonio.pat_for_id}}</td>
                         <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_responsavel}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{updatedAt}}</td>
                         <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_tipo}}</td>
                     </tr>
                 {{/each}}
@@ -52,6 +58,7 @@
         </div>
     </div>
 </div>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/patrimonio.js"></script>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fornecedores</title>
+    <title>Estoque Patrimônio</title>
     <base href="/">
     <link rel="stylesheet" href="css/listagem.css">
     <link rel="stylesheet" href="css/estilo.css">
@@ -13,7 +13,7 @@
 
 {{> nav}}
 
-<div class="mt-20 sm:ml-64 mx-auto w-fit">
+<div class="mt-20 mt-28 sm:mt-44 sm:ml-64 mx-auto w-fit">
     <div class="flex flex-col justify-center items-center">
         <div class="w-5/6">
             <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center uppercase">Listagem de Estoque</h1>
@@ -37,9 +37,9 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                 {{#each estoque}}
                     <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{pat_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{loc_nome}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{quantidade}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{ estoque_id }}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{ loc_nome }}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{ quantidade }}</td>
                         <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">
                             <table class="mx-auto sm:m-0">
                                 <tr class="">

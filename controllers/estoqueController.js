@@ -10,7 +10,7 @@ exports.getEstoqueListagem = async (req, res) => {
         const usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
         const estoques = await Estoque.findAll();
 
-        const consultas = estoques.map(async (estoque) => {
+        const consultas = await Promise.all(estoques.map(async (estoque) => {
             const estoqueComLocalizacao = await Estoque.findOne({
                 where: {estoque_id: estoque.estoque_id},
                 include: [{
@@ -20,7 +20,8 @@ exports.getEstoqueListagem = async (req, res) => {
                     attributes: ['loc_nome']
                 }]
             });
-            const patrimonio_estoque = await PatrimonioEstoque.findOne({where: estoqueComLocalizacao.estoque_id})
+
+            const patrimonio_estoque = await PatrimonioEstoque.findOne({where: estoqueComLocalizacao.estoque_id});
 
             const loc_nome = estoqueComLocalizacao && estoqueComLocalizacao.localizacao ? estoqueComLocalizacao.localizacao.loc_nome : null;
 
@@ -28,18 +29,20 @@ exports.getEstoqueListagem = async (req, res) => {
                 estoque_id: estoque.estoque_id,
                 loc_nome: loc_nome,
                 pat_id: patrimonio_estoque.pat_id,
-                quantidade: patrimonio_estoque.quantidade,
+                quantidade: patrimonio_estoque.quantidade
             };
-        });
-        const resultados = await Promise.all(consultas);
+        }));
 
-        res.render("estoque/listagem/estoque", {estoque: resultados, username: usuarioLogado});
+        console.log('consultas: ', consultas);
+        res.render("estoque/listagem/estoque", {estoque: consultas, username: usuarioLogado});
     } catch (error) {
         console.error("Erro ao buscar dados de estoque com localização:", error);
-
         res.status(500).send("Erro ao buscar dados de estoque com localização");
     }
-}
+};
+
+
+
 
 exports.getEdicaoEstoqueForm = async (req, res) => {
     const estoque = await Estoque.findOne({where: {estoque_id: req.params.id}});

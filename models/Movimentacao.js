@@ -24,6 +24,11 @@ const Movimentacao = db.sequelize.define('movimentacao', {
             type: db.Sequelize.STRING,
             allowNull: false,
             unique: false
+        },
+        mov_motivo: {
+            type: db.Sequelize.STRING,
+            allowNull: true,
+            unique: false
         }
     },
     {
@@ -32,7 +37,7 @@ const Movimentacao = db.sequelize.define('movimentacao', {
         updatedAt: true
     });
 
-Movimentacao.belongsTo(Patrimonio, { foreignKey: 'mov_pat_id' });
+Movimentacao.belongsTo(Patrimonio, { foreignKey: 'mov_pat_id', as: 'patrimonio' });
 Movimentacao.belongsTo(Localizacao, { foreignKey: 'mov_loc_origem_id', as: 'Origem' });
 Movimentacao.belongsTo(Localizacao, { foreignKey: 'mov_loc_destino_id', as: 'Destino' });
 

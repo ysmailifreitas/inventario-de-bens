@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro Entrada</title>
     <base href="/">
     <link rel="stylesheet" href="css/cadastroitem.css">
-    <title>Menu Lateral e Barra Superior com Tailwind CSS</title>
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
 </head>
@@ -14,11 +13,11 @@
 <body>
 {{> nav}}
 
-<div class="flex items-center justify-center card_registro">
+<div class="flex items-center justify-center card_registro mt-28 sm:mt-44 sm:ml-64 mx-auto">
     <div class="max-w-sm mx-auto p-8 rounded-lg card">
-        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR ITEM</h2>
+        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR ENTRADA</h2>
 
-        <form action="/cadastrarPatrimonio" method="POST">
+        <form action="/novaEntrada" method="POST">
             <div>
                 <br>
                 <div class="block">
@@ -27,7 +26,6 @@
                         <option value="" id="selectfn">Selecione o Fornecedores...</option>
                         {{#each fornecedores}}
                             <option name="for_nome" id="for_nome" value="{{for_id}}">{{for_nome}}</option>
-                            <!--                            <input value="{{for_nome}}" name="for_nome" id="for_nome" style="display:none">-->
                         {{/each}}
                     </select>
                 </div>
@@ -55,12 +53,6 @@
                     </select>
                 </div>
             </div>
-            <!--            <div class="mb-4">-->
-            <!--                <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização</label>-->
-            <!--                <input type="integer" id="localizacao" name="localizacao"-->
-            <!--                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">-->
-            <!--            </div>-->
-
             <div class="mb-4">
                 <label for="tipo" class="block text-sm font-medium text-gray-700 ">Tipo</label>
                 <input type="text" id="tipo" name="tipo"

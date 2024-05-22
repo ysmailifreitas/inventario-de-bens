@@ -8,6 +8,10 @@
     .ml-230 {
         margin-left: 230px;
     }
+    .title__navbar {
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
 }
 
 .w-1000 {
@@ -43,14 +47,4 @@ nav ul li a:hover {
 .menu__navbar:hover {
     transition: 0.3s;
     color: #00ccff;
-}
-
-.title__navbar {
-    margin-top: 60px;
-    margin-bottom: 50px;
-
-}
-
-nav, li {
-    margin-top: 50px;
 }

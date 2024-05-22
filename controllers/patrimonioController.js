@@ -10,6 +10,38 @@ exports.getPatrimonioListagem = async (req, res) => {
     }
 };
 
+exports.getEntradaListagem = async (req, res) => {
+    try {
+        const {entradas, username} = await patrimonioService.getEntradaListagem(req.session.username);
+        res.render("patrimonio/entrada/listagem", {entradas, username});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erro ao buscar os Patrimônios")
+    }
+};
+
+exports.getSaidaListagem = async (req, res) => {
+    try {
+        const {saidas, username} = await patrimonioService.getSaidaListagem(req.session.username);
+        res.render("patrimonio/saida/listagem", {saidas, username});
+        console.log(saidas)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erro ao buscar os Patrimônios")
+    }
+};
+
+exports.getCadastroEntradaForm = async (req, res) => {
+    const {fornecedores, localizacao} = await patrimonioService.getCadastroPatrimonioForm()
+    console.log({fornecedores, localizacao});
+    res.render("patrimonio/entrada/cadastro/cadastro", {fornecedores, localizacao});
+}
+
+exports.getCadastroSaidaForm = async (req, res) => {
+    const {patrimonio} = await patrimonioService.getCadastroSaidaForm();
+    res.render("patrimonio/saida/cadastro/cadastro", {patrimonio});
+}
+
 exports.getVisualizacaoPatrimonio = async (req, res) => {
     try {
         const patId = req.params.id;
@@ -41,7 +73,7 @@ exports.getEdicaoPatrimonioForm = async (req, res) => {
     }
 }
 
-exports.cadastrarPatrimonio = async (req, res) => {
+exports.cadastrarNovaEntrada = async (req, res) => {
     try {
         const {
             nome,
@@ -67,12 +99,38 @@ exports.cadastrarPatrimonio = async (req, res) => {
             pat_vida_util: vida_util
         };
 
-        await patrimonioService.criarPatrimonio(patrimonioDataSpread, req, quantidade, preco)
+        await patrimonioService.cadastrarNovaEntrada(patrimonioDataSpread, req, quantidade, preco)
 
-        res.redirect("/patrimonio");
+        res.redirect("/patrimonio/entrada");
     } catch (e) {
         console.error(e);
-        res.status(500).send("Erro ao cadastrar item!");
+        res.status(500).send("Erro ao cadastrar entrada!");
+        setTimeout(()=>{
+            res.redirect("/patrimonio/entrada");
+        },1500)
+    }
+};
+
+exports.cadastrarNovaSaida = async (req, res) => {
+    try {
+        const motivo = req.body.motivo;
+
+        let patId = req.body["patId"];
+
+        const quantidade = parseInt(req.body.quantidade);
+
+        let saidaDataSpread = {
+            pat_id: patId,
+            motivo: motivo,
+            quantidade: quantidade
+        };
+
+        await patrimonioService.cadastrarNovaSaida(saidaDataSpread, req)
+
+        res.redirect("/patrimonio/saida");
+    } catch (e) {
+        console.error(e);
+        res.status(500).send("Erro ao cadastrar saida!");
     }
 };
 

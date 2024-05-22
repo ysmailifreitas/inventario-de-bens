@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Saída</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/cadastroitem.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
+</head>
+
+<body>
+{{> nav}}
+
+<div class="flex items-center justify-center card_registro mt-28 sm:mt-44 sm:ml-64 mx-auto">
+    <div class="max-w-sm mx-auto p-8 rounded-lg card">
+        <h2 class="text-2xl font-semibold mb-4 text-center">CADASTRAR SAÍDA</h2>
+
+        <form action="/novaSaida" method="POST">
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <select class="p-2 mt-2 mb-2" name="patId" required>
+                        <option value="" id="selectfn">Selecione o Patrimônio...</option>
+                        {{#each patrimonio}}
+                            <option name="pat_nome" id="pat_nome" value="{{pat_id}}">{{pat_nome}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="quantidade" class="block text-sm font-medium text-gray-700">Quantidade</label>
+                <input type="int" id="quantidade" name="quantidade"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400">
+            </div>
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="motivo" class="block text-sm font-medium text-gray-700">Motivo</label>
+                    <select class="p-2 mt-2 mb-2" name="motivo" required>
+                        <option value="" id="selectfn">Motivo da Saída...</option>
+                        <option name="for_nome" id="for_nome" value="Venda">Venda</option>
+                        <option name="for_nome" id="for_nome" value="Extravio">Extravio</option>
+                        <option name="for_nome" id="for_nome" value="Doação">Doação</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="button-30 flex items-center justify-center">Cadastrar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script src="js/cadastro.js"></script>
+
+</html>

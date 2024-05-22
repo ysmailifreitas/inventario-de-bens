@@ -11,16 +11,14 @@
 
 <body>
 {{> nav}}
-<div class="items-center h-screen text-center flex flex-col mt-20 sm:ml-64 mx-auto">
+<div class="items-center h-screen text-center flex flex-col mt-28 sm:mt-44 sm:ml-64 mx-auto">
     <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <!-- Left container -->
         {{#if errorMessage}}
             {{> errorCard}}
         {{/if}}
         <div class="flex flex-col sm:flex-row w-full space-x-6 sm:flex-wrap">
             <div class="h-full w-full bg-white p-6 mb-6 rounded-lg shadow-md">
                 <form id="form" action="/editPermissions/atualizarCargoUsuario/1" method="POST">
-                    <!-- Include the searchUsers partial -->
                     <div class="painel-selecao">
                         <div class="text-center">
                             <h1 class="m-0">Selecione um Usuário</h1>
@@ -81,7 +79,6 @@
                         <label for="permissoes" class="block text-sm font-medium text-gray-600">Permissões
                             Associadas</label>
 
-                        <!-- Adicione dinamicamente as permissões associadas às funções selecionadas -->
                         <div class="mt-2 space-y-2">
                             {{#each permissoes}}
                                 <div class="flex items-center">
