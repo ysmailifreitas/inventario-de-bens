@@ -32,8 +32,4 @@ exports.getHomeData = async (req, res) => {
             res.redirect('patrimonio')
         }, 1000)
     }
-
-    // Itens.findAll().then(function (itens) {
-    //         res.render("home", {itens, username: req.session.username});
-    //     });
 };
