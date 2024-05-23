@@ -19,6 +19,6 @@ router.get("/suporte/gerenciamento/tickets/:id", suporteController.getGerenciame
 // Ações
 router.post("/cadastrarTicket", suporteController.cadastrarTicket);
 router.post("/alterarTicket/:id", checkPermissions('Suporte'), suporteController.alterarTicket);
-router.post("/adicionarComentario/:id", checkPermissions('Suporte'), suporteController.adicionarComentario);
+router.post("/adicionarComentario/:id", suporteController.adicionarComentario);
 
 module.exports = router;
