@@ -24,7 +24,6 @@ exports.getSaidaListagem = async (req, res) => {
     try {
         const {saidas, username} = await patrimonioService.getSaidaListagem(req.session.username);
         res.render("patrimonio/saida/listagem", {saidas, username});
-        console.log(saidas)
     } catch (err) {
         console.error(err);
         res.status(500).send("Erro ao buscar os Patrimônios")
@@ -33,7 +32,6 @@ exports.getSaidaListagem = async (req, res) => {
 
 exports.getCadastroEntradaForm = async (req, res) => {
     const {fornecedores, localizacao} = await patrimonioService.getCadastroPatrimonioForm()
-    console.log({fornecedores, localizacao});
     res.render("patrimonio/entrada/cadastro/cadastro", {fornecedores, localizacao});
 }
 
@@ -47,7 +45,6 @@ exports.getVisualizacaoPatrimonio = async (req, res) => {
         const patId = req.params.id;
         const pat = await patrimonioService.getVisualizacaoPatrimonio(patId);
         if (pat) {
-            console.log(pat)
             res.send(pat);
         } else {
             res.status(404).send("Patrimonio não encontrado");
@@ -60,7 +57,6 @@ exports.getVisualizacaoPatrimonio = async (req, res) => {
 
 exports.getCadastroPatrimonioForm = async (req, res) => {
     const {fornecedores, localizacao} = await patrimonioService.getCadastroPatrimonioForm()
-    console.log({fornecedores, localizacao});
     res.render("patrimonio/cadastro/cadastroPatrimonio", {fornecedores, localizacao});
 }
 

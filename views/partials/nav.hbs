@@ -43,9 +43,24 @@
             <div class="space-x-4 m-3 display flex items-center">
             </div>
             <div class="space-x-4 m-3 display flex items-center ml-10 sm:ml-auto">
-                <a href="/suporte/tickets/" class="text-gray-600 hover:text-gray-800 ">
-                    <ion-icon name="call-outline"></ion-icon>
-                    Suporte</a>
+                {{#ifEquals username.usr_cargo 'Administrador'}}
+                    <a href="/editPermissions" class="text-gray-600 hover:text-gray-800 flex items-center">
+                        <ion-icon name="build-outline"></ion-icon>
+                        Admin Panel
+                    </a>
+                {{/ifEquals}}
+                {{#ifEquals username.usr_cargo 'Suporte'}}
+                    <a href="/suporte/gerenciamento" class="text-gray-600 hover:text-gray-800 flex items-center">
+                        <ion-icon name="call-outline"></ion-icon>
+                        Suporte Panel
+                    </a>
+                {{else}}
+                    <a href="/suporte/tickets/" class="text-gray-600 hover:text-gray-800 flex items-center">
+                        <ion-icon name="call-outline"></ion-icon>
+                        Suporte
+                    </a>
+                {{/ifEquals}}
+
                 <span class="mx-2">|</span>
                 {{> loggedUser}}
 

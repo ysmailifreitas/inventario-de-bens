@@ -29,22 +29,11 @@ exports.getEntradaListagem = async (username) => {
         include: [{
             model: Patrimonio,
             as: 'patrimonio',
-            attributes: ['pat_id', 'pat_nome', 'pat_for_id'] // Adicionando 'pat_for_id' se necessário
+            attributes: ['pat_id', 'pat_nome', 'pat_for_id']
         }]
     });
-    const formattedEntradas = entradas.map(entrada => {
-        const formattedDate = new Date(entrada.updatedAt).toLocaleString('en-US', {
-            weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
-            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-        });
-        return {
-            ...entrada.dataValues,
-            updatedAt: formattedDate
-        };
-    });
 
-    console.log(formattedEntradas);
-    return {entradas: formattedEntradas, username: usuarioLogado};
+    return {entradas: entradas, username: usuarioLogado};
 };
 
 exports.getSaidaListagem = async (username) => {
@@ -59,19 +48,8 @@ exports.getSaidaListagem = async (username) => {
             attributes: ['pat_id', 'pat_nome', 'pat_for_id'] // Adicionando 'pat_for_id' se necessário
         }]
     });
-    const formattedSaidas = saidas.map(saida => {
-        const formattedDate = new Date(saida.updatedAt).toLocaleString('en-US', {
-            weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
-            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-        });
-        return {
-            ...saida.dataValues,
-            updatedAt: formattedDate
-        };
-    });
 
-    console.log(formattedSaidas);
-    return {saidas: formattedSaidas, username: usuarioLogado};
+    return {saidas: saidas, username: usuarioLogado};
 };
 
 exports.getVisualizacaoPatrimonio = (patId) => {
@@ -102,19 +80,16 @@ exports.cadastrarNovaEntrada = async function (spreadElements, req, quantidade, 
         quantidade,
         preco
     );
-    console.log('valorTotal', valorTotal);
 
     const depreciacaoAnual = calculoPatrimonioService.calcularDepreciacaoAnual(
         spreadElements.pat_data_aquisicao
     );
-    console.log('depreciacaoAnual', depreciacaoAnual);
 
     const taxaDepreciacaoAnual =
         calculoPatrimonioService.calcularTaxaDepreciacaoAnual(
             depreciacaoAnual,
             1000
         );
-    console.log('taxaDepreciacaoAnual', taxaDepreciacaoAnual);
 
 
     const patrimonio = await Patrimonio.create({
@@ -199,7 +174,6 @@ exports.atualizarPatrimonio = (patId, dadosObj, callback) => {
                         pat_data_aquisicao: dadosObj.data_aquisicao
                     })
                     .then(function () {
-                        console.log("Patrimonio updated successfully");
                         callback(null);
                     })
                     .catch(function (error) {
@@ -207,7 +181,6 @@ exports.atualizarPatrimonio = (patId, dadosObj, callback) => {
                         callback(error);
                     });
             } else {
-                console.log("Patrimonio with ID", patId, "not found");
             }
         })
         .catch(function (error) {

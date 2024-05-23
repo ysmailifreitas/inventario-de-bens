@@ -1,6 +1,7 @@
 const { DataTypes} = require('sequelize');
 const db = require('./db');
 const {Usuarios} = require("./Usuarios");
+const Comentarios = require("./Comentarios");
 
 const Tickets = db.sequelize.define('tickets', {
     ticket_id: {
@@ -39,5 +40,7 @@ Tickets.belongsTo(
         as: 'usuarioId'
     }
 )
+
+Tickets.hasMany(Comentarios, {foreignKey: 'ticket_id', as: 'comentarios'});
 
 module.exports = Tickets;

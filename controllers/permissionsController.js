@@ -32,7 +32,7 @@ exports.getVisualizarUsuario = (req, res) => {
 exports.atualizarCargoUsuario = async (req, res) => {
     let novocargoNome;
     try {
-        const usrId = req.params.id;
+        const usrId = req.body.usr_id;
         const novoCargoId = req.body.cargo_id;
         const cargoUsuario = await CargoUsuario.findOne({where: {usr_id: usrId}});
 
@@ -41,7 +41,6 @@ exports.atualizarCargoUsuario = async (req, res) => {
 
             novocargoNome = await getUsuarioCargoNome(novoCargoId)
             await Usuarios.update({usr_cargo: novocargoNome}, {where: {usr_id: usrId}});
-            console.log('Depois da atualização:', usrId, novoCargoId);
 
             res.redirect(req.get('referer'));
         } else {

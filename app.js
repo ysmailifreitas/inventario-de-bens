@@ -79,6 +79,39 @@ hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
 hbs.registerHelper('includes', function (array, value, options) {
     return array.includes(value) ? options.fn(this) : options.inverse(this);
 });
+hbs.registerHelper('statusClass', function(prioridade) {
+    switch (prioridade) {
+        case 'Aberto':
+            return 'text-green-600 bg-green-200';
+        case 'Em Andamento':
+            return 'text-yellow-600 bg-yellow-200';
+        case 'Fechado':
+            return 'text-gray-600 bg-gray-200';
+    }
+});
+hbs.registerHelper('prioridadeClass', function(status) {
+    switch (status) {
+        case 'Baixa':
+            return 'text-green-600 bg-green-200';
+        case 'Média':
+            return 'text-yellow-600 bg-yellow-200';
+        case 'Alta':
+            return 'text-red-600 bg-red-200';
+    }
+});
+hbs.registerHelper('truncateDate', function(date, maxLength) {
+    if (date instanceof Date) {
+        // Converte a data para uma string no formato 'yyyy-mm-dd hh:mm:ss'
+        const dateString = date.toISOString().slice(0, 19).replace('T', ' ');
+        if (dateString.length <= maxLength) {
+            return dateString;
+        } else {
+            return dateString.slice(0, maxLength) + '...';
+        }
+    } else {
+        return date; // Retorna a data sem alterações se não for uma instância de Date
+    }
+});
 
 // -- Rotas
 app.use('/', require('./routes/login'));
@@ -95,7 +128,6 @@ app.use('/', require('./routes/perfilUsuario'));
 app.use('/', require('./routes/cadastros'));
 app.use('/', require('./routes/estoque'));
 app.use('/', require('./routes/movimentacoes'));
-console.log('a')
 // Inicialização do servidor
 const PORT = process.env.PORT || 4000;
 

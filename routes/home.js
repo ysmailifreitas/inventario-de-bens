@@ -8,8 +8,8 @@ const homeController = require('../controllers/homeController');
 
 router.use(checkAuth);
 
-router.get("/", checkPermissoes('Gestor'), homeController.getHomeData);
-router.get("/home", checkPermissoes('Gestor'), homeController.getHomeData);
+router.get("/", homeController.getHomeData);
+router.get("/home", homeController.getHomeData);
 router.get("/dadosGrafico", graficosController.getDadosGrafico);
 router.get("/graficoValor", graficosController.getGraficoValor);
 router.get("/gerar-pdf", relatorioController.GerarRelatorio)

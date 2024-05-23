@@ -31274,12 +31274,6 @@ nav ul li a:hover {
   color: #00ccff;
 }
 
-/*nav, li {*/
-
-/*    margin-top: 50px;*/
-
-/*}*/
-
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

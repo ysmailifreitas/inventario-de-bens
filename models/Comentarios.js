@@ -13,7 +13,7 @@ const Comentarios = db.sequelize.define('comentarios', {
     cmnt_texto: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: false
     }
 }, {
     tableName: 'comentarios',
@@ -21,7 +21,6 @@ const Comentarios = db.sequelize.define('comentarios', {
     updatedAt: true
 });
 
-Comentarios.belongsTo(Tickets, {foreignKey:'ticket_id', as: 'ticket'});
-Comentarios.belongsTo(Usuarios, {foreignKey:'usr_id', as: 'usuarioId'});
+Comentarios.belongsTo(Usuarios, {foreignKey:'usr_id', as: 'usuario'});
 
 module.exports = Comentarios;

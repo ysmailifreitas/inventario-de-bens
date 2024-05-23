@@ -7,6 +7,6 @@ router.get('/editPermissions', permissionsController.getEditarPermissoes);
 router.get("/visualizarUsuario/:id", permissionsController.getVisualizarUsuario);
 
 // Ações
-router.post("/editPermissions/atualizarCargoUsuario/:id", permissionsController.atualizarCargoUsuario);
+router.post("/editPermissions/atualizarCargoUsuario", permissionsController.atualizarCargoUsuario);
 
 module.exports = router;

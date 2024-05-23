@@ -28,6 +28,9 @@ exports.getHomeData = async (req, res) => {
     } catch (error) {
         console.error('Erro ao fazer contagens:', error);
         res.status(500).send('Erro ao fazer contagens');
+        setTimeout(()=>{
+            res.redirect('patrimonio')
+        }, 1000)
     }
 
     // Itens.findAll().then(function (itens) {

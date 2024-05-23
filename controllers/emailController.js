@@ -31,10 +31,8 @@ exports.enviarEmail = (req, res) => {
 
     agente.sendMail(emailOptions, (error, info) => {
         if (error) {
-            console.log("Erro (500)", error);
             res.status(500).send("Erro ao enviar o e-mail");
         } else {
-            console.log("E-mail enviado com sucesso: (200)", info.response);
             res.status(200).send("E-mail enviado com sucesso");
         }
     });

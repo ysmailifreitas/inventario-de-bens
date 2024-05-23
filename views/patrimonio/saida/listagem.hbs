@@ -22,22 +22,22 @@
             <table class="w-full">
                 <thead class="">
                 <tr class="hidden sm:flex">
-                    <th class="w-full pl-9 py-3 bg-gray-50 sm:text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 sm:text-centereft text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Mov ID
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Pat Nome
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Fornecedor
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Responsável
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Data Modificação
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Tipo
                     </th>
                 </tr>
@@ -45,12 +45,12 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                 {{#each saidas}}
                     <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{patrimonio.pat_nome}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{patrimonio.pat_for_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_responsavel}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{updatedAt}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_tipo}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{mov_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{patrimonio.pat_nome}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{patrimonio.pat_for_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{mov_responsavel}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{truncateDate this.updatedAt 44}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{mov_tipo}}</td>
                     </tr>
                 {{/each}}
                 </tbody>

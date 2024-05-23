@@ -33,7 +33,6 @@ exports.getEstoqueListagem = async (req, res) => {
             };
         }));
 
-        console.log('consultas: ', consultas);
         res.render("estoque/listagem/estoque", {estoque: consultas, username: usuarioLogado});
     } catch (error) {
         console.error("Erro ao buscar dados de estoque com localização:", error);
@@ -54,7 +53,6 @@ exports.getEdicaoEstoqueForm = async (req, res) => {
         loc_id: estoque.estoque_loc_id,
         quantidade: patrimonio_estoque.quantidade
     };
-    console.log(estoqueComPatrimonioEstoque)
     res.render("estoque/edicao/editarEstoque", {
         estoque: estoqueComPatrimonioEstoque,
         estoque_id: req.params.id

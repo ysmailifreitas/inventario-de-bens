@@ -12,14 +12,14 @@
 <body class="bg-gray-100">
 <div class="bg-white p-4 flex justify-between items-center menu_top">
     <a href="/home" class="text-gray-800"><p>Voltar para o site</p></a>
-    <div class="font-semibold text-gray-800">Suporte</div>
-    <div class="flex items-center">
+    <div class="font-semibold text-gray-800 ml-4">Suporte</div>
+    <div class="flex">
         {{> loggedUser}}
-        <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/cadastrarTicket">Criar ticket</a>
     </div>
 </div>
 <div class="container mx-auto mt-8">
     <h2 class="text-lg font-semibold mb-4 text-center">Listagem de Tickets</h2>
+    <!-- Adicionei a classe "text-center" para centralizar -->
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
         <tr>
@@ -51,7 +51,7 @@
                           title="Ticket Resolvido"></span>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                    <a class="uppercase" href="/suporte/tickets/{{ticket_id}}">
+                    <a class="uppercase" href="/suporte/gerenciamento/tickets/{{ticket_id}}">
                         <ion-icon name="eye-outline" class="w-6 h-6"></ion-icon>
                     </a>
                 </td>
@@ -63,4 +63,5 @@
 </body>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
 </html>

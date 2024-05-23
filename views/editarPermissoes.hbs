@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Editar Permissões</title>
+    <style>
+        .selecionado{
+            background-color: lightblue;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +23,7 @@
         {{/if}}
         <div class="flex flex-col sm:flex-row w-full space-x-6 sm:flex-wrap">
             <div class="h-full w-full bg-white p-6 mb-6 rounded-lg shadow-md">
-                <form id="form" action="/editPermissions/atualizarCargoUsuario/1" method="POST">
+                <form id="form" action="/editPermissions/atualizarCargoUsuario" method="POST">
                     <div class="painel-selecao">
                         <div class="text-center">
                             <h1 class="m-0">Selecione um Usuário</h1>
@@ -40,14 +45,14 @@
                                 <tbody id="userTableBody">
 
                                 {{#each users}}
-                                    <tr class="">
-                                        <td class="border p-2 cursor-pointer bg-dark">{{usr_nome}}</td>
+                                    <tr data-user-id class="">
+                                        <td id="userTd{{usr_id}}" class="border p-2 cursor-pointer bg-dark" onclick="selectUser({{usr_id}})">{{usr_nome}}</td>
                                     </tr>
                                 {{/each}}
-
                                 </tbody>
                             </table>
                         </div>
+                        <input type="hidden" id="usuarioSelecionado" name="usr_id" value="">
                     </div>
                     <div class="mb-4">
                         <label for="cargos" class="block text-sm font-medium text-gray-600">Cargos do Usuário</label>
@@ -56,7 +61,8 @@
                             <option value="1" {{#ifEquals username.usr_cargo 1}} selected {{/ifEquals}}>Gestor</option>
                             <option value="2" {{#ifEquals username.usr_cargo 2}} selected {{/ifEquals}}>Administrador</option>
                             <option value="3" {{#ifEquals username.usr_cargo 3}} selected {{/ifEquals}}>Supervisor</option>
-                            <option value="4" {{#ifEquals username.usr_cargo 4}} selected {{/ifEquals}}>Comum</option>
+                            <option value="4" {{#ifEquals username.usr_cargo 4}} selected {{/ifEquals}}>Suporte</option>
+                            <option value="5" {{#ifEquals username.usr_cargo 5}} selected {{/ifEquals}}>Comum</option>
                         </select>
                     </div>
 
@@ -68,7 +74,7 @@
                     </div>
                 </form>
             </div>
-            <div class="h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin-left: 0">
+            <div class="hidden h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin-left: 0">
                 <form action="/editPermissions/atualizarPermissoes/{{userId}}" method="POST">
                     <div class="mb-4">
                         <label for="roles" class="block text-sm font-medium text-gray-600">Permissões</label>
@@ -100,7 +106,7 @@
                     </div>
                 </form>
             </div>
-            <div class="h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin: 0">
+            <div class="hidden h-full w-full sm:w-1/3 bg-white p-6 mb-6 rounded-lg shadow-md" style="margin: 0">
                 <form action="/editPermissions/atualizarRoles/{{userId}}" method="POST">
                     <div class="mb-4">
                         <label for="cargos" class="block text-sm font-medium text-gray-600">Cargos</label>
@@ -131,4 +137,49 @@
     </div>
 </div>
 </body>
+<script>
+    function searchUsers() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("userSearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("userTableBody");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            var cells = tr[i].getElementsByTagName("td");
+            var found = false;
+
+            for (var j = 0; j < cells.length; j++) {
+                td = cells[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break; // Break if the search term is found in any cell
+                    }
+                }
+            }
+
+            if (found || tr[i].classList.contains("icon-row")) {
+                tr[i].style.display = ""; // Show the entire row
+            } else {
+                tr[i].style.display = "none"; // Hide the entire row
+            }
+        }
+    }
+    function selectUser(userId) {
+        document.getElementById('usuarioSelecionado').value = userId;
+        if (userId) {
+            let elementoSelecionado = document.querySelector('.selecionado');
+            let userIdElemento = 'userTd' + userId;
+            if (elementoSelecionado) {
+                elementoSelecionado.classList.remove('selecionado');
+            }
+            let selectedElement = document.getElementById(userIdElemento);
+            if (selectedElement) {
+                selectedElement.parentElement.classList.add('selecionado');
+            }
+        }
+    }
+</script>
 </html>

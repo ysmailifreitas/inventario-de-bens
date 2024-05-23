@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+tml>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -20,19 +20,19 @@
             <table class="w-full">
                 <thead class="">
                 <tr class="hidden sm:flex">
-                    <th class="w-full pl-9 py-3 bg-gray-50 sm:text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Patrimonio ID
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Localização ID Origem
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Localização ID Destino
                     </th>
-                    <th class="w-full pl-9 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Responsável
                     </th>
-                    <th class="w-full px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="w-full py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                         Tipo
                     </th>
                 </tr>
@@ -40,11 +40,11 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                 {{#each movimentacao}}
                     <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_pat_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_loc_origem_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_loc_destino_id}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_responsavel}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">{{mov_tipo}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center">{{mov_pat_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center">{{mov_loc_origem_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center">{{mov_loc_destino_id}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center">{{mov_responsavel}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center">{{mov_tipo}}</td>
                     </tr>
                 {{/each}}
                 </tbody>

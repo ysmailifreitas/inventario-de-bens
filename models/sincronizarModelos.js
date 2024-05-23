@@ -40,8 +40,8 @@ async function sincronizarModelos() {
 }
 
 async function sincronizarCargos() {
-    const defaultCargoNomes = ['Gestor', 'Administrador', 'Supervisor', 'Comum'];
-    const defaultDescricoes = ['Gestor do sistema', 'Administrador do Sistema', 'Supervisor do Sistema', 'Agente Comum do Sistema'];
+    const defaultCargoNomes = ['Gestor', 'Administrador', 'Supervisor', 'Suporte', 'Comum'];
+    const defaultDescricoes = ['Gestor do sistema', 'Administrador do Sistema', 'Supervisor do Sistema', 'Suporte do Sistema', 'Agente Comum do Sistema'];
 
     await Cargos.sync()
         .then(async () => {
