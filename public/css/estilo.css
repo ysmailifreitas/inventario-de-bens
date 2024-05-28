@@ -31257,9 +31257,11 @@ video {
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  background-color: #f1f5f9;
-}
+/*body {*/
+
+/*    background-color: #f1f5f9;*/
+
+/*}*/
 
 nav ul li a {
   transition: 0.3s;

@@ -13,6 +13,7 @@ const Permissoes = require("./Permissoes");
 const {Usuarios} = require("./Usuarios");
 const Tickets = require("./Tickets");
 const Comentarios = require("./Comentarios");
+const inserirDadosIniciais = require("./cargaInicial");
 
 // Função para sincronizar todos os modelos na sequência correta
 async function sincronizarModelos() {
@@ -33,6 +34,8 @@ async function sincronizarModelos() {
         await Tickets.sync();
         await Comentarios.sync();
 
+        await inserirDadosIniciais();
+
         console.log("Todos os modelos sincronizados com sucesso.");
     } catch (error) {
         console.error("Erro ao sincronizar modelos:", error);
@@ -40,49 +43,15 @@ async function sincronizarModelos() {
 }
 
 async function sincronizarCargos() {
-    const defaultCargoNomes = ['Gestor', 'Administrador', 'Supervisor', 'Suporte', 'Comum'];
-    const defaultDescricoes = ['Gestor do sistema', 'Administrador do Sistema', 'Supervisor do Sistema', 'Suporte do Sistema', 'Agente Comum do Sistema'];
-
-    await Cargos.sync()
-        .then(async () => {
-            for (let i = 0; i < defaultCargoNomes.length; i++) {
-                const cargoNome = defaultCargoNomes[i];
-                const cargoDescricao = defaultDescricoes[i];
-                await Cargos.findOrCreate({
-                    where: {cargo_nome: cargoNome},
-                    defaults: {cargo_nome: cargoNome, cargo_descricao: cargoDescricao}
-                });
-            }
-
-            console.log('Registros padrão de cargos adicionados com sucesso.');
-        })
-        .catch((error) => {
-            console.error('Erro ao sincronizar tabela de CARGOS:', error);
-        });
+    await Cargos.sync().catch((error) => {
+        console.error('Erro ao sincronizar tabela de CARGOS:', error);
+    });
 }
 
 async function sincronizarPermissoes() {
-    const defaultPermissions = [
-        {perm_nome: 'adicionar_item', perm_descricao: 'Permissão para adicionar item'},
-        {perm_nome: 'editar_item', perm_descricao: 'Permissão para editar item'},
-        {perm_nome: 'excluir_item', perm_descricao: 'Permissão para excluir item'},
-        {perm_nome: 'visualizar_item', perm_descricao: 'Permissão para visualizar item'}
-    ];
-
-    await Permissoes.sync()
-        .then(async () => {
-            for (const permissionData of defaultPermissions) {
-                await Permissoes.findOrCreate({
-                    where: {perm_nome: permissionData.perm_nome},
-                    defaults: {...permissionData}
-                });
-            }
-
-            console.log('Registros padrão de permissões adicionados com sucesso.');
-        })
-        .catch((error) => {
-            console.error('Erro ao sincronizar tabela de Permissões:', error);
-        });
+    await Permissoes.sync().catch((error) => {
+        console.error('Erro ao sincronizar tabela de Permissões:', error);
+    });
 }
 
 module.exports = sincronizarModelos;

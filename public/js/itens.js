@@ -3,7 +3,7 @@ function removerItem() {
 
     var confirmarAcao = confirm("Deseja deletar o item?")
 
-    if (confirmarAcao == false) {
+    if (confirmarAcao === false) {
         a.href = "/patrimonio"
     }
 }
