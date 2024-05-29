@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
     <title>Editar Permissões</title>
     <style>
-        .selecionado{
+        .selecionado {
             background-color: lightblue;
         }
     </style>
@@ -32,7 +32,8 @@
                             <label for="userSearch">
                                 <img src="../img/search.png" alt="Search Icon" class="search-icon">
                             </label>
-                            <input type="text" id="userSearch" oninput="searchUsers()" placeholder="Digite o nome do usuário..."
+                            <input type="text" id="userSearch" oninput="searchUsers()"
+                                   placeholder="Digite o nome do usuário..."
                                    class="w-full ml-2 px-2 py-1 border border-gray-300 rounded">
                         </div>
                         <div class="table-wrapper">
@@ -46,7 +47,8 @@
 
                                 {{#each users}}
                                     <tr data-user-id class="">
-                                        <td id="userTd{{usr_id}}" class="border p-2 cursor-pointer bg-dark" onclick="selectUser({{usr_id}})">{{usr_nome}}</td>
+                                        <td id="userTd{{usr_id}}" class="border p-2 cursor-pointer bg-dark"
+                                            onclick="selectUser({{usr_id}})">{{usr_nome}}</td>
                                     </tr>
                                 {{/each}}
                                 </tbody>
@@ -59,8 +61,10 @@
                         <select id="cargos" name="cargo_id" multiple
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <option value="1" {{#ifEquals username.usr_cargo 1}} selected {{/ifEquals}}>Gestor</option>
-                            <option value="2" {{#ifEquals username.usr_cargo 2}} selected {{/ifEquals}}>Administrador</option>
-                            <option value="3" {{#ifEquals username.usr_cargo 3}} selected {{/ifEquals}}>Supervisor</option>
+                            <option value="2" {{#ifEquals username.usr_cargo 2}} selected {{/ifEquals}}>Administrador
+                            </option>
+                            <option value="3" {{#ifEquals username.usr_cargo 3}} selected {{/ifEquals}}>Supervisor
+                            </option>
                             <option value="4" {{#ifEquals username.usr_cargo 4}} selected {{/ifEquals}}>Suporte</option>
                             <option value="5" {{#ifEquals username.usr_cargo 5}} selected {{/ifEquals}}>Comum</option>
                         </select>
@@ -167,6 +171,7 @@
             }
         }
     }
+
     function selectUser(userId) {
         document.getElementById('usuarioSelecionado').value = userId;
         if (userId) {

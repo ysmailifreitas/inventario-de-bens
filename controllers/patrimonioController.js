@@ -32,7 +32,18 @@ exports.getSaidaListagem = async (req, res) => {
 
 exports.getCadastroEntradaForm = async (req, res) => {
     const {fornecedores, localizacao} = await patrimonioService.getCadastroPatrimonioForm()
-    res.render("patrimonio/entrada/cadastro/cadastro", {fornecedores, localizacao});
+    const errors = req.session.errors || [];
+    const formData = req.session.formData || {};
+    req.session.errors = null;  // Clear errors after displaying
+    req.session.formData = null; // Clear form data after displaying
+
+    res.render("patrimonio/entrada/cadastro/cadastro", {
+        fornecedores,
+        localizacao,
+        message: errors.length > 0 ? 'Erro ao cadastrar patrimônio' : null,
+        errors: errors,
+        formData: formData
+    });
 }
 
 exports.getCadastroSaidaForm = async (req, res) => {
@@ -100,10 +111,17 @@ exports.cadastrarNovaEntrada = async (req, res) => {
         res.redirect("/patrimonio/entrada");
     } catch (e) {
         console.error(e);
-        res.status(500).send("Erro ao cadastrar entrada!");
-        setTimeout(()=>{
-            res.redirect("/patrimonio/entrada");
-        },1500)
+        if (e.name === 'SequelizeValidationError') {
+            const validationErrors = e.errors.map(error => ({
+                mensagem: error.message,
+                campo: error.path
+            }));
+            req.session.errors = validationErrors;
+            req.session.formData = req.body;
+            res.redirect(req.get('referer'));
+        } else {
+            res.status(500).send('Erro ao cadastrar patrimônio');
+        }
     }
 };
 

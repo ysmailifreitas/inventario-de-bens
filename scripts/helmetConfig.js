@@ -21,7 +21,6 @@ module.exports = function configureHelmet(app) {
             referrerPolicy: {
                 policy: 'same-origin',
             },
-            // Outras configurações do helmet aqui
         })
     );
 };
