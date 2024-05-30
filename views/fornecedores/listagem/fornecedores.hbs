@@ -36,11 +36,11 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                 {{#each fornecedores}}
-                    <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{for_nome}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{for_telefone}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{for_email}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">
+                    <tr class="flex flex-col w-full sm:flex-row text-center border-b-4 sm:border-none">
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Nome:</span>{{for_nome}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Telefone:</span>{{for_telefone}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Email:</span>{{for_email}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Ações:</span>
                             <table class="w-fit mx-auto">
                                 <tr class="">
                                     <td class="flex w-full">

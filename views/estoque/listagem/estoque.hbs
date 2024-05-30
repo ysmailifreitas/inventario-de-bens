@@ -36,27 +36,10 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                 {{#each estoque}}
-                    <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center ">{{ estoque_id }}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center ">{{ loc_nome }}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center ">{{ quantidade }}</td>
-<!--                        <td class="w-full px-6 py-4 whitespace-no-wrap text-center align-middle">-->
-<!--                            <table class="mx-auto sm:m-0">-->
-<!--                                <tr class="">-->
-<!--                                    <td class="flex w-full">-->
-<!--                                        <a href="/editarEstoque/{{estoque_id}}"-->
-<!--                                           class="px-2">-->
-<!--                                            <img height="25px" width="25px" src="../img/edit.png">-->
-<!--                                        </a>-->
-<!--                                        <a id="deletar" href="/deletarEstoque/{{estoque_id}}"-->
-<!--                                           onclick="removerFornecedor()"-->
-<!--                                           class="">-->
-<!--                                            <img height="25px" width="25px" src="../img/delete.png">-->
-<!--                                        </a>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-<!--                            </table>-->
-<!--                        </td>-->
+                    <tr class="flex flex-col w-full sm:flex-row text-center border-b-4 sm:border-none">
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Patrimonio ID:</span>{{ estoque_id }}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Localização ID:</span>{{ loc_nome }}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Quantidade:</span>{{ quantidade }}</td>
                     </tr>
                 {{/each}}
                 </tbody>

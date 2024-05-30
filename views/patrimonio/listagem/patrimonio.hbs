@@ -35,12 +35,12 @@
                 </thead>
                 <tbody class="bg-white divide-gray-200">
                 {{#each patrimonio}}
-                    <tr class="flex flex-col w-full sm:flex-row">
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{pat_nome}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{#formatDate
+                    <tr class="flex flex-col w-full sm:flex-row text-center border-b-4 sm:border-none">
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Nome:</span>{{pat_nome}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Data de Aquisição:</span>{{#formatDate
                                 pat_data_aquisicao}}{{/formatDate}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{fornecedor.for_nome}}</td>
-                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center align-middle">{{#formatDateHour
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Fornecedor:</span>{{fornecedor.for_nome}}</td>
+                        <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500 flex sm:hidden">Modificação:</span>{{#formatDateHour
                                 updatedAt}}{{/formatDateHour}}</td>
                     </tr>
                 {{/each}}
