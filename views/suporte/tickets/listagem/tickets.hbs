@@ -12,7 +12,7 @@
 <body class="bg-gray-100">
 <div class="bg-white p-4 flex justify-between items-center menu_top">
     <a href="/home" class="text-gray-800"><p>Voltar para o site</p></a>
-    <div class="font-semibold text-gray-800">Suporte</div>
+    <div class="font-semibold text-gray-800"></div>
     <div class="flex items-center">
         {{> loggedUser}}
         <a class="block p-4 bg-amber-50 hover:bg-gray-100 duration-300" href="/cadastrarTicket">Criar ticket</a>
@@ -22,36 +22,36 @@
     <h2 class="text-lg font-semibold mb-4 text-center">Listagem de Tickets</h2>
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
-        <tr>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+        <tr class="hidden sm:flex">
+            <th scope="col" class="w-full py-3 bg-gray-50 sm:text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Assunto
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="w-full py-3 bg-gray-50 sm:text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Descrição
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="w-full py-3 bg-gray-50 sm:text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Prioridade
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="w-full py-3 bg-gray-50 sm:text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Status
             </th>
-            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" class="w-full py-3 bg-gray-50 sm:text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Ver Ticket
             </th>
         </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
         {{#each tickets}}
-            <tr class="select_td">
-                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_assunto}}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_descricao}}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-center">{{ticket_prioridade}}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-center">
+            <tr class="flex flex-col w-full sm:flex-row text-center">
+                <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500  flex sm:hidden">Assunto:</span>{{ticket_assunto}}</td>
+                <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500  flex sm:hidden">Descrição:</span>{{ticket_descricao}}</td>
+                <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500  flex sm:hidden">Prioridade:</span>{{ticket_prioridade}}</td>
+                <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500  flex sm:hidden">Status:</span>
                     <span class="inline-flex items-center justify-center h-6 w-6 rounded-full {{statusClass ticket_status}}"
                           title="Ticket Resolvido"></span>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-center">
-                    <a class="uppercase" href="/suporte/tickets/{{ticket_id}}">
+                <td class="w-full px-6 py-4 whitespace-no-wrap sm:text-center"><span class="mb-2 justify-center text-green-500  flex sm:hidden">Ver Ticket:</span>
+                    <a class="uppercase" href="/suporte/gerenciamento/tickets/{{ticket_id}}">
                         <ion-icon name="eye-outline" class="w-6 h-6"></ion-icon>
                     </a>
                 </td>

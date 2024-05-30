@@ -1,8 +1,7 @@
-<div>
-    {{#ifEquals username.usr_cargo 'Suporte'}}
-        <a class="cursor-pointer" href="/userProfile">{{username.usr_nome}} - {{username.usr_cargo}}</a>
-    {{else}}
-        <a class="cursor-pointer" href="/userProfile">{{username.usr_nome}} - {{username.usr_cargo}}</a>
-    {{/ifEquals}}
+<div class="">
+    <a class="cursor-pointer flex items-center gap-1 w-fit" href="/userProfile">
+        <ion-icon name="person-circle-outline" class="w-6 h-6"></ion-icon>
+        <span class="hidden md:flex">{{username.usr_nome}} - {{username.usr_cargo}}</span>
+    </a>
 
 </div>

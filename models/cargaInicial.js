@@ -97,7 +97,6 @@ async function inserirCargoUsuarioPadrao() {
     try {
         const count = await CargoUsuario.count();
         if (count === 0) {
-            // Assumindo que usr_id e cargo_id padrão sejam 1
             await CargoUsuario.create({
                 usr_id: 1,
                 cargo_id: 1
@@ -137,7 +136,6 @@ async function inserirCargoPermissaoPadrao() {
     try {
         const count = await CargoPermissao.count();
         if (count === 0) {
-            // Supondo que cargo_id 1 corresponde a 'Administrador' e perm_id 1 corresponde a 'adicionar_item'
             await CargoPermissao.create({
                 cargo_id: 1,
                 perm_id: 1
@@ -192,7 +190,7 @@ async function inserirPatrimonioPadrao() {
                 pat_estado: 'Novo',
                 pat_depreciacao_anual: 10.0,
                 pat_vida_util: 5,
-                pat_for_id: 1 // Supondo que o fornecedor padrão inserido tenha ID 1
+                pat_for_id: 1
             });
 
             console.log('Patrimônio padrão inserido com sucesso.');
@@ -213,7 +211,7 @@ async function inserirDadosDashboardPadrao() {
                 taxa_utilizacao: 0.8,
                 valor_liquido: 800.0,
                 roi: 5.0,
-                pat_id: 1 // Supondo que o patrimônio padrão inserido tenha ID 1
+                pat_id: 1
             });
 
             console.log('Dados de dashboard padrão inseridos com sucesso.');
@@ -245,7 +243,7 @@ async function inserirEstoquePadrao() {
         const count = await Estoque.count();
         if (count === 0) {
             await Estoque.create({
-                estoque_loc_id: 1 // Supondo que a localização padrão inserida tenha ID 1
+                estoque_loc_id: 1
             });
 
             console.log('Estoque padrão inserido com sucesso.');
@@ -259,7 +257,6 @@ async function inserirPatrimonioEstoquePadrao() {
     try {
         const count = await PatrimonioEstoque.count();
         if (count === 0) {
-            // Supondo que o patrimônio e o estoque padrão tenham ID 1
             await PatrimonioEstoque.create({
                 quantidade: 10,
                 pat_id: 1,
@@ -277,10 +274,9 @@ async function inserirMovimentacaoPadrao() {
     try {
         const count = await Movimentacao.count();
         if (count === 0) {
-            // Supondo que o patrimônio padrão inserido tenha ID 1 e a localização padrão inserida tenha ID 1
             await Movimentacao.create({
                 mov_pat_id: 1,
-                mov_responsavel: 'Responsável Padrão',
+                mov_responsavel: 'admin',
                 mov_tipo: 'Entrada',
                 mov_motivo: 'Compra',
                 mov_loc_origem_id: 1,
@@ -299,7 +295,6 @@ async function inserirTicketsPadrao() {
     try {
         const count = await Tickets.count();
         if (count === 0) {
-            // Supondo que o usuário padrão inserido tenha ID 1
             await Tickets.create({
                 ticket_assunto: 'Alterar a senha não está funcionando',
                 ticket_descricao: 'Descrição Padrão',
@@ -319,7 +314,6 @@ async function inserirComentariosPadrao() {
     try {
         const count = await Comentarios.count();
         if (count === 0) {
-            // Supondo que o usuário padrão inserido tenha ID 1
             await Comentarios.create({
                 cmnt_texto: 'Obrigado por resolver meu problema!',
                 usr_id: 1,
