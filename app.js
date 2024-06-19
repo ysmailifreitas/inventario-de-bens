@@ -114,6 +114,7 @@ hbs.registerHelper('truncateDate', function(date, maxLength) {
 });
 
 // -- Rotas
+//app.use('/', require('./routes/relatorio'));
 app.use('/', require('./routes/login'));
 app.use('/', require("./routes/logout"));
 app.use('/', require('./routes/home'));
@@ -121,7 +122,6 @@ app.use('/', require("./routes/patrimonio"));
 app.use('/', require("./routes/fornecedor"));
 app.use('/', require('./routes/suporte'));
 app.use('/', require('./routes/email'));
-//app.use('/', require('./routes/relatorios'));
 app.use('/', require('./routes/usuarios'));
 app.use('/', require('./routes/editPermissions'));
 app.use('/', require('./routes/perfilUsuario'));
