@@ -27,6 +27,7 @@ app.set('layout', 'layouts/layout');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(bodyParser.json());
 
 // -- Middlewares
 
@@ -114,7 +115,6 @@ hbs.registerHelper('truncateDate', function(date, maxLength) {
 });
 
 // -- Rotas
-//app.use('/', require('./routes/relatorio'));
 app.use('/', require('./routes/login'));
 app.use('/', require("./routes/logout"));
 app.use('/', require('./routes/home'));
@@ -128,6 +128,13 @@ app.use('/', require('./routes/perfilUsuario'));
 app.use('/', require('./routes/cadastros'));
 app.use('/', require('./routes/estoque'));
 app.use('/', require('./routes/movimentacoes'));
+app.use('/', require("./routes/relatorio"));
+
+app.post('/gerar-relatorio', (req, res) => {
+    const { value } = req.body;
+});
+
+
 // Inicialização do servidor
 const PORT = process.env.PORT || 4000;
 

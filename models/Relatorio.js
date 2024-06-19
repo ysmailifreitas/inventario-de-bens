@@ -33,5 +33,6 @@ const Relatorio = db.sequelize.define('relatorio', {
         tableName: 'relatorio'
     });
 
+Relatorio.belongsTo(Usuarios, { foreignKey: 'rel_responsavel_id' });
 
 module.exports = Relatorio;
