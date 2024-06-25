@@ -12,9 +12,14 @@
 {{> nav}}
 <div class="mt-28 sm:mt-44 sm:ml-64 mx-auto w-fit">
     <div class="flex flex-col justify-center items-center">
+    {{#ifNotEquals username.usr_cargo 'Comum'}}
+        {{#ifNotEquals username.usr_cargo 'Supervisor'}}
         <div class="flex justify-end bg-gray-50 add_button">
             <button class="font-bold rounded"><a href="/cadastrarFornecedor">Adicionar Fornecedores</a></button>
         </div>
+        {{/ifNotEquals}}
+    {{/ifNotEquals}}
+
         <div class="w-5/6 shadow-xl">
             <h1 class="bg-gray-50 py-2 px-4 rounded-t-lg text-center uppercase">Listagem de Fornecedores</h1>
             <table class="w-full">

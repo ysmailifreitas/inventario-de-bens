@@ -2,7 +2,13 @@ const {Usuarios} = require("../models/Usuarios");
 const Relatorio = require("../models/Relatorio");
 
 exports.getRelatoriosListagem = async (req, res) => {
-    const relatorio = await Relatorio.findAll().then((relatorios) => relatorios)
+    const relatorio = await Relatorio.findAll({
+         include: [{
+         model: Usuarios,
+         as: 'usuario',
+         attributes: ['usr_nome']
+         }]
+    }).then((relatorios) => relatorios)
     let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
     res.render("relatorio", {relatorio: relatorio, username: usuarioLogado});
 }

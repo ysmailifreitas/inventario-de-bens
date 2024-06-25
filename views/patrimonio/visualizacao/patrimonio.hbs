@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Entrada</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/cadastroitem.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="img/box.png" type="image/x-icon">
+</head>
+
+<body>
+{{> nav}}
+
+<div class="flex items-center justify-center card_registro mt-28 sm:mt-25 sm:ml-64 mx-auto">
+    <div class="max-w-sm mx-auto p-8 rounded-lg card">
+        <h2 class="text-2xl font-semibold mb-4 text-center">Visualizando Patrimonio {{pat.pat_id}}</h2>
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="fornecedor" class="block text-sm font-medium text-gray-700">Fornecedor</label>
+                    <select class="p-2 mt-2 mb-2" name="fornecedor" disabled>
+                        <option style="touch-action: none; pointer-events: none;">{{pat.fornecedor.for_nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="nome" class="block text-sm font-medium text-gray-700 ">Nome do item</label>
+                <input type="text" id="nome" name="nome" value="{{pat.pat_nome}}"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" readonly>
+            </div>
+            <div class="mb-4">
+                <label for="quantidade" class="block text-sm font-medium text-gray-700">Quantidade</label>
+                <input type="int" id="quantidade" name="quantidade" value="{{estoque.quantidade}}"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" readonly>
+            </div>
+            <div>
+                <br>
+                <div class="block">
+                    <small></small>
+                    <label for="localizacao" class="block text-sm font-medium text-gray-700">Localização</label>
+                    <select class="p-2 mt-2 mb-2" name="localizacao" disabled>
+                        <option value="" id="selectfn">Localizacao</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="tipo" class="block text-sm font-medium text-gray-700 ">Tipo</label>
+                <input type="text" id="tipo" name="tipo" value="{{pat.pat_tipo}}"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400" readonly>
+            </div>
+
+            <div class="data">
+                <small></small>
+                <label for="data" class="block text-sm font-medium text-gray-700">Data de Aquisição</label>
+                <input class="data" name="data_aquisicao" type="date" id="data" value="{{pat.pat_data_aquisicao}}"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400"
+                       placeholder="Definir Data" readonly
+                >
+            </div>
+            <div class="mb-4">
+                <label for="preco_unitario" class="block text-sm font-medium text-gray-700">Preço</label>
+                <input type="number" id="preco_unitario" name="preco"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
+                       readonly value="{{pat.pat_valor}}">
+            </div>
+            <div class="block">
+                <small></small>
+                <label for="estadoConservacao" class="block text-sm font-medium text-gray-700">Estado de
+                    Conservação</label>
+                <select class="p-2 mt-2 mb-2" name="estadoConservacao" id="estadoConservacao" disabled>
+                    <option value="novo">{{pat.pat_estado}}</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="vida_util" class="block text-sm font-medium text-gray-700">Vida Útil</label>
+                <input type="number" id="vida_util" name="vida_util"
+                       class="mt-1 block w-full px-3 py-2 rounded-lg focus:outline-none text-gray-400 " step="0.01"
+                       readonly value="{{pat.pat_vida_util}}">
+            </div>
+
+        <div class="flex justify-center">
+            <button id="entrada-btn" class="button-30 flex items-center justify-center"><a href="/patrimonio">Voltar</a></button>
+        </div>
+    </div>
+</div>
+<script src="js/patrimonio.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

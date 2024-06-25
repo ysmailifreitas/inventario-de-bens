@@ -53,8 +53,24 @@ exports.getSaidaListagem = async (username) => {
 };
 
 exports.getVisualizacaoPatrimonio = (patId) => {
-    let pat = Patrimonio.findOne({where: {pat_id: patId}})
+    let pat = Patrimonio.findOne({
+       where: {pat_id: patId},
+       include: [{
+         model: Fornecedor,
+         as: 'fornecedor',
+         attributes: ['for_nome']
+         }]
+       });
+
     return pat
+}
+
+exports.getVisualizacaoPatrimonioEstoque = async (patId) => {
+   let estoque = PatrimonioEstoque.findOne({
+          where: {pat_id: patId}
+       });
+
+   return estoque
 }
 
 exports.getCadastroPatrimonioForm = async () => {

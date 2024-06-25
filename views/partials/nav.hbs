@@ -44,6 +44,10 @@
                 <ion-icon name="build-outline" class="w-5 h-5"></ion-icon>
                 <span>Painel</span>
             </a>
+            <a href="/usuarios" class="text-gray-600 hover:text-gray-800 flex items-center gap-2">
+                <ion-icon name="people-circle-outline" class="w-5 h-5"></ion-icon>
+                <span>Usuários</span>
+            </a>
         {{/ifEquals}}
         {{#ifEquals username.usr_cargo 'Suporte'}}
             <a href="/suporte/gerenciamento" class="text-gray-600 hover:text-gray-800 flex items-center gap-2">
@@ -116,6 +120,7 @@
                     <p class="esconder">Estoque</p>
                 </a>
             </li>
+            {{#ifNotEquals username.usr_cargo 'Comum'}}
             <li>
                 <a href="/fornecedores"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
@@ -123,6 +128,7 @@
                     <p class="esconder">Fornecedores</p>
                 </a>
             </li>
+
             <li class="">
                 <a href="/relatorios"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex justify-center sm:justify-start">
@@ -132,6 +138,7 @@
                     <p class="esconder">Relatórios</p>
                 </a>
             </li>
+           {{/ifNotEquals}}
             <li>
                 <a href="/movimentacoes"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
@@ -139,6 +146,7 @@
                     <p class="esconder">Movimentações</p>
                 </a>
             </li>
+            {{#ifNotEquals username.usr_cargo 'Comum'}}
             <li class="dropdown">
                 <a href="#"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start dropdown-toggle">
@@ -162,6 +170,7 @@
                     </li>
                 </ul>
             </li>
+            {{/ifNotEquals}}
         </ul>
     </nav>
     <div class="w-full mb-10 absolute bottom-0">

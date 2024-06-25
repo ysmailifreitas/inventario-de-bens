@@ -17,7 +17,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="91950a72-f229-4430-a34a-9b066b8f90a6">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM usuarios;]]></console>
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[select * from cargos;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -28,6 +28,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="91950a72-f229-4430-a34a-9b066b8f90a6" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="91950a72-f229-4430-a34a-9b066b8f90a6" dataset="inventario.patrimonio" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

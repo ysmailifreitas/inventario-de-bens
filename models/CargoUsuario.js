@@ -27,4 +27,6 @@ const CargoUsuario = db.sequelize.define('cargo_usuario', {
     timestamps: false,
 });
 
+CargoUsuario.belongsTo(Usuarios, { foreignKey: 'usr_id', onDelete: 'CASCADE' });
+
 module.exports = CargoUsuario;

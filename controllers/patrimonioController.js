@@ -1,4 +1,5 @@
 const patrimonioService = require("../services/patrimonioService");
+const {Usuarios} = require("../models/Usuarios");
 
 exports.getPatrimonioListagem = async (req, res) => {
     try {
@@ -55,8 +56,11 @@ exports.getVisualizacaoPatrimonio = async (req, res) => {
     try {
         const patId = req.params.id;
         const pat = await patrimonioService.getVisualizacaoPatrimonio(patId);
+        const estoque = await patrimonioService.getVisualizacaoPatrimonioEstoque(patId);
+        let usuarioLogado = await Usuarios.findOne({where: {usr_nome: req.session.username}});
+
         if (pat) {
-            res.send(pat);
+        res.render("patrimonio/visualizacao/patrimonio", {pat: pat, estoque: estoque, username: usuarioLogado})
         } else {
             res.status(404).send("Patrimonio não encontrado");
         }

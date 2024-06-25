@@ -14,32 +14,34 @@ const agente = nodemailer.createTransport({
 });
 
 exports.forgotPassword = async (req, res) => {
-    const {email} = req.body;
+    const { user_email, company_email } = req.body;
 
     try {
-        const user = await Usuarios.findOne({where: {email}});
+        const user = await Usuarios.findOne({where: { usr_email: company_email }});
 
         if (!user) {
             return res.render('forgotPassword', {errorMessage: 'Usuarios not found with the provided email.'});
+        } else {
+            const resetToken = generateUniqueToken();
+
+            user.resetToken = resetToken;
+            user.resetTokenExpires = Date.now() + 3600000;
+            await user.save();
+
+            const resetLink = `http://localhost:3000/resetPassword/${resetToken}`;
+            const mailOptions = {
+                 from: "suportetester1@hotmail.com",
+                 to: company_email,
+                 subject: "Password Reset",
+                 html: `Click <a href="${resetLink}">here</a> to reset your password.`,
+            };
+
+            await agente.sendMail(mailOptions);
+
+            res.render('forgot-password-success', {successMessage: 'Password reset email sent. Check your inbox.'});
         }
 
-        const resetToken = generateUniqueToken();
 
-        user.resetToken = resetToken;
-        user.resetTokenExpires = Date.now() + 3600000;
-        await user.save();
-
-        const resetLink = `http://localhost:3000/resetPassword/${resetToken}`;
-        const mailOptions = {
-            from: "suportetester1@hotmail.com",
-            to: email,
-            subject: "Password Reset",
-            html: `Click <a href="${resetLink}">here</a> to reset your password.`,
-        };
-
-        await agente.sendMail(mailOptions);
-
-        res.render('forgot-password-success', {successMessage: 'Password reset email sent. Check your inbox.'});
     } catch (error) {
         console.error('Error in forgotPassword:', error);
         res.render('forgot-password', {errorMessage: 'An error occurred. Please try again later.'});

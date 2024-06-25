@@ -1,6 +1,7 @@
 const {Sequelize, DataTypes, where} = require("sequelize");
 const db = require("../models/db");
-const Cargos = require("./Cargos")
+const Cargos = require("./Cargos");
+const CargoUsuario = require("./CargoUsuario");
 
 const Usuarios = db.sequelize.define(
     "usuarios",
@@ -20,6 +21,11 @@ const Usuarios = db.sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: "default_password",
+        },
+        usr_email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "default_email@default.com"
         },
         usr_cargo: {
             type: DataTypes.STRING,
