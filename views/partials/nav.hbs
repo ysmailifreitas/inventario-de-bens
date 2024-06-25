@@ -38,7 +38,6 @@
     <ion-icon name="menu-outline" class="w-10 h-10 flex icone duration-300"></ion-icon>
 </div>
 <header class="bg-white shadow-md fixed top-0 w-screen z-10">
-    <!--    <div class="container py-2 w-full">-->
     <div class="gap-2 m-3 flex items-center justify-end p-2">
         {{#ifEquals username.usr_cargo 'Administrador'}}
             <a href="/editPermissions" class="text-gray-600 hover:text-gray-800 flex items-center gap-2">
@@ -60,13 +59,13 @@
         <span class="mx-2">|</span>
         {{> loggedUser}}
     </div>
-    <!--    </div>-->
 </header>
-<aside class="asideContent opacity-0 sm:opacity-100 h-full top-0 w-0 mt-0 sm:h-fit asideMenu duration-300 fixed bg-white sm:w-64 border-r border-gray-300 flex flex-col shadow-lg z-10">
-    <!--    <ion-icon class="absolute right-2 top-0 z-50 w-10 h-10 text-blue-200 hover:text-blue-400 cursor-pointer" name="chevron-back-circle"></ion-icon>-->
+<aside id="asideContent" class="asideContent opacity-0 sm:opacity-100 h-full top-0 w-0 mt-0 sm:h-fit asideMenu duration-300 fixed bg-white sm:w-64 border-r border-gray-300 flex flex-col shadow-lg z-10">
+    <ion-icon style="top:139px" class="absolute -right-4 z-50 w-10 h-10 text-gray-400 hidden sm:flex duration-300 hover:text-blue-400 cursor-pointer iconeExpand"
+              name="chevron-back-circle" onclick="expandMenu()"></ion-icon>
     <div class="flex items-center justify-center title__navbar">
         <ion-icon name="cube-outline" class="w-12 h-12 flex" style="color:#00ccff"></ion-icon>
-        <h1 class="text-xl font-semibold text-gray-800 ml-4 menu__navbar">Menu</h1>
+        <h1 class="text-xl font-semibold text-gray-800 ml-4 menu__navbar esconder">Menu</h1>
     </div>
     <hr class="shadow-lg h-2">
     <nav class="pt-0 sm:h-full overflow-y-auto sm:mb-28 pb-14 sm:pb-0">
@@ -75,36 +74,36 @@
                 <a href="/home"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex justify-center sm:justify-start">
                     <div class="flex items-center">
-                        <ion-icon name="home-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                        <ion-icon name="home-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                     </div>
-                    Dashboard
+                    <p class="esconder">Dashboard</p>
                 </a>
             </li>
             <li class="dropdown">
                 <a href="#"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start dropdown-toggle">
-                    <ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Patrimônio
+                    <ion-icon name="logo-dropbox" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
+                    <p class="esconder">Patrimônio</p>
                 </a>
                 <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
                     <li class="">
                         <a href="/patrimonio"
                            class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="list-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                            <ion-icon name="list-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                             Listagem
                         </a>
                     </li>
                     <li class="">
                         <a href="/patrimonio/entrada"
                            class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="newspaper-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                            <ion-icon name="newspaper-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                             Entrada
                         </a>
                     </li>
                     <li class="">
                         <a href="/patrimonio/saida"
                            class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="exit-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                            <ion-icon name="exit-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                             Saída
                         </a>
                     </li>
@@ -113,75 +112,52 @@
             <li>
                 <a href="/estoque"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                    <ion-icon name="file-tray-full-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Estoque
+                    <ion-icon name="file-tray-full-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
+                    <p class="esconder">Estoque</p>
                 </a>
             </li>
             <li>
                 <a href="/fornecedores"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                    <ion-icon name="business-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Fornecedores
+                    <ion-icon name="business-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
+                    <p class="esconder">Fornecedores</p>
                 </a>
             </li>
             <li class="">
                 <a href="/relatorios"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex justify-center sm:justify-start">
                     <div class="flex items-center">
-                        <ion-icon name="bar-chart-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                        <ion-icon name="bar-chart-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                     </div>
-                    Relatórios
+                    <p class="esconder">Relatórios</p>
                 </a>
             </li>
             <li>
                 <a href="/movimentacoes"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                    <ion-icon name="stopwatch-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Movimentações
+                    <ion-icon name="stopwatch-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
+                    <p class="esconder">Movimentações</p>
                 </a>
             </li>
             <li class="dropdown">
                 <a href="#"
                    class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start dropdown-toggle">
-                    <ion-icon name="create-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Cadastros Básicos
+                    <ion-icon name="create-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
+                    <p class="esconder">Cadastros Básicos</p>
                 </a>
                 <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
                     <li>
                         <a href="/cadastrarLocalizacao"
                            class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="location-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                            <ion-icon name="location-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                             Localização
                         </a>
                     </li>
                     <li>
                         <a href="/cadastrarDepartamento"
                            class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="git-merge-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
+                            <ion-icon name="git-merge-outline" class="w-6 h-6 mr-2 iconesMenu sm:ml-5"></ion-icon>
                             Departamento
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#"
-                   class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start dropdown-toggle">
-                    <ion-icon name="settings-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                    Manutenção
-                </a>
-                <ul class="dropdown-menu hidden absolute bg-white shadow-lg">
-                    <li>
-                        <a href="/patrimonio"
-                           class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="swap-horizontal-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                            Transferência
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/patrimonio"
-                           class="p-4 text-gray-600 hover:bg-gray-200 flex items-center justify-center sm:justify-start">
-                            <ion-icon name="bar-chart-outline" class="w-6 h-6 mr-2 sm:ml-5"></ion-icon>
-                            Relatorios
                         </a>
                     </li>
                 </ul>
@@ -191,8 +167,8 @@
     <div class="w-full mb-10 absolute bottom-0">
         <a href="logout"
            class="block p-4 text-gray-600 bg-red-100 hover:bg-red-200 flex-end flex items-center justify-center">
-            <ion-icon name="power-outline" class="w-6 h-6 mr-2"></ion-icon>
-            Sair
+            <ion-icon name="power-outline" class="w-6 h-6 mr-2 iconesMenu"></ion-icon>
+            <p class="esconder">Sair</p>
         </a>
     </div>
 
@@ -242,6 +218,29 @@
             icone.name = 'menu-outline';
             asideContent.classList.remove('opacity-100');
             asideContent.classList.add('opacity-0');
+        }
+    }
+
+    function expandMenu() {
+        const asideMenu = document.querySelector('.asideMenu');
+        const icone = document.querySelector('.iconeExpand');
+        const asideContent = document.querySelector('.asideContent');
+        const elementsToHide = document.querySelectorAll('.esconder');
+        const iconesMenu = document.querySelectorAll('.iconesMenu');
+
+        asideMenu.classList.toggle('w-full');
+        if (icone.name === 'chevron-back-circle') {
+            icone.name = 'chevron-forward-circle';
+            elementsToHide.forEach(element => element.classList.add('hidden'));
+            asideContent.classList.remove('sm:w-64');
+            asideContent.classList.add('sm:w-24');
+            iconesMenu.classList.add('w-full')
+        } else {
+            icone.name = 'chevron-back-circle';
+            elementsToHide.forEach(element => element.classList.remove('hidden'));
+            asideContent.classList.remove('sm:w-24');
+            
+            asideContent.classList.add('sm:w-64');
         }
     }
 
