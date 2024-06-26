@@ -84,6 +84,7 @@ async function inserirUsuarioPadrao() {
                 usr_nome: 'admin',
                 usr_pass: '$2b$10$yB6XCb7w812fccmWx5wI3.RvYErFHgjhdN6HrxFPh7FaAOkPQdeaW',
                 usr_cargo: 'Administrador',
+                usr_email: 'email@gmail.com',
                 usr_dep: 'TI',
             });
             console.log('Usuário padrão inserido com sucesso.');
