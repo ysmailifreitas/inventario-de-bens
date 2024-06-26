@@ -13,6 +13,7 @@ const Permissoes = require("./Permissoes");
 const {Usuarios} = require("./Usuarios");
 const Tickets = require("./Tickets");
 const Comentarios = require("./Comentarios");
+const Relatorio = require("./Relatorio");
 const inserirDadosIniciais = require("./cargaInicial");
 
 // Função para sincronizar todos os modelos na sequência correta
@@ -33,6 +34,7 @@ async function sincronizarModelos() {
         await Movimentacao.sync();
         await Tickets.sync();
         await Comentarios.sync();
+        await Relatorio.sync();
 
         await inserirDadosIniciais();
 
